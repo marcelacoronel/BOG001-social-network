@@ -143,8 +143,11 @@
     display: none;
     z-index: -100;
 }
+/*FIN ESTILOS SIGN-UP*/
 
+/*VISTA TABLET*/
 @media screen and (max-width:768px){
+    /*ESTILOS SIGN-UP*/
     .container-form{
         width: auto;
         bottom: 20%;
@@ -173,8 +176,9 @@
     .mobile-SU{
         display: none;
     }
+    /*FIN ESTILOS SIGN-UP*/
 }
-
+/*VISTA CUALQUIER DISPOSITIVO MOVIL EN LANDSCAPE*/
 @media screen and (max-width: 1024px) and (orientation: landscape){
     #landscape {
         display: flex;
@@ -196,7 +200,9 @@
     }
     }
 
+/*VISTA CELULAR*/
 @media screen and (max-width:414px){
+    /*ESTILOS SIGN-UP*/
     .container-form{
         background: white;
     }
@@ -274,6 +280,7 @@
         font-size: 1em;
         padding-left: 8px;
     }
+    /*FIN ESTILOS SIGN-UP*/
 }
 
 
