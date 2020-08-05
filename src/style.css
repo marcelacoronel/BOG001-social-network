@@ -3,7 +3,107 @@
 /*FUENTE TEXTO*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap');
 
-/*
+
 font-family: 'Fredoka One', cursive;
 font-family: 'Roboto', sans-serif;
-*/
+
+
+/*ESTILOS SIGN-UP*/
+
+
+
+.SingUp-Conteiner{
+    width: 100%;    
+}
+.conteiner-form{
+    background: #FF7851;
+    border-radius: 50px;
+    position: absolute;
+    width: 737px;
+    height: auto;
+    left: 25px;
+    top: 64px;
+    bottom: 64px;
+}
+
+.logo_singup{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.conteiner-form img{
+    position: relative;
+    top: 50px;
+}
+
+.conteiner-form h2{
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    font-family: Fredoka One;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.form-Singup form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-Singup label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 29px;
+    text-align: left;
+    color: #000000;
+    margin-left: 150px;
+}
+
+.form-Singup input[type="text"], [type="password"],[type="email"]{
+    background: rgba(255, 255, 255, 0.8);
+    filter: blur(0.5px);
+    border-radius: 25px;
+    margin-left: 140px;
+    margin-right: 140px;
+    line-height: 29px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.form-Singup input[type="submit"]{
+    background: #364C63;
+    border-radius: 30px;
+    line-height: 35px;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 140px;
+    margin-right: 140px;
+    color: #FFFFFF; 
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.bg-singup{
+    position: relative;
+    width: 50%;
+    height: auto;
+    left: 48%;
+    top: 70px;
+    bottom: 64px;      
+}
+.bg-singup img{
+    width: 100%;
+}
