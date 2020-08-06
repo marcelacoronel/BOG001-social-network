@@ -15,7 +15,7 @@ export const router = (route) => {
         }
         case '#/login':
             return content.appendChild(login());
-        case '#/sing-up':
+        case '#/sign-up':
             return content.appendChild(singup());
         default:
             return content.appendChild(error());

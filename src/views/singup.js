@@ -34,6 +34,7 @@ export default () => {
             </div>
         </div>
 
+
         <div class=bg-singup>
             <img class="desktop-SU" img src="./img/SingUp-desktop.svg" alt="bg_singup">
             <img class="tablet-SU" img src="./img/SingUp-tablet.png" alt="bg_singup">
@@ -48,12 +49,15 @@ export default () => {
                     <span><center>¡Please!</center></span>
 	            </p>
             </div>
+
         </div>
 `;
 const nav= document.getElementById("headerNav")
 nav.style.display="none";
    const divElement = document.createElement(`div`);
+
    divElement.classList = 'SingUp-Container'
+
    divElement.innerHTML =view;
 
    document.getElementById("headerNav").style.display="none";
