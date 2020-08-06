@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+/*VISTA MONITORES DE ESCRITORIO cCON 1366PX O MAS*/
 /*ESTILOS SIGN-UP*/
 
 .SingUp-Container{
@@ -27,8 +28,7 @@
 }
 
 .container-form img{
-    position: relative;
-    top: 50px;
+    margin-top: 2%;
 }
 
 .container-form h2{
@@ -38,20 +38,20 @@
     font-family: Fredoka One;
     font-style: normal;
     font-weight: normal;
-    font-size: 3em;
+    font-size: 2.8em;
     text-align: center;
     color: #FFFFFF;
-    padding-bottom: 30px;
+    padding-bottom: 1%;
     text-transform: uppercase;
 }
 .form-Singup{
-    position: relative;
-    top: 3%;
+    margin-top: -6%;
 }
 
 .form-Singup .form-SU-Desktop-tablet{
     display: flex;
     flex-direction: column;
+    margin-top: -3%;
 }
 
 .form-SU-movil{
@@ -63,7 +63,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 1.4em;
-    line-height: 200%;
+    line-height: 170%;
     text-align: left;
     color: #000000;
     margin-left: 150px;
@@ -122,10 +122,10 @@
 .bg-singup{
     position: absolute;
     width: 50%;
-    height: auto;
     left: 50%;
-    top: 180px;
-    bottom: 64px;    
+    height: auto;
+    margin: auto;
+    top: 5%;    
 }
 .bg-singup img{
     width: 100%;
@@ -145,21 +145,30 @@
 }
 /*FIN ESTILOS SIGN-UP*/
 
-/*VISTA TABLET*/
-@media screen and (max-width:768px){
-    /*ESTILOS SIGN-UP*/
-    .container-form{
+/*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
+@media only screen and (min-width:1024px) and (max-width:1365px){
+    .bg-singup{
+       top: 15%;  
+    }
+    .bg-singup img{
+        width: 100%;
+    }
+}
+/*VISTA TABLET EN VERTICAL, DISPLAY SMARTHPHONE EN LANDSCAPE*/
+@media only screen and (min-width:768px) and (max-width:1023px){
+     /*ESTILOS SIGN-UP*/
+     .container-form{
         width: auto;
-        bottom: 20%;
+        bottom: 28%;
         right: 5%;
         left: 5%;
     }
     .bg-singup{
         position: absolute;
-        width: 50%;
+        width: 66%;
         height: auto;
-        left: 53%; 
-        top: 71.5%;
+        left: 36%; 
+        top: 62.5%;
     }
     .form-Singup{
        top: 1%;
@@ -177,9 +186,10 @@
         display: none;
     }
     /*FIN ESTILOS SIGN-UP*/
+
 }
-/*VISTA CUALQUIER DISPOSITIVO MOVIL EN LANDSCAPE*/
-@media screen and (max-width: 1024px) and (orientation: landscape){
+/*VISTA DISPOSITIVO CELULAR EN LANDSCAPE*/
+@media only screen and (max-width: 812px) and (orientation: landscape){
     #landscape {
         display: flex;
         position: fixed;
@@ -198,10 +208,11 @@
     }
 
 /*VISTA CELULAR*/
-@media screen and (max-width:414px){
+@media only screen and (max-width:420px){
     /*ESTILOS SIGN-UP*/
     .container-form{
         background: white;
+        width: 100%;
     }
 
     .logo_singup{
@@ -219,7 +230,6 @@
         display: none;
     }
     
-
     .form-SU-movil{
         display: block;
         justify-content: center;
