@@ -1,5 +1,4 @@
 
-
 export default () => {
 
     const view =`
@@ -10,9 +9,9 @@ export default () => {
         <div class="formulario">
             <h2>Iniciar Sesión</h2>
             <form action="#">
-                <input type="text" placeholder="usuario" required>
-                <input type="password" placeholder="contraseña" required>
-                <input type="submit" onclick="IniciarSesión()" value="Ingresar">
+                <input id="email" type="email" placeholder="usuario" required>
+                <input id ="password" type="password" placeholder="contraseña" required>
+                <button id ="btn">Ingresar</button>
             </form>
         </div>
       
@@ -20,11 +19,13 @@ export default () => {
             <a href="">Olvide mi contraseña?</a>
         </div>
 `;
-const nav= document.getElementById("header-nav")
+
+const nav= document.getElementById("headerNav")
 nav.style.display="none";
    const divElement = document.createElement(`div`);
    divElement.classList = 'contenedor'
    divElement.innerHTML =view;
+
 
     return divElement;
 }
