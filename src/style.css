@@ -3,12 +3,175 @@
 /*FUENTE TEXTO*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap');
 
+/*
+font-family: 'Fredoka One', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
 :root {
     --color-blue: #364C63;
     --color-pink: #FF7851;
   }
 
-/*
-font-family: 'Fredoka One', cursive;
-font-family: 'Roboto', sans-serif;
-*/
+.containerView{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 90vh;
+  border-radius: 20px;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  align-items: center;
+  font-size: 24px;
+}
+
+.imgSignInMobile{
+  display: none;
+  text-align: center;
+}
+
+.containerImgTitle{
+  width: 55%;
+  height: auto;
+  
+}
+
+.containerImgTitle img{
+  width: 100%;
+  height: 90%;
+  }
+
+  .titleSite {
+    width: 90%;
+  }
+  .titleSite img{
+    width: 100%;
+  }
+
+  .containerForms{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color:#364C63 ;
+    width: 35%;
+    height: 80%;
+    border-radius: 20px;
+    justify-content: start;
+    align-items: center;
+}
+
+.containerForms h2{
+  font-weight: normal;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 60px;
+  padding: 0;
+}
+
+.form{
+  text-align: left;   
+  margin-top: 30px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  justify-content: center;
+
+}
+
+.inputsForm{
+  display: block;
+  justify-content: center;
+  margin: 20px;
+  }
+
+.form input{
+  border-radius: 20px;
+  width: 90%;
+  height: 40px;
+  box-sizing: border-box;
+  margin: 10px;
+  text-align: center;
+}
+
+.inputForm{
+  border: 1px solid #525050;
+  padding: 10px;
+  background-color: rgb(219, 236, 236);
+  font-size: 20px;
+
+}
+
+.form label{
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+}
+
+.btnForm{
+  background-color: #FF7851;
+  border: 0;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 5px;
+
+  
+}
+
+.reset, .toggle{
+  font-family: 'Roboto', sans-serif;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.reset a{
+  list-style: none;
+  text-decoration: none;
+  margin-bottom: 5px;
+  color: #FF7851;
+}
+
+.toggle a{
+  list-style: none;
+  color: #FF7851;
+}
+
+
+@media screen  and (max-width:1024px){
+
+  .containerView{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .containerImgTitle{
+    width: 95%;
+    z-index: 1;
+  }
+
+  .containerForms{
+    width: 95%;
+    height: auto;
+    transform: translateY(-160px);
+  }
+
+  .containerForms h2{
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+
+  .form{
+    margin-top: 0;
+  }
+
+  .titleSite {
+    width: 80%;
+    text-align: center;
+  }
+
+  .imgSignInDesktop{
+    width: 100%;
+    transform: translateY(-70px);
+  }
+
+}

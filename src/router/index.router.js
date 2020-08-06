@@ -1,6 +1,6 @@
 import Home from '../views/home.js'
 import login from '../views/login.js'
-import singup from '../views/singup.js'
+import signup from '../views/signup.js'
 
 let content = document.getElementById('root');
 
@@ -14,8 +14,8 @@ export const router = (route) => {
         }
         case '#/login':
             return content.appendChild(login());
-        case '#/sing-up':
-            return content.appendChild(singup());
+        case '#/sign-up':
+            return content.appendChild(signup());
         default:
             return console.log('404!!!')
 
