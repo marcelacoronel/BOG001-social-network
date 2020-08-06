@@ -50,7 +50,8 @@ export default () => {
             </div>
         </div>
 `;
-
+const nav= document.getElementById("header-nav")
+nav.style.display="none";
    const divElement = document.createElement(`div`);
    divElement.classList = 'SingUp-Container'
    divElement.innerHTML =view;

@@ -20,7 +20,8 @@ export default () => {
             <a href="">Olvide mi contraseña?</a>
         </div>
 `;
-
+const nav= document.getElementById("header-nav")
+nav.style.display="none";
    const divElement = document.createElement(`div`);
    divElement.classList = 'contenedor'
    divElement.innerHTML =view;
