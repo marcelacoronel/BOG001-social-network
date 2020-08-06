@@ -45,7 +45,8 @@ export default () => {
 
         </div>
 `;
-
+const nav= document.getElementById("headerNav")
+nav.style.display="none";
    const divElement = document.createElement(`div`);
    divElement.classList = 'containerView'
    divElement.innerHTML =view;
