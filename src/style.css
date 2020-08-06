@@ -20,7 +20,7 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
+/*VISTA MONITORES DE ESCRITORIO CON 1366PX O MAS*/
 /* || Home */
 
 .homeContainer-desktop{
@@ -88,150 +88,13 @@ nav label {
   display: none;
 }
 
-/* || 404 error page */
-
-#error {
-  background: url(/src/img/404-desktop.jpg) no-repeat;
-  background-size: 70%;
-  background-position: center;
-  position: absolute;
-  width: 100vw;
-  height: 80vh;
-}
-
-
-/*PRUEBAS TAMAÑO CEL/TABLET*/
-
-@media only screen and (max-width: 768px) {
-
-  .homeContainer-desktop {
-    z-index: -1000;
-    background-size: 100%;
-    margin-top: 30%;
-    height: 50vh
-  }
-
-  #main-img{
-    width: 70%;
-    margin: 10% 15%;
-    z-index: 1;
-  }
-
-  #logo-home {
-    width: 70%;
-    left: 14.58%;
-    right: 12.81%;
-    top: 20%;
-    bottom: 65.29%;
-  }
-
-  nav label {
-    margin-top: 30px;
-    display: flex;
-    cursor: pointer;
-    margin-right: 50px;
-    z-index: 4;
-  }
-
-  nav ul li {
-    display:block;
-    margin: 40px 20px;
-  }
-
-  nav li {
-    padding: 10px 60px;
-  }
-
-  nav ul {
-    position: fixed;
-    width: 80%;
-    height: 10vh;
-    /* top: 80px; */
-    right: -100%;
-    text-align: center;
-    transition: all .5s;
-    z-index: 2;
-  
-  }
-
-  nav ul li:hover {
-    border-left: 4px solid var(--color-pink);
-  }
-
-  #menu:checked + ul {
-    display: flex;
-    right: 23%;
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  .homeContainer-mobile {
-    display: block;
-  }
-  .homeContainer-desktop {
-    display: none;
-  }
-  #logo-home {
-    top: 10%;
-    width: 85%;
-    left: 10%;
-  }
-  .appStartbtn {
-    border: none;
-    position: absolute;
-    width: 50%;
-    height: 5%;
-    left: 27%;
-    top: 80%;
-    background: #364c63;
-    border-radius: 25px;
-    color: white;
-    font-size: 17px;
-    font-family: "Roboto", sans-serif;
-  }
-  .appStartbtn:hover {
-    background: #597ca1;
-  }
-  .appStartbtn  a {
-    color: white;
-    text-decoration: none;
-  }
-  #mobileMain-img {
-    position: absolute;
-    width: 90%;
-    left: 18px;
-    top: 30%;
-  }
- 
-  nav a {
-    color: yellow;
-  }
-  /*404 error*/
-  #error-movil {
-    background: url(/src/img/404-mobile.jpg) no-repeat;
-    background-size: 120%;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
-  }
-  #error {
-    display: none;
-  }
-  nav {
-    display: none;
-  }
-}
-
-
-
-/*VISTA MONITORES DE ESCRITORIO cCON 1366PX O MAS*/
-/*ESTILOS SIGN-UP*/
+/*|| Sing Up page */
 
 .SingUp-Container{
     width: 100%;    
 }
 .container-form{
-    background: #FF7851;
+    background: var(--color-pink);
     border-radius: 50px;
     position: absolute;
     width: 58%;
@@ -304,7 +167,7 @@ nav label {
 }
 
 .form-Singup input[type="submit"]{
-    background: #364C63;
+    background: var(--color-blue);
     border-radius: 30px;
     line-height: 200%;
     text-align: center;
@@ -332,7 +195,7 @@ nav label {
   }
 
 .form-Singup span a{
-    color: #364C63;
+    color: var(--color-blue);
     font-family: Roboto;
     font-style: Regular;
     font-size: 1.2em;
@@ -363,7 +226,18 @@ nav label {
     display: none;
     z-index: -100;
 }
-/*FIN ESTILOS SIGN-UP*/
+
+
+/* || 404 error page */
+
+#error {
+  background: url(/src/img/404-desktop.jpg) no-repeat;
+  background-size: 70%;
+  background-position: center;
+  position: absolute;
+  width: 100vw;
+  height: 80vh;
+}
 
 /*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
 @media only screen and (min-width:1024px) and (max-width:1365px){
@@ -376,7 +250,67 @@ nav label {
 }
 /*VISTA TABLET EN VERTICAL, DISPLAY SMARTHPHONE EN LANDSCAPE*/
 @media only screen and (min-width:768px) and (max-width:1023px){
-     /*ESTILOS SIGN-UP*/
+    /* || Home page */
+    .homeContainer-desktop {
+        z-index: -1000;
+        background-size: 100%;
+        margin-top: 30%;
+        height: 50vh
+      }
+    
+      #main-img{
+        width: 70%;
+        margin: 10% 15%;
+        z-index: 1;
+      }
+    
+      #logo-home {
+        width: 70%;
+        left: 14.58%;
+        right: 12.81%;
+        top: 20%;
+        bottom: 65.29%;
+      }
+    
+      nav label {
+        margin-top: 30px;
+        display: flex;
+        cursor: pointer;
+        margin-right: 50px;
+        z-index: 4;
+      }
+    
+      nav ul li {
+        display:block;
+        margin: 40px 20px;
+      }
+    
+      nav li {
+        padding: 10px 60px;
+      }
+    
+      nav ul {
+        position: fixed;
+        width: 80%;
+        height: 10vh;
+        /* top: 80px; */
+        right: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 2;
+      
+      }
+    
+      nav ul li:hover {
+        border-left: 4px solid var(--color-pink);
+      }
+    
+      #menu:checked + ul {
+        display: flex;
+        right: 23%;
+      } 
+    
+    /* || Sing Up page */
      .container-form{
         width: auto;
         bottom: 28%;
@@ -429,7 +363,64 @@ nav label {
 
 /*VISTA CELULAR*/
 @media only screen and (max-width:420px){
-    /*ESTILOS SIGN-UP*/
+    /* || Home page */
+    .homeContainer-mobile {
+        display: block;
+      }
+      .homeContainer-desktop {
+        display: none;
+      }
+      #logo-home {
+        top: 10%;
+        width: 85%;
+        left: 10%;
+      }
+      .appStartbtn {
+        border: none;
+        position: absolute;
+        width: 50%;
+        height: 5%;
+        left: 27%;
+        top: 80%;
+        background: #364c63;
+        border-radius: 25px;
+        color: white;
+        font-size: 17px;
+        font-family: "Roboto", sans-serif;
+      }
+      .appStartbtn:hover {
+        background: #597ca1;
+      }
+      .appStartbtn  a {
+        color: white;
+        text-decoration: none;
+      }
+      #mobileMain-img {
+        position: absolute;
+        width: 90%;
+        left: 18px;
+        top: 30%;
+      }
+     
+      nav a {
+        color: yellow;
+      }
+      /*404 error*/
+      #error-movil {
+        background: url(/src/img/404-mobile.jpg) no-repeat;
+        background-size: 120%;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+      }
+      #error {
+        display: none;
+      }
+      nav {
+        display: none;
+      }
+   
+    /* SIGN-UP*/
     .container-form{
         background: white;
         width: 100%;

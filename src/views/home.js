@@ -19,7 +19,7 @@ export default () => {
     //     window.location = '#/login';
     // }
 
-    const nav = document.getElementById("header-nav")
+    const nav = document.getElementById("headerNav")
     nav.style.display = "block";
 
     const divElement = document.createElement(`div`);
