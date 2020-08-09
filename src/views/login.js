@@ -1,7 +1,6 @@
-
+//import {createUserEmailAndPassword} from "./components/auth"
 export default () => {
-
-    const view =`
+  const view = `
         <div class="imgSignInMobile">
             <img src="img/LogIn-mobile.jpg" alt="">
         </div>
@@ -21,12 +20,13 @@ export default () => {
                 
                 <form action="#" class="inputsForm">
                     <Label>Usuario<br />
-                        <input class="inputForm" type="text" placeholder="Usuario" required>
+                        <input id="email"class="inputForm" type="text" placeholder="Usuario" required>
                     </Label><br />
                     <Label>Password<br />
-                        <input class="inputForm" type="password" placeholder="Contraseña" required>
+                        <input id ="password" class="inputForm" type="password" placeholder="Contraseña" required>
+                    
                     </Label><br />
-                    <input class="btnForm" type="submit" onclick="IniciarSesión()" value="Sign In">
+                    <button id="btn" class="btnForm" >Sign In</button> 
                     
                 </form>
             </div>
@@ -40,11 +40,33 @@ export default () => {
             </div>
         </div>
 `;
-const nav= document.getElementById("headerNav")
-nav.style.display="none";
-   const divElement = document.createElement(`div`);
-   divElement.classList = 'containerView'
-   divElement.innerHTML =view;
+  const nav = document.getElementById("headerNav");
+  nav.style.display = "none";
+  const divElement = document.createElement(`div`);
+  divElement.classList = "containerView";
+  divElement.innerHTML = view;
+  const form = document.querySelector(".inputsForm");
+  const boton = divElement.querySelector("#btn");
+  boton.addEventListener("click", userLogIn);
 
-    return divElement;
-}
+  function userLogIn() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+      
+        window.location.hash = "#/dashboard";
+          alert("bienvenido");
+      })
+      .catch((error) => {
+        alert("no estas registrado");
+      });
+  }
+
+  
+
+  return divElement;
+};

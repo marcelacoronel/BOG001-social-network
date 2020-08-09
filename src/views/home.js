@@ -9,7 +9,7 @@ export default () => {
         </div>
 
         <div class="homeContainer-mobile">   
-        <button class="appStartbtn btn"><a href="#/login">Ingresar</a></button>
+        <button id="start" class="appStartbtn btn">Ingresar</button>
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
          </div> `;
 
@@ -18,6 +18,12 @@ export default () => {
 
     const divElement = document.createElement(`div`);
     divElement.innerHTML = view;
+
+    const buttonStartApp = divElement.querySelector("#start")
+    buttonStartApp.addEventListener("click",userLoginAccount)
+    function userLoginAccount(){
+        window.location.hash = "#/login";
+    }
 
     return divElement;
 }
