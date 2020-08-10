@@ -58,7 +58,7 @@
   .logo_singup {
     display: none;
   }
-
+  
   .container-form h2 {
     width: 100%;
     color: rgba(0, 0, 0, 0.6);
@@ -152,6 +152,7 @@
   }
 
 
+ /* || SIGN IN */
 .containerView{
     text-align: center;
     display: flex;
@@ -202,7 +203,7 @@ display: none;
 .form{
     margin: 5px 0;
     display: block;
-    text-align: center;   
+    text-align: left;   
 }
 
 .inputsForm{
@@ -216,6 +217,8 @@ display: block;
     box-sizing: border-box;
     margin: 10px 0;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
 }
 
 .inputForm{
