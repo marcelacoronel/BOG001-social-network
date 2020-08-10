@@ -6,7 +6,7 @@ export default () => {
             <img src="img/LogIn-mobile.jpg" alt="">
         </div>
         
-        <div class="containerImgTitle">
+                <div class="containerImgTitle">
             <div class="titleSite">
                 <img src="img/logo-BluePink.png" alt="">
             </div>
