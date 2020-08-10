@@ -4,6 +4,8 @@ import login from '../views/login.js'
 import profile from '../views/profile.js'
 import dashboard from '../views/dashboard.js'
 import error from '../views/404.js'
+
+
 let content = document.getElementById('root');
 
 export const router = (route) => {
@@ -28,3 +30,31 @@ export const router = (route) => {
     }
 
 }
+
+
+//ADMIN-FIREBASE
+
+// var admin = require("firebase-admin");
+// var serviceAccount = require("path/to/serviceAccountKey.json");
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://social-network-7.firebaseio.com"
+// });
+
+// const db= admin.database()
+
+//     routes.post('/new-contact',(req,res)=>{
+//         const newContact = {
+//             name:req.body.firstname,
+//             email:req.body.email,
+//             phone:req.body.phone
+//         }
+//         db.ref('contacts').push(newContact)
+//         console.log(req.body);
+//         res.redirect('#/profile');
+//         console.log(req.body);
+//     })
+
+
+//     module.exports = route;

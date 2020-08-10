@@ -1,11 +1,9 @@
-
 //import createUserEmailAndPassword from './auth'
-//import {createUser} from '../components/auth'
+import {createUser} from '../components/auth'
 
-
+//import * as  firebase from 'firebase'
 export default () => {
-
-    const view =`
+  const view = `
         
         <div class="container-form">
             <div class=logo_singup>
@@ -55,98 +53,103 @@ export default () => {
 
         </div>
 `;
-const nav= document.getElementById("headerNav")
-nav.style.display="none";
-   const divElement = document.createElement(`div`);
+  const nav = document.getElementById("headerNav");
+  nav.style.display = "none";
+  const divElement = document.createElement(`div`);
 
-   divElement.classList = 'SingUp-Container'
+  divElement.classList = "SingUp-Container";
 
-   divElement.innerHTML =view;
+  divElement.innerHTML = view;
 
-   document.getElementById("headerNav").style.display="none";
+  document.getElementById("headerNav").style.display = "none";
 
-   const boton = divElement.querySelector('.btn');
-   boton.addEventListener('click',createNewUsers)
+  const boton = divElement.querySelector(".btn");
+  boton.addEventListener("click", createNewUsers);
 
-//    function prueba(){
-//     let nombre = document.getElementById('nombre').value
-//     let email = document.getElementById('email').value
-//     let password = document.getElementById('password').value
-//     const signIn = createUser(email,password)
-//    }
-   
-   
-   
-   
-//    boton.addEventListener('click', async (e) => {
-//     e.preventDefault()
-//     let nombre = document.getElementById('nombre').value
-//     let email = document.getElementById('email').value
-//     let password = document.getElementById('password').value
-//     const signIn = await createUser(email,password)
-// //     auth.createUserWithEmailAndPassword(email, password)
-// // .then(function(){
 
-// // console.log('verificado')
-// // })
-// // .catch(function(error) {
-// //     // Handle Errors here.
-// //     var errorCode = error.code;
-// //     var errorMessage = error.message;
-// //     // ...
-// //   });
-    
-    
-// });
+//   boton.addEventListener("click", create);
+//   function create(){
+//       alert("hii")
+//   }
 
-   function createNewUsers(){
-       alert("click")
-    let nombre = document.querySelector('.nombre').value
-    let email = document.querySelector('.email').value
-    let password = document.querySelector('.password').value
+  //    function prueba(){
+  //     let nombre = document.getElementById('nombre').value
+  //     let email = document.getElementById('email').value
+  //     let password = document.getElementById('password').value
+  //     const signIn = createUser(email,password)
+  //    }
 
-console.log(nombre+email+password)
+  //    boton.addEventListener('click', async (e) => {
+  //     e.preventDefault()
+  //     let nombre = document.getElementById('nombre').value
+  //     let email = document.getElementById('email').value
+  //     let password = document.getElementById('password').value
+  //     const signIn = await createUser(email,password)
+  // //     auth.createUserWithEmailAndPassword(email, password)
+  // // .then(function(){
 
+  // // console.log('verificado')
+  // // })
+  // // .catch(function(error) {
+  // //     // Handle Errors here.
+  // //     var errorCode = error.code;
+  // //     var errorMessage = error.message;
+  // //     // ...
+  // //   });
+
+  // });
+
+  
+  
+  
+  
+  function createNewUsers() {
+    alert("click");
+    let nombre = document.querySelector(".nombre").value;
+    let email = document.querySelector(".email").value;
+    let password = document.querySelector(".password").value;
+
+    console.log(nombre + email + password);
 
     //authUsers.newUser(email,password)
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-.then(()=>{
-    window.location.hash = "#/profile";
-console.log('verificado')
-})
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        window.location.hash = "#/profile";
+        console.log("verificado");
+      })
 
-.catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
-    
-   }
-   function currentUserStatus(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          // User is signed in.
-          //console.log(user)
-          var displayName = user.displayName;
-          var email = user.email;
-          var emailVerified = user.emailVerified;
-          console.log(user.emailVerified)
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
-          console.log("usuario activo")
-          // ...
-        } else {
-            console.log("no existe usuario activo")
-          // User is signed out.
-          // ...
-        }
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
       });
-}
+  }
+  function currentUserStatus() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        //console.log(user)
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        console.log(user.emailVerified);
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        console.log("usuario activo");
+        // ...
+      } else {
+        console.log("no existe usuario activo");
+        // User is signed out.
+        // ...
+      }
+    });
+  }
 
-   
-currentUserStatus()
-    return divElement;
-}
+  currentUserStatus();
+  return divElement;
+};

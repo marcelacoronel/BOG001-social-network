@@ -1,23 +1,23 @@
-// export {
-//     createNewUser,
-//     currentUserStatus,
-//     userSignOff
+export {
+    createNewUse
+    //currentUserStatus,
+    //userSignOff
 
-// };
+};
 
 
-// crear un usuario nuevo
+//crear un usuario nuevo
 
-//     async function createNewUser(email,password){
-//     try{
-//         const authentication = await firebase.auth().createUserWithEmailAndPassword(email, password);
-//         return authentication;
-//     }
-//     catch(error) {
-//         let errorMessage = error.message; //Error message nos muestra una string los errores que no permiten la autenticación: email en uso o contraseña no válida
-//         return errorMessage;
-//     };
-// };
+    async function createNewUser(email,password){
+    try{
+        const authentication = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        return authentication;
+    }
+    catch(error) {
+        let errorMessage = error.message; //Error message nos muestra una string los errores que no permiten la autenticación: email en uso o contraseña no válida
+        return errorMessage;
+    };
+};
 
 // estado del usuario
 
