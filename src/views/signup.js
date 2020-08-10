@@ -1,7 +1,6 @@
 
 
 export default () => {
-
     const view =`
         
         <div class="container-form">
