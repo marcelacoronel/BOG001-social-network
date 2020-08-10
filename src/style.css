@@ -63,6 +63,31 @@ header {
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
+.container-form img{
+    margin-top: 2%;
+}
+
+.container-form h2{
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    font-family: Fredoka One;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.8em;
+    text-align: center;
+    color: #FFFFFF;
+    padding-bottom: 1%;
+    text-transform: uppercase;
+}
+.form-Singup{
+    margin-top: -6%;
+}
+
+.form-Singup .form-SU-Desktop-tablet{
+    display: flex;
+    flex-direction: column;
+    margin-top: -3%;
 }
 
 nav ul {
@@ -73,6 +98,16 @@ nav a {
   color: black;
   text-decoration: none;
   font-size: 1.8vw;
+}
+.form-Singup label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4em;
+    line-height: 170%;
+    text-align: left;
+    color: #000000;
+    margin-left: 150px;
 }
 
 nav a:hover {
@@ -96,6 +131,14 @@ nav label {
   line-height: 80px;
   font-size: 35px;
   display: none;
+}
+.bg-singup{
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    height: auto;
+    margin: auto;
+    top: 5%;    
 }
 
 /* || ESTILOS SIGN-UP */
@@ -385,6 +428,55 @@ nav label {
       }
 /*VISTA CUALQUIER DISPOSITIVO MOVIL EN LANDSCAPE*/
 /* @media screen and (max-width: 1024px) and (orientation: landscape){
+    z-index: -100;
+}
+/*FIN ESTILOS SIGN-UP*/
+
+/*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
+@media only screen and (min-width:1024px) and (max-width:1365px){
+    .bg-singup{
+       top: 15%;  
+    }
+    .bg-singup img{
+        width: 100%;
+    }
+}
+/*VISTA TABLET EN VERTICAL, DISPLAY SMARTHPHONE EN LANDSCAPE*/
+@media only screen and (min-width:768px) and (max-width:1023px){
+     /*ESTILOS SIGN-UP*/
+     .container-form{
+        width: auto;
+        bottom: 28%;
+        right: 5%;
+        left: 5%;
+    }
+    .bg-singup{
+        position: absolute;
+        width: 66%;
+        height: auto;
+        left: 36%; 
+        top: 62.5%;
+    }
+    .form-Singup{
+       top: 1%;
+    }
+    .container-form h2{
+        padding-bottom: 1px;
+    }
+    .desktop-SU{
+        display: none;
+    }
+    .tablet-SU{
+        display: block;
+    }
+    .mobile-SU{
+        display: none;
+    }
+    /*FIN ESTILOS SIGN-UP*/
+
+}
+/*VISTA DISPOSITIVO CELULAR EN LANDSCAPE*/
+@media only screen and (max-width: 812px) and (orientation: landscape){
     #landscape {
         display: flex;
         position: fixed;
@@ -400,7 +492,16 @@ nav label {
         align-items: center;
         justify-content: center;
     }
-    }  */
+  
+    }
+
+/*VISTA CELULAR*/
+@media only screen and (max-width:420px){
+    /*ESTILOS SIGN-UP*/
+    .container-form{
+        background: white;
+        width: 100%;
+    }
 
     /*PRUEBAS TAMAÑO CEL/TABLET*/
 
@@ -450,6 +551,10 @@ nav label {
   margin-top: 30%;
   height: 50vh
 }
+    .form-SU-movil{
+        display: block;
+        justify-content: center;
+    }
 
 #main-img{
   width: 70%;
