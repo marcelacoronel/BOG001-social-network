@@ -25,7 +25,7 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
+/*VISTA MONITORES DE ESCRITORIO CON 1366PX O MAS*/
 /* || Home */
 
 .homeContainer-desktop {
@@ -41,7 +41,7 @@ body {
 
 #main-img {
   align-items: center;
-  width: 50%;
+  width: 45.5%;
   justify-content: center;
   margin-top: 15%;
   margin-left: 42%;
@@ -286,6 +286,16 @@ nav label {
 .mobile-SU {
   display: none;
 }
+.form-Singup label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4em;
+    line-height: 170%;
+    text-align: left;
+    color: #000000;
+    margin-left: 150px;
+}
 
 #landscape {
   display: none;
@@ -301,6 +311,20 @@ nav label {
   position: absolute;
   width: 100vw;
   height: 80vh;
+}
+.form-Singup input[type="submit"]{
+    background: var(--color-blue);
+    border-radius: 30px;
+    line-height: 200%;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 18%;
+    margin-right: 18%;
+    color: #FFFFFF; 
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
 }
 
 /* || LOG IN */
@@ -397,7 +421,37 @@ nav label {
   font-weight: bold;
   }
 
-  .imgSignInMobile{
+
+
+.form-Singup span a{
+    color: var(--color-blue);
+    font-family: Roboto;
+    font-style: Regular;
+    font-size: 1.2em;
+    padding-left: 10px;
+  }
+
+.bg-singup{
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    height: auto;
+    margin: auto;
+    top: 5%;    
+}
+.bg-singup img{
+    width: 100%;
+}
+.desktop-SU{
+    display: block;
+}
+.tablet-SU{
+    display: none;
+}
+.mobile-SU{
+    display: none;
+}
+#landscape {
     display: none;
     text-align: center;
   }
@@ -430,7 +484,6 @@ nav label {
 /* @media screen and (max-width: 1024px) and (orientation: landscape){
     z-index: -100;
 }
-/*FIN ESTILOS SIGN-UP*/
 
 /*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
 @media only screen and (min-width:1024px) and (max-width:1365px){

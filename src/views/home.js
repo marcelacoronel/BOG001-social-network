@@ -7,9 +7,8 @@ export default () => {
        <div class="homeContainer-desktop">
         <img id ="main-img" src="/src/img/doggie.gif" alt="dog-friend">
         </div>
-
         <div class="homeContainer-mobile">   
-        <button class="appStartbtn btn"><a href="#/login">Ingresar</a></button>
+        <button id="start" class="appStartbtn btn">Ingresar</button>
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
          </div> `;
 
@@ -19,5 +18,15 @@ export default () => {
     const divElement = document.createElement(`div`);
     divElement.innerHTML = view;
 
+<<<<<<< HEAD
+=======
+    const buttonStartApp = divElement.querySelector("#start")
+    buttonStartApp.addEventListener("click",userLoginAccount)
+   
+    function userLoginAccount(){
+        window.location.hash = "#/login";
+    }
+
+>>>>>>> d344146f67e2f4961fd0b3f589c842ac91214a39
     return divElement;
 }

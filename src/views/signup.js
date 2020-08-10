@@ -1,4 +1,5 @@
 
+import { auth } from '../firebase/createUser.js';
 
 export default () => {
     const view =`
@@ -7,25 +8,25 @@ export default () => {
             <div class=logo_singup>
                 <img src="./img/logo_signup.svg" alt="logo_singup">
             </div>
-            <div class="form-Singup">
+            <div class="form-Singup" >
                 <h2>Registrate</h2>
-                <form action="#" class="form-SU-Desktop-tablet">
-                    <label for="Nombre">NOMBRE</label>
-                    <input id="Nombre" type="text" placeholder="pepito perez" required>
-                    <label for="">EMAIL</label>
-                    <input type="password" placeholder="pepitoperez@hotmail.com" required>
-                    <label for="">CONTRASEÑA</label>
-                    <input type="email" placeholder="***********" required>
+                <form action="" class="form-SU-Desktop-tablet" id="form">
+                    <label for="nameSingUp">NOMBRE</label>
+                    <input id="nameSingUp" type="text" placeholder="pepito perez" required>
+                    <label for="emailSingUp">EMAIL</label>
+                    <input id="emailSingUp"  type="email" placeholder="pepitoperez@hotmail.com" required>
+                    <label for="passSingUp">CONTRASEÑA</label>
+                    <input id="passSingUp" type="password" placeholder="***********" required>
                     <input type="submit" onclick="Registrarse()" value="SING IN">
                     <span>
                     <p>Ya tienes cuenta? <a href="#/login">Log in</a> </p>
                     </span>
                 </form>
-                <form action="#" class="form-SU-movil">
+                <form action="" class="form-SU-movil" id="form">
                     <input id="Nombre" type="text" placeholder="Nombre" required>
                     <input type="password" placeholder="Email" required>
                     <input type="email" placeholder="Contraseña" required>
-                    <input type="submit" onclick="Registrarse()" value="SING IN">
+                    <input type="submit" id="btnSignUp" value="SING IN">
                     <span>
                         <p>Ya tienes cuenta? <a href="#/login">Log in</a> </p>
                     </span>
@@ -51,6 +52,7 @@ export default () => {
 
         </div>
 `;
+<<<<<<< HEAD:src/views/signup.js
 const nav= document.getElementById("headerNav")
 nav.style.display="none";
    const divElement = document.createElement(`div`);
@@ -58,8 +60,58 @@ nav.style.display="none";
    divElement.classList = 'SingUp-Container'
 
    divElement.innerHTML =view;
+=======
+>>>>>>> d344146f67e2f4961fd0b3f589c842ac91214a39:src/views/singup.js
 
-   document.getElementById("headerNav").style.display="none";
+const nav = document.getElementById("headerNav");
+nav.style.display = "none";
+const divElement = document.createElement(`div`);
 
-    return divElement;
+divElement.classList = "SingUp-Container";
+
+divElement.innerHTML = view;
+
+document.getElementById("headerNav").style.display = "none";
+
+const boton = divElement.querySelector(".btn");
+boton.addEventListener("click", createNewUsers);
+
+
+function createNewUsers() {
+  alert("click");
+  let nombre = document.querySelector(".nombre").value;
+  let email = document.querySelector(".email").value;
+  let password = document.querySelector(".password").value;
+
+  console.log(nombre + email + password);
+
+  createUsers(email,password)
+
 }
+function currentUserStatus() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      //console.log(user)
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      console.log(user.emailVerified);
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      console.log("usuario activo");
+      // ...
+    } else {
+      console.log("no existe usuario activo");
+      // User is signed out.
+      // ...
+    }
+  });
+}
+
+currentUserStatus();
+return divElement;
+};
+
