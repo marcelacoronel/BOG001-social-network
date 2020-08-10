@@ -1,5 +1,5 @@
 //import createUserEmailAndPassword from './auth'
-import {createUser} from '../components/auth'
+import {createUsers} from '../components/auth.js'
 
 //import * as  firebase from 'firebase'
 export default () => {
@@ -111,21 +111,23 @@ export default () => {
 
     console.log(nombre + email + password);
 
-    //authUsers.newUser(email,password)
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        window.location.hash = "#/profile";
-        console.log("verificado");
-      })
+    createUsers(email,password)
 
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+    //authUsers.newUser(email,password)
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then(() => {
+    //     window.location.hash = "#/profile";
+    //     console.log("verificado");
+    //   })
+
+    //   .catch(function (error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // ...
+    //   });
   }
   function currentUserStatus() {
     firebase.auth().onAuthStateChanged(function (user) {

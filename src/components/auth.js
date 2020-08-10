@@ -1,23 +1,21 @@
-export {
-    createNewUse
-    //currentUserStatus,
-    //userSignOff
-
-};
 
 
 //crear un usuario nuevo
-
-    async function createNewUser(email,password){
-    try{
-        const authentication = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        return authentication;
-    }
-    catch(error) {
-        let errorMessage = error.message; //Error message nos muestra una string los errores que no permiten la autenticación: email en uso o contraseña no válida
-        return errorMessage;
-    };
-};
+export const createUsers = (email,password)=>{
+firebase
+.auth()
+.createUserWithEmailAndPassword(email, password)
+.then(() => {
+  window.location.hash = "#/profile";
+  console.log("verificado");
+})
+.catch(function (error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+}
 
 // estado del usuario
 
