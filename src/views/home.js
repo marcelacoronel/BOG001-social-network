@@ -1,7 +1,5 @@
 export default () => {
-    const view = `
-
-      
+  const view = `
        <img id ="logo-home" src="/src/img/logo-BluePink.png" alt="logo">
        
        <div class="homeContainer-desktop">
@@ -13,17 +11,18 @@ export default () => {
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
          </div> `;
 
-    const nav = document.getElementById("headerNav")
-    nav.style.display = "block";
+  const nav = document.getElementById('headerNav');
+  nav.style.display = 'block';
 
-    const divElement = document.createElement(`div`);
-    divElement.innerHTML = view;
+  const divElement = document.createElement('div');
+  divElement.innerHTML = view;
 
-    const buttonStartApp = divElement.querySelector("#start")
-    buttonStartApp.addEventListener("click",userLoginAccount)
-    function userLoginAccount(){
-        window.location.hash = "#/login";
-    }
+  const buttonStartApp = divElement.querySelector('#start');
+  buttonStartApp.addEventListener('click', userLoginAccount);
+  
+  function userLoginAccount() {
+    window.location.hash = '#/login';
+  }
 
-    return divElement;
-}
+  return divElement;
+};

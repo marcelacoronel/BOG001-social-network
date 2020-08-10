@@ -1,7 +1,5 @@
-//import createUserEmailAndPassword from './auth'
-import {createUsers} from '../components/auth.js'
+import { createUsers } from '../components/auth.js';
 
-//import * as  firebase from 'firebase'
 export default () => {
   const view = `
         
@@ -17,7 +15,8 @@ export default () => {
                     <label for="">EMAIL</label>
                     <input class="email" type="email" placeholder="pepitoperez@hotmail.com" required>
                     <label for="">CONTRASEÑA</label>
-                    <input class="password" type="password" placeholder="***********" required>
+                    <i id="eye" class="far fa-eye"></i><input class="password" type="password" placeholder="***********" required>
+                    
                     <input class ="btn" type="submit" value="SING IN">
                     <span>
                     <p>Ya tienes cuenta? <a href="#/login">Log in</a> </p>
@@ -35,7 +34,6 @@ export default () => {
             </div>
         </div>
 
-
         <div class=bg-singup>
             <img class="desktop-SU" img src="./img/SingUp-desktop.svg" alt="bg_singup">
             <img class="tablet-SU" img src="./img/SingUp-tablet.png" alt="bg_singup">
@@ -44,7 +42,7 @@ export default () => {
 
         <div id="landscape">
             <div>
-	            <p>
+	           <p>
 	                <img src="./img/giro@2x.png" alt=""><br><center>
                     ¡Gira tu dispositivo!</center><br>
                     <span><center>¡Please!</center></span>
@@ -67,10 +65,10 @@ export default () => {
   boton.addEventListener("click", createNewUsers);
 
 
-//   boton.addEventListener("click", create);
-//   function create(){
-//       alert("hii")
-//   }
+  //   boton.addEventListener("click", create);
+  //   function create(){
+  //       alert("hii")
+  //   }
 
   //    function prueba(){
   //     let nombre = document.getElementById('nombre').value
@@ -99,10 +97,6 @@ export default () => {
 
   // });
 
-  
-  
-  
-  
   function createNewUsers() {
     alert("click");
     let nombre = document.querySelector(".nombre").value;
@@ -111,9 +105,9 @@ export default () => {
 
     console.log(nombre + email + password);
 
-    createUsers(email,password)
+    createUsers(email, password);
 
-    //authUsers.newUser(email,password)
+    // authUsers.newUser(email,password)
     // firebase
     //   .auth()
     //   .createUserWithEmailAndPassword(email, password)
@@ -129,6 +123,7 @@ export default () => {
     //     // ...
     //   });
   }
+
   function currentUserStatus() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -150,6 +145,17 @@ export default () => {
         // ...
       }
     });
+  }
+
+  const eye = divElement.querySelector('#eye');
+  eye.addEventListener('click', showHidePassword);
+
+  function showHidePassword() {
+
+    var x = document.querySelector('.password');
+
+     (x.type === 'password') ?  x.type = "text" : x.type = 'password';
+    
   }
 
   currentUserStatus();

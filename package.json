@@ -33,8 +33,5 @@
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
   },
-  "dependencies": {
-    "firebase": "^7.17.2",
-    "firebase-admin": "^9.0.0"
-  }
+  "dependencies": {}
 }

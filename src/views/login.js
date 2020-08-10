@@ -1,4 +1,3 @@
-//import {createUserEmailAndPassword} from "./components/auth"
 export default () => {
   const view = `
         <div class="imgSignInMobile">
@@ -24,6 +23,7 @@ export default () => {
                     </Label><br />
                     <Label>Password<br />
                         <input id ="password" class="inputForm" type="password" placeholder="Contraseña" required>
+                        <i id ="eye" class="far fa-eye"></i>
                     
                     </Label><br />
                     <button id="btn" class="btnForm" >Sign In</button> 
@@ -40,33 +40,36 @@ export default () => {
             </div>
         </div>
 `;
-  const nav = document.getElementById("headerNav");
-  nav.style.display = "none";
-  const divElement = document.createElement(`div`);
-  divElement.classList = "containerView";
+  const nav = document.getElementById('headerNav');
+  nav.style.display = 'none';
+  const divElement = document.createElement('div');
+  divElement.classList = 'containerView';
   divElement.innerHTML = view;
-  const form = document.querySelector(".inputsForm");
-  const boton = divElement.querySelector("#btn");
-  boton.addEventListener("click", userLogIn);
+  const form = document.querySelector('.inputsForm');
+  const boton = divElement.querySelector('#btn');
+  const eye = divElement.querySelector('#eye');
+  boton.addEventListener('click', userLogIn);
+  eye.addEventListener('click', showHidePassword);
 
   function userLogIn() {
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-      
-        window.location.hash = "#/dashboard";
-          alert("bienvenido");
+        window.location.hash = '#/dashboard';
+        alert('bienvenido');
       })
       .catch((error) => {
-        alert("no estas registrado");
+        alert('no estas registrado');
       });
   }
-
-  
-
+  function showHidePassword() {
+    var x = document.getElementById("password");
+     (x.type === "password") ?  x.type = "text" : x.type = "password";
+    
+  }
   return divElement;
 };
