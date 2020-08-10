@@ -6,18 +6,10 @@ export default () => {
        <div class="homeContainer-desktop">
         <img id ="main-img" src="/src/img/doggie.gif" alt="dog-friend">
         </div>
-
         <div class="homeContainer-mobile">   
-        <button class="appStartbtn btn"><a href="#/login">Ingresar</a></button>
+        <button id="start" class="appStartbtn btn">Ingresar</button>
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
-         </div>
-
-      
-    `;
-
-    // function clickFun() {
-    //     window.location = '#/login';
-    // }
+         </div> `;
 
     const nav = document.getElementById("headerNav")
     nav.style.display = "block";
@@ -25,44 +17,12 @@ export default () => {
     const divElement = document.createElement(`div`);
     divElement.innerHTML = view;
 
-
-
+    const buttonStartApp = divElement.querySelector("#start")
+    buttonStartApp.addEventListener("click",userLoginAccount)
+   
+    function userLoginAccount(){
+        window.location.hash = "#/login";
+    }
 
     return divElement;
 }
-//  <div class="mobile" style="display:none;"></div>
-//         <button id="appStartbtn btn">Ingresar</button>
-//         <img id="foto3" src= "/src/img/Home-mobile.svg">
-//          </div>
-
-// export default () => {
-// const view = () => {
-
-//     `
-//    <div class="home">
-//     <img id ="foto2" src="/src/img/Home1-desktop.svg">
-//     </div>
-//     <div class="mobile"></div>
-//     <button id="startApp">Ingresar</button>
-//     <img id="foto3" src= "/src/img/Home-mobile.svg">
-//      </div>
-// `
-// const divElement = document.createElement(`div`);
-// divElement.innerHTML =view;
-//  return divElement;
-
-//     }
-//     const viewMobile = () => {
-
-//         `
-//         <div class="mobile"></div>
-//         <button id="startApp">Ingresar</button>
-//         <img id="foto3" src= "/src/img/Home-mobile.svg">
-//          </div>
-//     `
-//     const divElement = document.createElement(`div`);
-//     divElement.innerHTML =viewMobile;
-//      return divElement;
-
-//         }
-//     }

@@ -35,7 +35,7 @@ body {
 
 #main-img{
   align-items: center;
-  width: 50%;
+  width: 45.5%;
   justify-content: center;
   margin-top: 15%;
   margin-left: 42%;
@@ -367,15 +367,15 @@ nav label {
     .homeContainer-mobile {
         display: block;
       }
-      .homeContainer-desktop {
+    .homeContainer-desktop {
         display: none;
       }
-      #logo-home {
+    #logo-home {
         top: 10%;
         width: 85%;
         left: 10%;
       }
-      .appStartbtn {
+    .appStartbtn {
         border: none;
         position: absolute;
         width: 50%;
@@ -388,10 +388,10 @@ nav label {
         font-size: 17px;
         font-family: "Roboto", sans-serif;
       }
-      .appStartbtn:hover {
+    .appStartbtn:hover {
         background: #597ca1;
       }
-      .appStartbtn  a {
+    .appStartbtn  a {
         color: white;
         text-decoration: none;
       }
@@ -424,6 +424,7 @@ nav label {
     .container-form{
         background: white;
         width: 100%;
+        left:0%
     }
 
     .logo_singup{
