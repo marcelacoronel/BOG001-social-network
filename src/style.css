@@ -63,31 +63,6 @@ header {
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
-.container-form img{
-    margin-top: 2%;
-}
-
-.container-form h2{
-    width: 100%;
-    justify-content: center;
-    align-content: center;
-    font-family: Fredoka One;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2.8em;
-    text-align: center;
-    color: #FFFFFF;
-    padding-bottom: 1%;
-    text-transform: uppercase;
-}
-.form-Singup{
-    margin-top: -6%;
-}
-
-.form-Singup .form-SU-Desktop-tablet{
-    display: flex;
-    flex-direction: column;
-    margin-top: -3%;
 }
 
 nav ul {
@@ -98,21 +73,6 @@ nav a {
   color: black;
   text-decoration: none;
   font-size: 1.8vw;
-}
-.form-Singup label{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.4em;
-    line-height: 170%;
-    text-align: left;
-    color: #000000;
-    margin-left: 150px;
-}
-
-nav a:hover {
-  color: var(--color-pink);
-  transition: 0.5s;
 }
 
 nav li {
@@ -132,14 +92,48 @@ nav label {
   font-size: 35px;
   display: none;
 }
-<<<<<<< HEAD
-.bg-singup{
-    position: absolute;
-    width: 50%;
-    left: 50%;
-    height: auto;
-    margin: auto;
-    top: 5%;    
+
+.container-form img{
+  margin-top: 2%;
+}
+
+.container-form h2{
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  font-family: Fredoka One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.8em;
+  text-align: center;
+  color: #FFFFFF;
+  padding-bottom: 1%;
+  text-transform: uppercase;
+}
+.form-Singup{
+  margin-top: -6%;
+}
+
+.form-Singup .form-SU-Desktop-tablet{
+  display: flex;
+  flex-direction: column;
+  margin-top: -3%;
+}
+
+.form-Singup label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4em;
+    line-height: 170%;
+    text-align: left;
+    color: #000000;
+    margin-left: 150px;
+}
+
+nav a:hover {
+  color: var(--color-pink);
+  transition: 0.5s;
 }
 
 /* || ESTILOS SIGN-UP */
@@ -193,22 +187,17 @@ nav label {
   display: flex;
   flex-direction: column;
 }
-=======
-
-/*|| Sing Up page */
->>>>>>> e5adf6b... view home7404
 
 .form-SU-movil {
   display: none;
 }
-<<<<<<< HEAD
 
 .form-Singup label {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 1.4em;
-  line-height: 200%;
+  line-height: 170%;
   text-align: left;
   color: #000000;
   margin-left: 150px;
@@ -238,7 +227,7 @@ nav label {
   margin-top: 5%;
   margin-left: 18%;
   margin-right: 18%;
-  color: #FFFFFF;
+  color: #FFFFFF; 
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -251,17 +240,6 @@ nav label {
   align-items: center;
   justify-content: center;
   z-index: 1;
-=======
-.container-form{
-    background: var(--color-pink);
-    border-radius: 50px;
-    position: absolute;
-    width: 58%;
-    height: auto;
-    left: 2%;
-    top: 8%;
-    bottom: 8%;
->>>>>>> e5adf6b... view home7404
 }
 
 .form-Singup span p {
@@ -303,16 +281,6 @@ nav label {
 .mobile-SU {
   display: none;
 }
-.form-Singup label{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.4em;
-    line-height: 170%;
-    text-align: left;
-    color: #000000;
-    margin-left: 150px;
-}
 
 #landscape {
   display: none;
@@ -328,20 +296,6 @@ nav label {
   position: absolute;
   width: 100vw;
   height: 80vh;
-}
-.form-Singup input[type="submit"]{
-    background: var(--color-blue);
-    border-radius: 30px;
-    line-height: 200%;
-    text-align: center;
-    margin-top: 5%;
-    margin-left: 18%;
-    margin-right: 18%;
-    color: #FFFFFF; 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.5em;
 }
 
 /* || LOG IN */
@@ -438,40 +392,11 @@ nav label {
   font-weight: bold;
   }
 
-
-
-.form-Singup span a{
-    color: var(--color-blue);
-    font-family: Roboto;
-    font-style: Regular;
-    font-size: 1.2em;
-    padding-left: 10px;
-  }
-
-.bg-singup{
-    position: absolute;
-    width: 50%;
-    left: 50%;
-    height: auto;
-    margin: auto;
-    top: 5%;    
-}
-.bg-singup img{
-    width: 100%;
-}
-.desktop-SU{
-    display: block;
-}
-.tablet-SU{
-    display: none;
-}
-.mobile-SU{
-    display: none;
-}
-#landscape {
+  .imgSignInMobile{
     display: none;
     text-align: center;
   }
+
   .btnForm{
     background-color: #FF7851;
     border: 0;
@@ -497,25 +422,7 @@ nav label {
       list-style: none;
       color: #FF7851;
       }
-/*VISTA CUALQUIER DISPOSITIVO MOVIL EN LANDSCAPE*/
-/* @media screen and (max-width: 1024px) and (orientation: landscape){
-    z-index: -100;
-}
-<<<<<<< HEAD
-=======
 
-
-/* || 404 error page */
-
-#error {
-  background: url(/src/img/404-desktop.jpg) no-repeat;
-  background-size: 70%;
-  background-position: center;
-  position: absolute;
-  width: 100vw;
-  height: 80vh;
-}
->>>>>>> e5adf6b... view home7404
 
 /*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
 @media only screen and (min-width:1024px) and (max-width:1365px){
@@ -646,15 +553,15 @@ nav label {
     .homeContainer-mobile {
         display: block;
       }
-      .homeContainer-desktop {
+    .homeContainer-desktop {
         display: none;
       }
-      #logo-home {
+    #logo-home {
         top: 10%;
         width: 85%;
         left: 10%;
       }
-      .appStartbtn {
+    .appStartbtn {
         border: none;
         position: absolute;
         width: 50%;
@@ -667,10 +574,10 @@ nav label {
         font-size: 17px;
         font-family: "Roboto", sans-serif;
       }
-      .appStartbtn:hover {
+    .appStartbtn:hover {
         background: #597ca1;
       }
-      .appStartbtn  a {
+    .appStartbtn  a {
         color: white;
         text-decoration: none;
       }
@@ -703,6 +610,7 @@ nav label {
     .container-form{
         background: white;
         width: 100%;
+        left:0%
     }
 
     /*PRUEBAS TAMAÑO CEL/TABLET*/
@@ -845,5 +753,3 @@ nav ul li:hover {
 
 
 }
-
-
