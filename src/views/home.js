@@ -10,7 +10,7 @@ export default () => {
         <button id="start" class="appStartbtn btn">Ingresar</button>
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
          </div> `;
-
+  // Variables
   const nav = document.getElementById('headerNav');
   nav.style.display = 'block';
 
@@ -18,11 +18,14 @@ export default () => {
   divElement.innerHTML = view;
 
   const buttonStartApp = divElement.querySelector('#start');
-  buttonStartApp.addEventListener('click', userLoginAccount);
-  
+
+  // Funciones
   function userLoginAccount() {
     window.location.hash = '#/login';
   }
+
+  // Listener
+  buttonStartApp.addEventListener('click', userLoginAccount);
 
   return divElement;
 };

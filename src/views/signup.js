@@ -17,7 +17,7 @@ export default () => {
                     <label for="">CONTRASEÑA</label>
                     <i id="eye" class="far fa-eye"></i><input class="password" type="password" placeholder="***********" required>
                     
-                    <input class ="btn" type="submit" value="SING IN">
+                    <input class ="btn" type="submit" value="SIGN IN">
                     <span>
                     <p>Ya tienes cuenta? <a href="#/login">Log in</a> </p>
                     </span>
@@ -26,7 +26,7 @@ export default () => {
                     <input class="nombre" type="text" placeholder="Nombre" required>
                     <input class="email" type="email" placeholder="Email" required>
                     <input class="password" type="password" placeholder="Contraseña" required>
-                    <input class ="btn" type="submit" value="SING IN">
+                    <input class ="btn" type="submit" value="SIGN IN">
                     <span>
                         <p>Ya tienes cuenta? <a href="#/login">Log in</a> </p>
                     </span>
@@ -42,8 +42,8 @@ export default () => {
 
         <div id="landscape">
             <div>
-	           <p>
-	                <img src="./img/giro@2x.png" alt=""><br><center>
+	        <p>
+	            <img src="./img/giro@2x.png" alt=""><br><center>
                     ¡Gira tu dispositivo!</center><br>
                     <span><center>¡Please!</center></span>
 	            </p>
@@ -51,19 +51,18 @@ export default () => {
 
         </div>
 `;
-  const nav = document.getElementById("headerNav");
-  nav.style.display = "none";
-  const divElement = document.createElement(`div`);
+  const nav = document.getElementById('headerNav');
+  nav.style.display = 'none';
+  const divElement = document.createElement('div');
 
-  divElement.classList = "SingUp-Container";
+  divElement.classList = 'SingUp-Container';
 
   divElement.innerHTML = view;
 
-  document.getElementById("headerNav").style.display = "none";
+  document.getElementById('headerNav').style.display = 'none';
 
-  const boton = divElement.querySelector(".btn");
-  boton.addEventListener("click", createNewUsers);
-
+  const boton = divElement.querySelector('.btn');
+  boton.addEventListener('click', createNewUsers);
 
   //   boton.addEventListener("click", create);
   //   function create(){
@@ -98,66 +97,22 @@ export default () => {
   // });
 
   function createNewUsers() {
-    alert("click");
-    let nombre = document.querySelector(".nombre").value;
-    let email = document.querySelector(".email").value;
-    let password = document.querySelector(".password").value;
+    alert('click');
+    const name = document.querySelector('.nombre').value;
+    const email = document.querySelector('.email').value;
+    const password = document.querySelector('.password').value;
 
-    console.log(nombre + email + password);
-
+    console.log(name + email + password);
+    // la llamamos para pasarle los parametros y usarla
     createUsers(email, password);
-
-    // authUsers.newUser(email,password)
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(() => {
-    //     window.location.hash = "#/profile";
-    //     console.log("verificado");
-    //   })
-
-    //   .catch(function (error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     // ...
-    //   });
-  }
-
-  function currentUserStatus() {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        //console.log(user)
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        console.log(user.emailVerified);
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-        console.log("usuario activo");
-        // ...
-      } else {
-        console.log("no existe usuario activo");
-        // User is signed out.
-        // ...
-      }
-    });
   }
 
   const eye = divElement.querySelector('#eye');
-  eye.addEventListener('click', showHidePassword);
 
-  function showHidePassword() {
+  eye.addEventListener('click', () => {
+    const x = document.querySelector('.password');
+    x.type === 'password' ? (x.type = 'text') : (x.type = 'password');
+  });
 
-    var x = document.querySelector('.password');
-
-     (x.type === 'password') ?  x.type = "text" : x.type = 'password';
-    
-  }
-
-  currentUserStatus();
   return divElement;
 };

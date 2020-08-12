@@ -17,7 +17,7 @@ export default () => {
             <h2>Bienvenido</h2>
             <div class="form">
                 
-                <form action="#" class="inputsForm">
+                <form action="#" class="inputsForm" id="logInForm">
                     <Label>Usuario<br />
                         <input id="email"class="inputForm" type="text" placeholder="Usuario" required>
                     </Label><br />
@@ -45,31 +45,36 @@ export default () => {
   const divElement = document.createElement('div');
   divElement.classList = 'containerView';
   divElement.innerHTML = view;
-  const form = document.querySelector('.inputsForm');
-  const boton = divElement.querySelector('#btn');
+  const logInForm = divElement.querySelector('#logInForm');
+  // const boton = divElement.querySelector('#btn');
+  // boton.addEventListener('click', userLogIn);
+
   const eye = divElement.querySelector('#eye');
-  boton.addEventListener('click', userLogIn);
   eye.addEventListener('click', showHidePassword);
 
-  function userLogIn() {
+  logInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((cred) => {
+        console.log(cred.user);
         window.location.hash = '#/dashboard';
         alert('bienvenido');
       })
       .catch((error) => {
-        alert('no estas registrado');
+        alert('no estas registrado' + error);
       });
-  }
+    logInForm.reset();
+  });
+
   function showHidePassword() {
-    var x = document.getElementById("password");
-     (x.type === "password") ?  x.type = "text" : x.type = "password";
-    
+    const x = document.getElementById('password');
+
+    x.type === 'password' ? (x.type = 'text') : (x.type = 'password');
   }
   return divElement;
 };
