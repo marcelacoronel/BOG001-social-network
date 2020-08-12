@@ -203,10 +203,9 @@ nav a:hover {
   text-align: center;
   border-radius: 30px;
   line-height: 150%;
-  text-align: center;
   margin-top: 5%;
   color: #FFFFFF; 
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5em;
@@ -217,14 +216,14 @@ nav a:hover {
   margin: 5px 0;
   text-align: center;
 }
-.reset a{
+.containerView .reset a{
  list-style: none;
  text-decoration: none;
  margin-bottom: 5px;
  color: var(--color-pink)
 }
       
-.toggle a{
+.containerView .toggle a{
   list-style: none;
   color: var(--color-pink);
 }
@@ -260,7 +259,7 @@ nav a:hover {
   width: 100%;
   justify-content: center;
   align-content: center;
-  font-family: Fredoka One;
+  font-family: 'Fredoka One', cursive;
   font-style: normal;
   font-weight: normal;
   font-size: 2.8em;
@@ -285,7 +284,7 @@ nav a:hover {
 }
 
 .form-Singup label {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.4em;
@@ -304,7 +303,7 @@ nav a:hover {
   margin-left: 18%;
   margin-right: 18%;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5em;
@@ -320,7 +319,7 @@ nav a:hover {
   margin-left: 18%;
   margin-right: 18%;
   color: #FFFFFF; 
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5em;
@@ -336,14 +335,14 @@ nav a:hover {
 
 .form-Singup span p {
   color: #FFFFFF;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: Regular;
   font-size: 1.5em;
 }
 
-.form-Singup span a {
+.SingUp-Container .form-Singup span a {
   color: var(--color-blue);
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: Regular;
   font-size: 1.2em;
   padding-left: 10px;
@@ -454,12 +453,9 @@ nav a:hover {
       nav ul li {
         display:block;
         margin: 40px 20px;
+        padding: 10px 60px;
       }
-    
-      nav li {
-       padding: 10px 60px;
-      }
-    
+      
       nav ul {
         position: fixed;
         width: 80%;
@@ -498,7 +494,7 @@ nav a:hover {
  
   .titleSite {
     width: 80%;
-    margin-top: 3%;
+    top: 3%;
     margin: auto;
     text-align: center;
   }

@@ -1,12 +1,12 @@
 export default () => {
-    const view = `
+  const view = `
        
         <div id="error"></div>
         <div id="error-movil"></div>
     `;
 
-   const divElement = document.createElement(`div`);
-   divElement.innerHTML =view;
+  const divElement = document.createElement('div');
+  divElement.innerHTML = view;
 
-    return divElement;
-}
+  return divElement;
+};

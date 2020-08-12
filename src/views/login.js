@@ -1,8 +1,7 @@
 
 export default () => {
-
-    const view = `
-                
+  const view = `
+               
           <div class="containerImgTitle">
               <div class="titleSite">
                   <img src="img/logo-BluePink.png" alt="">
@@ -37,24 +36,20 @@ export default () => {
                   <label for="cuenta">No tienes cuenta?</label> 
                   <a class="cuenta" href="#/sign-up">Sign Up</a>
               </div>
-              <div id="landscape">
-            <div>
-	            <p>
-	                <img src="./img/giro@2x.png" alt=""><br><center>
-                    ¡Gira tu dispositivo!</center><br>
-                    <span><center>¡Please!</center></span>
-	            </p>
-            </div>
-
-        </div>
-          </div>
+           </div>
+           <div id="landscape">
+           <div>
+               <img src="./img/giro@2x.png" alt=""></br>
+               <center>¡Gira tu dispositivo!</center></br>
+               <span><center>¡Please!</center></span>
+           </div>
+       </div>
   `;
-    const nav = document.getElementById("headerNav");
-    nav.style.display = "none";
-    const divElement = document.createElement(`div`);
-    divElement.classList = "containerView";
-    divElement.innerHTML = view;
+  const nav = document.getElementById('headerNav');
+  nav.style.display = 'none';
+  const divElement = document.createElement('div');
+  divElement.classList = 'containerView';
+  divElement.innerHTML = view;
 
-
-    return divElement;
-  };
+  return divElement;
+};

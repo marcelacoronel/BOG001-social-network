@@ -1,8 +1,6 @@
 
-
-
 export default () => {
-    const view =`
+  const view = `
         
         <div class="container-form">
             <div class=logo_singup>
@@ -43,24 +41,19 @@ export default () => {
 
         <div id="landscape">
             <div>
-	            <p>
-	                <img src="./img/giro@2x.png" alt=""><br><center>
-                    ¡Gira tu dispositivo!</center><br>
-                    <span><center>¡Please!</center></span>
-	            </p>
+                <img src="./img/giro@2x.png" alt=""></br>
+                <center>¡Gira tu dispositivo!</center></br>
+                <span><center>¡Please!</center></span>
             </div>
-
         </div>
 `;
+  const nav = document.getElementById('headerNav');
+  nav.style.display = 'none';
 
-const nav = document.getElementById("headerNav");
-nav.style.display = "none";
+  const divElement = document.createElement('div');
+  divElement.classList = 'SingUp-Container';
 
-const divElement = document.createElement(`div`);
-divElement.classList = "SingUp-Container";
+  divElement.innerHTML = view;
 
-divElement.innerHTML = view;
-
-return divElement;
+  return divElement;
 };
-
