@@ -1,5 +1,5 @@
 
-import { auth } from '../firebase/createUser.js';
+
 
 export default () => {
     const view =`
@@ -52,66 +52,15 @@ export default () => {
 
         </div>
 `;
-<<<<<<< HEAD:src/views/signup.js
-const nav= document.getElementById("headerNav")
-nav.style.display="none";
-   const divElement = document.createElement(`div`);
-
-   divElement.classList = 'SingUp-Container'
-
-   divElement.innerHTML =view;
-=======
->>>>>>> d344146f67e2f4961fd0b3f589c842ac91214a39:src/views/singup.js
 
 const nav = document.getElementById("headerNav");
 nav.style.display = "none";
-const divElement = document.createElement(`div`);
 
+const divElement = document.createElement(`div`);
 divElement.classList = "SingUp-Container";
 
 divElement.innerHTML = view;
 
-document.getElementById("headerNav").style.display = "none";
-
-const boton = divElement.querySelector(".btn");
-boton.addEventListener("click", createNewUsers);
-
-
-function createNewUsers() {
-  alert("click");
-  let nombre = document.querySelector(".nombre").value;
-  let email = document.querySelector(".email").value;
-  let password = document.querySelector(".password").value;
-
-  console.log(nombre + email + password);
-
-  createUsers(email,password)
-
-}
-function currentUserStatus() {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      //console.log(user)
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      console.log(user.emailVerified);
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      console.log("usuario activo");
-      // ...
-    } else {
-      console.log("no existe usuario activo");
-      // User is signed out.
-      // ...
-    }
-  });
-}
-
-currentUserStatus();
 return divElement;
 };
 

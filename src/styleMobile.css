@@ -4,7 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap');
 
 
-@media screen  and (max-width:425px){
+:root {
+  --color-blue: #364c63;
+  --color-pink: #ff7851;
+}
+
+@media only screen and (max-width:420px){
  /* || Home */
  .homeContainer-mobile {
     display: block;
@@ -50,9 +55,85 @@
     top: 30%;
   }
 
+  /* || Log In */
+.containerView{
+  display: block;
+  background-color:white ;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  color: var(--color-blue);
+  width: 100%;
+  height: 90vh;
+}
+
+.imgSignInDesktop{
+  display: none;
+}
+.containerImgTitle img{
+  width: 50%;
+}
+
+.imgSignInMobile{
+  width: 100%;
+  display: block;
+  top: 0;
+  position: absolute;
+}
+
+.imgSignInMobile img{
+  width: 100%;
+}
+
+.titleSite {
+  display: none;
+}
+
+.containerForms{
+  display: block;
+  background-color:white;
+  width: 100%;
+  left: 0;
+  top: 45%;
+}
+
+.containerForms h2{
+ display: none;
+}
+
+.form{
+  line-height: 2.5em;
+}
+
+.form input{
+  line-height: 1em;
+ }
+
+ .form label{
+    color: var(--color-blue);
+  }
+
+ .btnForm{
+  margin-top: 8%; 
+}
+
+.reset a{
+  color: var(--color-blue);
+}
+
+.toggle{
+  color: rgb(41, 40, 40);
+  margin-top: 5px;
+}
+
+.toggle a{
+  color: var(--color-blue);
+}
+
   /* || Sign-up */
   .container-form {
     background: white;
+    width: 100%;
+    left: 0;
   }
 
   .logo_singup {
@@ -152,110 +233,7 @@
   }
 
 
- /* || SIGN IN */
-.containerView{
-    text-align: center;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin: 5px 0;
-    background-color:white ;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: #364C63;
-    width: 100%;
-    height: 90vh;
-}
-
-.imgSignInMobile{
-    width: 100%;
-    text-align: center;
-    margin: 0 0 5px 0;
-    display: block;
-}
-
-.imgSignInMobile img{
-    width: 100%;
-    height: 90%;
-}
-
-.containerImgTitle{
-display: none;
-}
-
-.containerForms{
-    display: flex;
-    flex-flow: column nowrap;
-    background-color:white ;
-    transform: translateY(0);
-
-}
-
-.containerForms h2{
-    margin-top: 10px;
-    font-size: 32px;
-    font-family: 'Fredoka One', cursive;
-    font-weight: normal;
-    font-style: normal;
-  }
-
-.form{
-    margin: 5px 0;
-    display: block;
-    text-align: left;   
-}
-
-.inputsForm{
-display: block;
-}
-
-.form input{
-    border-radius: 20px;
-    width:100%;
-    height: 40px;
-    box-sizing: border-box;
-    margin: 10px 0;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-
-.inputForm{
-    border: 1px solid #525050;
-    padding: 10px;
-}
-
-.btnForm{
-    background-color: #FF7851;
-    border: 0;
-    color: white;
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-.reset{
-    margin: 5px 0;
-}
-
-.reset a{
-    list-style: none;
-    text-decoration: none;
-    color: #364C63;
-    margin-bottom: 5px;
-}
-
-.toggle{
-    color: rgb(41, 40, 40);
-    margin-top: 5px;
-}
-
-.toggle a{
-    list-style: none;
-    color: #364C63;
-}
-
+ 
 
 
 

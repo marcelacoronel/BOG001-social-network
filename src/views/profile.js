@@ -20,12 +20,5 @@ export default () => {
     const divElement = document.createElement(`div`);
     divElement.innerHTML = view;
   
-    const buttonProfile = divElement.querySelector("#newProfile")
-    buttonProfile.addEventListener("click",createNewProfileUser)
-  
-    function createNewProfileUser(){
-      window.location.hash = "#/dashboard";
-    }
-  
     return divElement;
   };

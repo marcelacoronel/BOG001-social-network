@@ -26,7 +26,7 @@ body {
   box-sizing: border-box;
 }
 /*VISTA MONITORES DE ESCRITORIO CON 1366PX O MAS*/
-/* || Home */
+/* || Home page */ 
 
 .homeContainer-desktop {
   width: 100vw;
@@ -54,7 +54,7 @@ body {
   top: 10%;
   bottom: 81.82%;
 }
-
+/* || End Home page */ 
 /* || Header and Main Navigation */
 header {
   margin: 0;
@@ -93,50 +93,143 @@ nav label {
   display: none;
 }
 
-.container-form img{
-  margin-top: 2%;
-}
-
-.container-form h2{
-  width: 100%;
-  justify-content: center;
-  align-content: center;
-  font-family: Fredoka One;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.8em;
-  text-align: center;
-  color: #FFFFFF;
-  padding-bottom: 1%;
-  text-transform: uppercase;
-}
-.form-Singup{
-  margin-top: -6%;
-}
-
-.form-Singup .form-SU-Desktop-tablet{
-  display: flex;
-  flex-direction: column;
-  margin-top: -3%;
-}
-
-.form-Singup label{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.4em;
-    line-height: 170%;
-    text-align: left;
-    color: #000000;
-    margin-left: 150px;
-}
-
 nav a:hover {
   color: var(--color-pink);
   transition: 0.5s;
 }
+/* || End Header and Main Navigation */
 
-/* || ESTILOS SIGN-UP */
+/* || Log In page*/
+.containerView{
+  display: inline-block;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  align-items: center;
+  font-size: 1.3em;
+  width: 100%;
+  height:auto;
+}
+  
+.containerImgTitle{
+  height: auto;
+  width: 61%;
+  flex-direction: column;
+  margin-top: 13vh;
+  text-align: center; 
+}
+  
+.containerImgTitle img{
+  width: 85%;
+}
+
+.titleSite {
+  width: 100%;
+}
+
+.titleSite img{
+  width: 50%;
+}
+
+.containerForms{
+  flex-flow: column nowrap;
+  background-color: var(--color-blue) ;
+  border-radius: 50px;
+  position: absolute;
+  width: 40%;
+  height: auto;
+  left: 58%;
+  top: 8%;
+  bottom: 8%;
+}
+  
+.containerForms h2{
+  font-weight: normal;
+  text-align: center;
+  margin-top: 15%;
+  font-size: 2.8em;
+  margin-bottom: 0;
+}
+  
+.form{
+  text-align: left;   
+  margin-top: 0;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  line-height: 3em;
+}
+  
+.inputsForm{
+  display: block;
+  justify-content: center;
+  margin: 20px 50px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+  }
+  
+.form input{
+  border-radius: 35px;
+  width: 100%;
+  line-height: 1em;
+  box-sizing: border-box;
+  margin: auto;
+  text-align: center;
+  font-size: 1.3em;
+}
+  
+.inputForm{
+  border: 1px solid #525050;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  font-size: 1em;
+  }
+  
+.form label{
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  }
+
+.imgSignInMobile{
+  display: none;
+ 
+}
+
+.btnForm{
+  background-color: var(--color-pink);
+  width: 100%;
+  text-align: center;
+  border-radius: 30px;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 5%;
+  color: #FFFFFF; 
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+.reset, .toggle{
+  font-family: 'Roboto', sans-serif;
+  margin: 5px 0;
+  text-align: center;
+}
+.reset a{
+ list-style: none;
+ text-decoration: none;
+ margin-bottom: 5px;
+ color: var(--color-pink)
+}
+      
+.toggle a{
+  list-style: none;
+  color: var(--color-pink);
+}
+/* || END Log In page*/
+/* || SingUp Page */
 
 .SingUp-Container {
   width: 100%;
@@ -160,8 +253,7 @@ nav a:hover {
 }
 
 .container-form img {
-  position: relative;
-  top: 50px;
+ margin-top: 2%;
 }
 
 .container-form h2 {
@@ -171,21 +263,21 @@ nav a:hover {
   font-family: Fredoka One;
   font-style: normal;
   font-weight: normal;
-  font-size: 3em;
+  font-size: 2.8em;
   text-align: center;
   color: #FFFFFF;
-  padding-bottom: 30px;
+  padding-bottom: 1%;
   text-transform: uppercase;
 }
 
 .form-Singup {
-  position: relative;
-  top: 3%;
+  margin-top: -6%;
 }
 
 .form-Singup .form-SU-Desktop-tablet {
   display: flex;
   flex-direction: column;
+  margin-top: -3%;
 }
 
 .form-SU-movil {
@@ -200,7 +292,7 @@ nav a:hover {
   line-height: 170%;
   text-align: left;
   color: #000000;
-  margin-left: 150px;
+  margin-left: 20%;
 }
 
 .form-Singup input[type="text"],
@@ -262,8 +354,8 @@ nav a:hover {
   width: 50%;
   height: auto;
   left: 50%;
-  top: 180px;
-  bottom: 64px;
+  top: 5%;
+  margin: auto;
 }
 
 .bg-singup img {
@@ -287,6 +379,8 @@ nav a:hover {
   z-index: -100;
 }
 
+/* || End SingUp Page */
+
 /* || 404 ERROR PAGE */
 
 #error {
@@ -297,141 +391,33 @@ nav a:hover {
   width: 100vw;
   height: 80vh;
 }
+/* || End 404 ERROR PAGE */
 
-/* || LOG IN */
-.containerView{
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100vw;
-  height: 90vh;
-  border-radius: 20px;
-  justify-content: center;
-  font-family: 'Fredoka One', cursive;
-  color: white;
-  align-items: center;
-  font-size: 24px;
+
+/*VISTA TABLET LANDSCAPE y MONITORES DE ESCRITORIO VIEJOS*/
+@media only screen and (min-width:1024px) and (max-width:1365px){
+/* || Home page */
+  #main-img {
+    width: 54%;
   }
-  
-  .containerImgTitle{
-  width: 55%;
-  height: auto;
-  
-  }
-  
+
+  /* || Log In page*/
+
   .containerImgTitle img{
-  width: 100%;
-  height: 90%;
-  }
-  
-  .titleSite {
     width: 90%;
   }
+
   .titleSite img{
-    width: 100%;
+    width: 60%;
   }
   
-  .containerForms{
-    display: flex;
-    flex-flow: column nowrap;
-    background-color:#364C63 ;
-    width: 35%;
-    height: 90%;
-    border-radius: 20px;
-    justify-content: start;
-    align-items: center;
-    font-size: 20px;
+/* || SingUp Page */
+  .bg-singup{
+     top: 15%;  
   }
-  
-  .containerForms h2{
-  font-weight: normal;
-  text-align: center;
-  margin-top: 60px;
-  font-size: 60px;
-  padding: 0;
-  margin-bottom: 0;
-  
+  .bg-singup img{
+     width: 100%;
   }
-  
-  .form{
-  text-align: left;   
-  margin-top: 0;
-  width: 100%;
-  height: auto;
-  padding: 10px;
-  justify-content: center;
- 
-  
-  }
-  
-  .inputsForm{
-  display: block;
-  justify-content: center;
-  margin: 20px 50px;
-  }
-  
-  .form input{
-  border-radius: 20px;
-  width: 90%;
-  height: 40px;
-  box-sizing: border-box;
-  margin: 10px;
-  text-align: center;
-  }
-  
-  .inputForm{
-  border: 1px solid #525050;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  font-size: 20px;
-  
-  }
-  
-  .form label{
-  font-family: 'Roboto', sans-serif;
-  margin: 20px;
-  font-weight: bold;
-  }
-
-  .imgSignInMobile{
-    display: none;
-    text-align: center;
-  }
-
-  .btnForm{
-    background-color: #FF7851;
-    border: 0;
-    color: white;
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 5px;
-    }
-    .reset, .toggle{
-      font-family: 'Roboto', sans-serif;
-      margin: 5px 0;
-      text-align: center;
-      }
-      
-      .reset a{
-      list-style: none;
-      text-decoration: none;
-      margin-bottom: 5px;
-      color: #FF7851;
-      }
-      
-      .toggle a{
-      list-style: none;
-      color: #FF7851;
-      }
-
-
-/*VISTA TABLET y MONITORES DE ESCRITORIO VIEJOS*/
-@media only screen and (min-width:1024px) and (max-width:1365px){
-    .bg-singup{
-       top: 15%;  
-    }
-    .bg-singup img{
-        width: 100%;
-    }
 }
 /*VISTA TABLET EN VERTICAL, DISPLAY SMARTHPHONE EN LANDSCAPE*/
 @media only screen and (min-width:768px) and (max-width:1023px){
@@ -471,19 +457,22 @@ nav a:hover {
       }
     
       nav li {
-        padding: 10px 60px;
+       padding: 10px 60px;
       }
     
       nav ul {
         position: fixed;
         width: 80%;
         height: 10vh;
-        /* top: 80px; */
         right: -100%;
         text-align: center;
         transition: all .5s;
         z-index: 2;
-      
+        align-items: center;
+      }
+
+      nav ul li a{
+        font-size: 1.3em;
       }
     
       nav ul li:hover {
@@ -494,7 +483,54 @@ nav a:hover {
         display: flex;
         right: 23%;
       } 
-    
+    /* || Log In page*/
+      
+  .containerView{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .containerImgTitle{
+    width: 100%;
+    margin-top: 0;
+    z-index: 1;  
+  }
+ 
+  .titleSite {
+    width: 80%;
+    margin-top: 3%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .titleSite img{
+    width: 80%;
+  }
+  
+  .containerForms{
+    width: 94%;
+    position: absolute;
+    left: 3%;
+    top: 40%;
+    right: 3%;
+    bottom: 3%;
+  }
+  
+  .containerForms h2{
+    margin-top: 15%;
+    margin-bottom: 0;
+  }
+     
+  .imgSignInDesktop{
+    width: 100%;
+    position: absolute;
+    top: 5%;
+  }
+
+  .form{
+    line-height: 2em;
+  }
+
     /* || Sing Up page */
      .container-form{
         width: auto;
@@ -524,7 +560,6 @@ nav a:hover {
     .mobile-SU{
         display: none;
     }
-    /*FIN ESTILOS SIGN-UP*/
 
 }
 /*VISTA DISPOSITIVO CELULAR EN LANDSCAPE*/
@@ -543,213 +578,8 @@ nav a:hover {
         font-size: 120%;
         align-items: center;
         justify-content: center;
+        color: black;
     }
   
     }
 
-/*VISTA CELULAR*/
-@media only screen and (max-width:420px){
-    /* || Home page */
-    .homeContainer-mobile {
-        display: block;
-      }
-    .homeContainer-desktop {
-        display: none;
-      }
-    #logo-home {
-        top: 10%;
-        width: 85%;
-        left: 10%;
-      }
-    .appStartbtn {
-        border: none;
-        position: absolute;
-        width: 50%;
-        height: 5%;
-        left: 27%;
-        top: 80%;
-        background: #364c63;
-        border-radius: 25px;
-        color: white;
-        font-size: 17px;
-        font-family: "Roboto", sans-serif;
-      }
-    .appStartbtn:hover {
-        background: #597ca1;
-      }
-    .appStartbtn  a {
-        color: white;
-        text-decoration: none;
-      }
-      #mobileMain-img {
-        position: absolute;
-        width: 90%;
-        left: 18px;
-        top: 30%;
-      }
-     
-      nav a {
-        color: yellow;
-      }
-      /*404 error*/
-      #error-movil {
-        background: url(/src/img/404-mobile.jpg) no-repeat;
-        background-size: 120%;
-        background-position: center;
-        width: 100vw;
-        height: 100vh;
-      }
-      #error {
-        display: none;
-      }
-      nav {
-        display: none;
-      }
-   
-    /* SIGN-UP*/
-    .container-form{
-        background: white;
-        width: 100%;
-        left:0%
-    }
-
-    /*PRUEBAS TAMAÑO CEL/TABLET*/
-
-@media only screen and (max-width: 768px) {
-
-  .containerView{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  }
-  
-  .containerImgTitle{
-    width: 90%;
-    z-index: 1;
-  }
-  
-  .containerForms{
-    width: 90%;
-    height: auto;
-    transform: translateY(-160px);
-    
-  }
-  
-  .containerForms h2{
-    margin-top: 40px;
-    margin-bottom: 0;
-  }
-  
-  .form{
-    margin-top: 0;
-  }
-  
-  .titleSite {
-    width: 80%;
-    text-align: center;
-  }
-  
-  .imgSignInDesktop{
-    width: 100%;
-    transform: translateY(-70px);
-  }
-
-/* || Home */
-.homeContainer-desktop {
-  z-index: -1000;
-  background-size: 100%;
-  margin-top: 30%;
-  height: 50vh
-}
-    .form-SU-movil{
-        display: block;
-        justify-content: center;
-    }
-
-#main-img{
-  width: 70%;
-  margin: 10% 15%;
-  z-index: 1;
-}
-
-#logo-home {
-  width: 70%;
-  left: 14.58%;
-  right: 12.81%;
-  top: 20%;
-  bottom: 65.29%;
-}
-
-nav label {
-  margin-top: 30px;
-  display: flex;
-  cursor: pointer;
-  margin-right: 50px;
-  z-index: 4;
-}
-
-nav ul li {
-  display:block;
-  margin: 40px 20px;
-}
-
-nav li {
-  padding: 10px 60px;
-}
-
-nav ul {
-  position: fixed;
-  width: 80%;
-  height: 10vh;
-  /* top: 80px; */
-  right: -100%;
-  text-align: center;
-  transition: all .5s;
-  z-index: 2;
-
-}
-
-nav ul li:hover {
-  border-left: 4px solid var(--color-pink);
-}
-
-#menu:checked + ul {
-  display: flex;
-  right: 23%;
-}
-
-/* || Sign in */
-
-/*ESTILOS SIGN-UP*/
-.container-form{
-  width: auto;
-  bottom: 20%;
-  right: 5%;
-  left: 5%;
-}
-.bg-singup{
-  position: absolute;
-  width: 50%;
-  height: auto;
-  left: 53%; 
-  top: 71.5%;
-}
-.form-Singup{
- top: 1%;
-}
-.container-form h2{
-  padding-bottom: 1px;
-}
-.desktop-SU{
-  display: none;
-}
-.tablet-SU{
-  display: block;
-}
-.mobile-SU{
-  display: none;
-}
-
-
-
-}

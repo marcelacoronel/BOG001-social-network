@@ -11,21 +11,7 @@ export default () => {
     const divElement = document.createElement(`div`);
     divElement.innerHTML = view;
   
-    const btnSingOff = divElement.querySelector("#signOff");
-    btnSingOff.addEventListener("click", userSignOff);
-  
-    function userSignOff() {
-      firebase
-        .auth()
-        .signOut()
-        .then(function () {
-          console.log("salir");
-          window.location.hash = "";
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+ 
   
     return divElement;
   };
