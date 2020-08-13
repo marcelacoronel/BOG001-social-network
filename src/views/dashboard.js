@@ -2,17 +2,21 @@ import { userSignOff } from '../components/auth.js';
 
 export default () => {
   const view = `
-  <header>
+  <header id="userHeader">
   <div id="infoUser">
-  <img src="" alt=""photoUser>
+  <div id ="userProfilePhoto"><img src="" alt="photoUser"></div>
   <h3 id="nombre"></h3>
+  <br>
   <h4 id="ciudad"></h4>
   </div>
-         <div id="navBtn">   
-  <button id="signOff">Cerrar sesion</button>
-        
+<div id="navBtn">   
+  <button id="signOff">Cerrar sesion</button>      
   </div> 
   </header>
+
+  
+  
+  
 `;
 
   // Variables
@@ -32,20 +36,27 @@ export default () => {
     // Cerrar sesion
     userSignOff();
   });
+  const userex = JSON.parse(localStorage.getItem('usuario'));
+  const idex = userex.uid;
+  console.log(idex);
 
-  firebase
-    .firestore()
-    .collection('userData')
+  const docRef = firebase.firestore().collection('user').doc(idex);
+
+  docRef
     .get()
-    .then((snapshot) => {
-      const data = snapshot.docs;
-      data.forEach((doc) => {
-        const gui = doc.data();
-        nombre.innerHTML = gui.Name;
-        ciudad.innerHTML = gui.City;
-        // console.log(gui);
-      });
+    .then((doc) => {
+      if (doc.exists) {
+        const data = doc.data();
+        nombre.innerHTML = data.Name;
+        ciudad.innerHTML = data.City;
+        console.log('Document data:', data);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!');
+      }
+    })
+    .catch((error) => {
+      console.log('Error getting document:', error);
     });
-
   return divElement;
 };

@@ -1,38 +1,33 @@
-import Home from '../views/home.js'
-import signup from '../views/signup.js'
-import login from '../views/login.js'
-import profile from '../views/profile.js'
-import dashboard from '../views/dashboard.js'
-import error from '../views/404.js'
+import Home from '../views/home.js';
+import signup from '../views/signup.js';
+import login from '../views/login.js';
+import profile from '../views/profile.js';
+import dashboard from '../views/dashboard.js';
+import error from '../views/404.js';
 
-
-let content = document.getElementById('root');
+const content = document.getElementById('root');
 
 export const router = (route) => {
+  content.innerHTML = '';
 
-    content.innerHTML = '';
-
-    switch (route) {
-        case '': {
-            return content.appendChild(Home());
-        }
-        case '#/login':
-            return content.appendChild(login());
-        case '#/sign-up':
-            return content.appendChild(signup());
-        case '#/dashboard':
-            return content.appendChild(dashboard());
-        case '#/profile':
-            return content.appendChild(profile());
-        default:
-            return content.appendChild(error());
-
+  switch (route) {
+    case '': {
+      return content.appendChild(Home());
     }
+    case '#/login':
+      return content.appendChild(login());
+    case '#/sign-up':
+      return content.appendChild(signup());
+    case '#/dashboard':
+      return content.appendChild(dashboard());
+    case '#/profile':
+      return content.appendChild(profile());
+    default:
+      return content.appendChild(error());
+  }
+};
 
-}
-
-
-//ADMIN-FIREBASE
+// ADMIN-FIREBASE
 
 // var admin = require("firebase-admin");
 // var serviceAccount = require("path/to/serviceAccountKey.json");
@@ -55,6 +50,5 @@ export const router = (route) => {
 //         res.redirect('#/profile');
 //         console.log(req.body);
 //     })
-
 
 //     module.exports = route;

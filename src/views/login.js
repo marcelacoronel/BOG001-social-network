@@ -1,3 +1,5 @@
+import { signInUsers } from '../components/auth.js';
+
 export default () => {
   const view = `
         <div class="imgSignInMobile">
@@ -40,41 +42,37 @@ export default () => {
             </div>
         </div>
 `;
+  // Variables
   const nav = document.getElementById('headerNav');
   nav.style.display = 'none';
   const divElement = document.createElement('div');
   divElement.classList = 'containerView';
   divElement.innerHTML = view;
   const logInForm = divElement.querySelector('#logInForm');
-  // const boton = divElement.querySelector('#btn');
-  // boton.addEventListener('click', userLogIn);
-
   const eye = divElement.querySelector('#eye');
-  eye.addEventListener('click', showHidePassword);
+
+  // Funciones
+
+  // Ingreso de usuario
 
   logInForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((cred) => {
-        console.log(cred.user);
-        window.location.hash = '#/dashboard';
-        alert('bienvenido');
-      })
-      .catch((error) => {
-        alert('no estas registrado' + error);
-      });
+    signInUsers(email, password);
     logInForm.reset();
   });
 
-  function showHidePassword() {
-    const x = document.getElementById('password');
+  // Mostrar y ocultar contraseña
 
-    x.type === 'password' ? (x.type = 'text') : (x.type = 'password');
-  }
+  eye.addEventListener('click', () => {
+    const x = document.getElementById('password');
+    if (x.type === 'password') {
+      x.type = 'text';
+    } else {
+      x.type = 'password';
+    }
+  });
+
   return divElement;
 };

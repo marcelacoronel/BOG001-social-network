@@ -12,6 +12,7 @@ export default () => {
           <div class="image-preview" id="containerPreview">
             <img src="" alt="image-preview" class="imagePreview">
             <input type="file" name="photoPet" id="profilePhoto" />
+            <div class="default-image"></div>
             <label for="profilePhoto"><i class="fas fa-camera-retro"></i></label>
           </div>
 
@@ -21,7 +22,7 @@ export default () => {
             </label>
             </br>
             <label for="agePet">
-              <input id="agePet" class="petForm" type="text" placeholder="edad mascota" required>
+              <input id="agePet" class="petForm" type="number" placeholder="edad mascota" required>
             </label>
             </br>
             <label for="breedPet">
@@ -43,19 +44,28 @@ export default () => {
           <br>
           
             <input id="userName" type="text" placeholder="nombre" required>
-         
-          <label>Email</label>
-          <br>
-          <p id="userProfileEmail"></p>
-            <!--<input id="userProfileEmail" type="text" placeholder="numero telefono" required>-->
+
           
-          <label>telefono </label>
+          <label>Teléfono </label>
           <br>
             <input id="userPhone" type="phone" placeholder="numero telefono" required>
          
-          <label>fecha de nacimiento   </label>
+          <label>Fecha de nacimiento   </label>
           <br>
             <input id="userBirth" type="date" required>
+
+                  
+          <div class="gender">
+          <label>Mascota</label> 
+          <br>
+    <input type="radio" value="dog" id="dog" name="pet" checked/>
+    <label for="dog" class="radio" chec>Perro</label>
+    <input type="radio" value="cat" id="cat" name="pet" />
+    <label for="cat" class="radio">Gato</label>
+    <input type="radio" value="other" id="other" name="pet" />
+    <label for="other" class="radio">Otros</label>
+    
+   </div> 
        
           
           
@@ -83,7 +93,7 @@ export default () => {
   const formProfile = divElement.querySelector('#profileForm');
 
   const userName = divElement.querySelector('#userName');
-  const userEmail = divElement.querySelector('#userProfileEmail');
+  // const userEmail = divElement.querySelector('#userProfileEmail');
   const userPhone = divElement.querySelector('#userPhone');
   const userBirth = divElement.querySelector('#userBirth');
   const userCity = divElement.querySelector('#city');
@@ -92,44 +102,36 @@ export default () => {
   const petName = divElement.querySelector('#namePet');
   const petBreed = divElement.querySelector('#agePet');
   const petAge = divElement.querySelector('#breedPet');
+  const defaultImage = divElement.querySelector('.default-image');
 
   // FUNCIONES
 
   // FUNCION PREVIEW IMAGEN DE PERFIL
   inputPhoto.addEventListener('change', () => {
     const file = inputPhoto.files[0];
+    console.log(file);
     if (file) {
       const reader = new FileReader();
-      // defaultImage.style.display = 'none';
+      defaultImage.style.display = 'none';
       imagePreview.style.display = 'block';
       reader.addEventListener('load', () => {
         // console.log(this) ;
-        imagePreview.setAttribute('src', this.result);
+        imagePreview.setAttribute('src', reader.result);
       });
       reader.readAsDataURL(file);
     } else {
-      // defaultImage.style.display = null;
+      defaultImage.style.display = null;
       imagePreview.style.display = null;
       imagePreview.setAttribute('src', '');
     }
   });
 
   // FUNCION ENVIO DE FORMULARIO Y AGREGAR DATOS A FIRESTORE
+  const userex = JSON.parse(localStorage.getItem('usuario'));
+  const idex = userex.uid;
+  console.log(idex);
 
-  firebase
-    .firestore()
-    .collection('userData')
-    .get()
-    .then((snapshot) => {
-      const data = snapshot.docs;
-      console.log(data);
-      data.forEach((doc) => {
-        const userUid = firebase.auth().currentUser.uid;
-        console.log(userUid);
-        userEmail.innerHTML = doc.data().Email;
-        console.log(doc.data().Email);
-      });
-    });
+  // userEmail.innerHTML = userex.email;
 
   formProfile.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -141,7 +143,7 @@ export default () => {
 
     const User = {
       Name: userName.value,
-      // Email: userEmail.value,
+      // Email: userex.email,
       Phone: userPhone.value,
       DateBirth: userBirth.value,
       City: userCity.value,
@@ -153,11 +155,14 @@ export default () => {
     };
 
     // AGREGAR INFORMACION A FIRESTORE
+    const user = JSON.parse(localStorage.getItem('usuario'));
+    const id = user.uid;
+    console.log(id);
 
-    addUsersData('userProfile', User);
+    addUsersData(User, id);
 
     formProfile.reset();
-    userEmail.innerHTML = ' ';
+    // userEmail.innerHTML = ' ';
   });
 
   return divElement;
