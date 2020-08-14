@@ -86,7 +86,7 @@
     width: 80%;
     line-height: 150%;
     text-align: left;
-    font-family: Lato;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5em;
@@ -238,23 +238,23 @@ display: block;
 .reset{
     margin: 5px 0;
 }
-
+/* 
 .reset a{
     list-style: none;
     text-decoration: none;
     color: #364C63;
     margin-bottom: 5px;
-}
+} */
 
 .toggle{
     color: rgb(41, 40, 40);
     margin-top: 5px;
 }
 
-.toggle a{
+/* .toggle a{
     list-style: none;
     color: #364C63;
-}
+} */
 
 
 }

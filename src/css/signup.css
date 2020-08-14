@@ -26,7 +26,7 @@
   width: 100%;
   justify-content: center;
   align-content: center;
-  font-family: Fredoka One;
+  font-family: 'Fredoka One', cursive;
   font-style: normal;
   font-weight: normal;
   font-size: 2.8em;
@@ -51,7 +51,7 @@
 }
 
 .form-Singup label {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.4em;
@@ -70,7 +70,7 @@
   margin-left: 18%;
   margin-right: 18%;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5em;
@@ -86,7 +86,7 @@
   margin-left: 18%;
   margin-right: 18%;
   color: #ffffff;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5em;
@@ -102,14 +102,14 @@
 
 .form-Singup span p {
   color: #ffffff;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: Regular;
   font-size: 1.5em;
 }
 
 .form-Singup span a {
   color: var(--color-blue);
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-style: Regular;
   font-size: 1.2em;
   padding-left: 10px;
@@ -224,7 +224,7 @@
     width: 80%;
     line-height: 150%;
     text-align: left;
-    font-family: Lato;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5em;

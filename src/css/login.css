@@ -101,10 +101,9 @@
     text-align: center;
     border-radius: 30px;
     line-height: 150%;
-    text-align: center;
     margin-top: 5%;
     color: #FFFFFF; 
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5em;
@@ -152,7 +151,7 @@
       .titleSite {
         width: 80%;
         margin-top: 3%;
-        margin: auto;
+        /* margin: auto; */
         text-align: center;
       }
     

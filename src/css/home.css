@@ -104,11 +104,9 @@
   nav ul li {
     display: block;
     margin: 40px 20px;
-  }
-
-  nav li {
     padding: 10px 60px;
   }
+
 
   nav ul {
     position: fixed;
