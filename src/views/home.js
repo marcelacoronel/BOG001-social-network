@@ -10,20 +10,17 @@ export default () => {
         <button id="start" class="appStartbtn btn">Ingresar</button>
          <img id="mobileMain-img" src= "/src/img/Home-mobile.svg">
          </div> `;
-
-  const nav = document.getElementById('headerNav');
-  nav.style.display = 'block';
-
+  // Variables
   const divElement = document.createElement('div');
   divElement.innerHTML = view;
-
+  const nav = document.getElementById('headerNav');
   const buttonStartApp = divElement.querySelector('#start');
-
+  nav.style.display = 'block';
+  // Funciones
   function userLoginAccount() {
     window.location.hash = '#/login';
   }
-
+  // Listener
   buttonStartApp.addEventListener('click', userLoginAccount);
-
   return divElement;
 };

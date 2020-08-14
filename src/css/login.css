@@ -1,0 +1,296 @@
+/*VISTA MONITORES DE ESCRITORIO CON 1366PX O MAS*/
+/* || Log In page*/
+.containerView{
+    display: inline-block;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    align-items: center;
+    font-size: 1.3em;
+    width: 100%;
+    height:auto;
+  }
+    
+  .containerImgTitle{
+    height: auto;
+    width: 61%;
+    flex-direction: column;
+    margin-top: 13vh;
+    text-align: center; 
+  }
+    
+  .containerImgTitle img{
+    width: 85%;
+  }
+  
+  .titleSite {
+    width: 100%;
+  }
+  
+  .titleSite img{
+    width: 50%;
+  }
+  
+  .containerForms{
+    flex-flow: column nowrap;
+    background-color: var(--color-blue) ;
+    border-radius: 50px;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    left: 58%;
+    top: 8%;
+    bottom: 8%;
+  }
+    
+  .containerForms h2{
+    font-weight: normal;
+    text-align: center;
+    margin-top: 15%;
+    font-size: 2.8em;
+    margin-bottom: 0;
+  }
+    
+  .form{
+    text-align: left;   
+    margin-top: 10%;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    line-height: 3em;
+  }
+    
+  .inputsForm{
+    display: block;
+    margin: auto;
+    justify-content: center;
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    }
+    
+  .form input{
+    border-radius: 35px;
+    width: 100%;
+    line-height: 1em;
+    box-sizing: border-box;
+    margin: auto;
+    text-align: center;
+    font-size: 1.3em;
+  }
+    
+  .inputForm{
+    border: 1px solid #525050;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    font-size: 1em;
+    line-height: 3%;
+    }
+    
+  .form label{
+    font-family: 'Roboto', sans-serif;
+    line-height: 2%;
+    font-weight: bold;
+    color: #FFFFFF;
+    }
+  
+  .imgSignInMobile{
+    display: none;
+  }
+  
+  .btnForm{
+    background-color: var(--color-pink);
+    width: 100%;
+    text-align: center;
+    border-radius: 30px;
+    line-height: 130%;
+    margin-top: 10%;
+    color: #FFFFFF; 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+  }
+  
+  .reset, .toggle{
+    font-family: 'Roboto', sans-serif;
+    margin: 5px 0;
+    text-align: center;
+  }
+  .containerView .reset a{
+   list-style: none;
+   text-decoration: none;
+   margin-bottom: 5px;
+   color: var(--color-pink)
+  }
+        
+  .containerView .toggle a{
+    list-style: none;
+    color: var(--color-pink);
+  }
+  
+  #eye {
+    position: absolute;
+    font-size: 1.8em;
+    margin-left: -11%;
+    color: var(--color-blue);
+    margin-top: 1.1vh;
+    cursor: pointer;
+  }
+   
+  /* || END Log In page*/
+
+  /*VISTA TABLET LANDSCAPE y MONITORES DE ESCRITORIO VIEJOS*/
+@media only screen and (min-width:1024px) and (max-width:1365px){
+    /* || Log In page*/
+  
+    .containerImgTitle img{
+      width: 90%;
+    }
+  
+    .titleSite img{
+      width: 60%;
+    }
+} 
+
+/*VISTA TABLET EN VERTICAL, DISPLAY SMARTHPHONE EN LANDSCAPE*/
+@media only screen and (min-width:768px) and (max-width:1023px){
+    /* || Log In page*/
+      
+  .containerView{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .containerImgTitle{
+    width: 100%;
+    margin-top: 0;
+    z-index: 1;  
+  }
+ 
+  .titleSite {
+    width: 80%;
+    top: 3%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .titleSite img{
+    width: 80%;
+  }
+  
+  .containerForms{
+    width: 94%;
+    position: absolute;
+    left: 3%;
+    top: 40%;
+    right: 3%;
+    bottom: 3%;
+  }
+  
+  .containerForms h2{
+    margin-top: 15%;
+    margin-bottom: 0;
+  }
+     
+  .imgSignInDesktop{
+    width: 100%;
+    position: absolute;
+    top: 5%;
+  }
+
+  .form{
+    line-height: 2em;
+    margin-top: 5%;
+  }
+  #eye {
+    margin-left: -8%;
+    margin-top: 0.5vh;
+  }
+}
+/* VISTA CELULARES*/
+@media only screen and (max-width:420px){
+
+  /* || Log In */
+.containerView{
+  display: block;
+  background-color:white ;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  color: var(--color-blue);
+  width: 100%;
+  height: 90vh;
+}
+
+.imgSignInDesktop{
+  display: none;
+}
+.containerImgTitle img{
+  width: 50%;
+}
+
+.imgSignInMobile{
+  width: 100%;
+  display: block;
+  top: 0;
+  position: absolute;
+}
+
+.imgSignInMobile img{
+  width: 100%;
+}
+
+.titleSite {
+  display: none;
+}
+
+.containerForms{
+  display: block;
+  background-color:white;
+  width: 100%;
+  left: 0;
+  top: 45%;
+}
+
+.containerForms h2{
+ display: none;
+}
+
+.form{
+  line-height: 2.5em;
+  margin-top: 2.5%;
+}
+
+.form input{
+  line-height: 1em;
+ }
+
+ .form label{
+    color: var(--color-blue);
+  }
+
+ .btnForm{
+  margin-top: 8%; 
+}
+
+.reset a{
+  color: var(--color-blue);
+}
+
+.toggle{
+  color: rgb(41, 40, 40);
+  margin-top: 5px;
+}
+
+.toggle a{
+  color: var(--color-blue);
+}
+
+#eye {
+  margin-left: -11%;
+  margin-top: 0.5vh;
+}
+
+.eye {
+  left: -10% ;
+}

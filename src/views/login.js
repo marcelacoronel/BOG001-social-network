@@ -1,3 +1,4 @@
+import { signInUsers } from '../components/auth.js';
 
 export default () => {
   const view = `
@@ -18,14 +19,16 @@ export default () => {
               <h2>Bienvenido</h2>
               <div class="form">
                   
-                  <form action="#" class="inputsForm">
-                      <Label>EMAIL<br />
+                  <form action="#" class="inputsForm" id="logInForm">
+                      <Label>EMAIL</br>
                           <input id="email" class="inputForm" type="email" placeholder="pepitoperez@gmail.com" required>
                       </Label><br />
-                      <Label>CONTRASEÑA<br />
-                          <input id ="password" class="inputForm" type="password" placeholder="*********" required>
-                      </Label><br/>
-                      <button id="btn" class="btnForm" >LOG IN</button> 
+                      <Label>CONTRASEÑA</br>
+                          <input id ="password" class="inputForm" type="password" placeholder="*********"  pattern=".{8,}" required>
+                          <i id ="eye" class="far fa-eye"></i>
+                          <span id="messagePass"></span>
+                        </Label></br>
+                      <button id="btn" class="btnForm">LOG IN</button> 
                   </form>
               </div>
           
@@ -45,11 +48,34 @@ export default () => {
            </div>
        </div>
   `;
+  // Variables
   const nav = document.getElementById('headerNav');
-  nav.style.display = 'none';
   const divElement = document.createElement('div');
   divElement.classList = 'containerView';
   divElement.innerHTML = view;
+  const logInForm = divElement.querySelector('#logInForm');
+  const eye = divElement.querySelector('#eye');
+  nav.style.display = 'none';
 
+  // Funciones
+  // Ingreso de usuario
+  logInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    signInUsers(email, password);
+    logInForm.reset();
+  });
+
+  function showHidePassword() {
+    const x = document.getElementById('password');
+    if (x.type === 'password') {
+      x.type = 'text';
+    } else {
+      x.type = 'password';
+    }
+  }
+
+  eye.addEventListener('click', showHidePassword);
   return divElement;
 };
