@@ -79,7 +79,7 @@
   .inputForm{
     border: 1px solid #525050;
     padding: 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.8);
     font-size: 1em;
     }
     
@@ -101,7 +101,7 @@
     text-align: center;
     border-radius: 30px;
     line-height: 150%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     color: #FFFFFF; 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -125,6 +125,24 @@
     list-style: none;
     color: var(--color-pink);
   }
+
+  #eye{
+    z-index: 1;
+    transform: translate(420px,-60px);
+    color: #364c63;
+  }
+
+  #userMessage {
+    color: #e4a058;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    margin: 0;
+  }
+
+
+
+  /* ||---Pantalla entre 1024 y 1365 */
 @media only screen and (min-width:1024px) and (max-width:1365px){  
     
 .containerImgTitle img{
@@ -135,7 +153,16 @@
     width: 60%;
   }
 
+  #eye{
+    transform: translate(280px,-60px);
+    
+  }
+
+
+  
 }
+
+/* |Tablet 768px| */
 @media screen  and (max-width:768px){
     .containerView{
         display: flex;
@@ -189,7 +216,14 @@
         transform: translateY(-70px);
       }
 
+      #eye{
+        transform: translate(460px,-45px);
+        
+      }
+
 }
+
+
 @media screen  and (max-width:425px){
     .containerView{
         display: block;
@@ -263,6 +297,9 @@
       .toggle a{
         color: var(--color-blue);
       }
-      
+      #eye{
+        transform: translate(250px,-40px);
+        
+      }
 
 }

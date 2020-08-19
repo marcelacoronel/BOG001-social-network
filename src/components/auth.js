@@ -91,6 +91,9 @@ export const signInUsers = (email, password) => {
     })
     .catch((error) => {
       console.log(error);
+      const invalidUser = document.getElementById('userMessage');
+      const warningLogin = 'Los datos de autenticación no son válidos';
+      invalidUser.innerHTML = warningLogin;
       // alert('no estas registrado' + error);
     });
 };

@@ -21,13 +21,14 @@ export default () => {
                 
                 <form action="#" class="inputsForm" id="logInForm">
                     <Label>Usuario<br />
-                        <input id="email"class="inputForm" type="text" placeholder="Usuario" required>
+                        <input id="email" class="inputForm" type="text" placeholder="Usuario" required>
                     </Label><br />
+                    
                     <Label>Password<br />
                         <input id ="password" class="inputForm" type="password" placeholder="Contraseña" required>
                         <i id ="eye" class="far fa-eye"></i>
-                    
                     </Label><br />
+                    <span id="userMessage"></span>
                     <button id="btn" class="btnForm" >Sign In</button> 
                     
                 </form>
@@ -40,6 +41,7 @@ export default () => {
                 <label for="cuenta">No tienes cuenta?</label> 
                 <a class="cuenta" href="#/sign-up">Sign Up</a>
             </div>
+          
         </div>
 `;
   // Variables
@@ -54,13 +56,35 @@ export default () => {
   // Funciones
 
   // Ingreso de usuario
-
   logInForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    let warningAuth = '';
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    signInUsers(email, password);
-    logInForm.reset();
+    const valEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const authMessage = document.getElementById('userMessage');
+    let enterLogin = true;
+
+    // VALIDAR EMAIL
+    if (!valEmail.test(email)) {
+      warningAuth += 'Email no válido -   ';
+      authMessage.innerHTML = warningAuth;
+      enterLogin = false;
+    }
+
+    // VALIDAR CONSTRASEÑA
+    const valPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    if (!valPass.test(password)) {
+      warningAuth += '  Contraseña es incorrecta';
+      authMessage.innerHTML = warningAuth;
+      enterLogin = false;
+    }
+
+    // INVOCAR FUNCIÓN SIGNUSERS SI EMAIL Y PASSWORD SON CORRECTOS
+    if (enterLogin) {
+      signInUsers(email, password);
+      logInForm.reset();
+    }
   });
 
   // Mostrar y ocultar contraseña
