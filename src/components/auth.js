@@ -1,6 +1,6 @@
 // references
 const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+// const provider = new firebase.auth.GoogleAuthProvider();
 
 // Estado del usuario
 
@@ -11,14 +11,6 @@ function userState() {
       localStorage.setItem('usuario', JSON.stringify(userId));
       // User is signed in.
       console.log(userId);
-      // const displayName = user.displayName;
-      // const email = user.email;
-      // const emailVerified = user.emailVerified;
-      // console.log(user.emailVerified);
-      // const photoURL = user.photoURL;
-      // const isAnonymous = user.isAnonymous;
-      // const uid = user.uid;
-      // const providerData = user.providerData;
       console.log('usuario activo');
       // ...
     } else {
@@ -55,16 +47,18 @@ export const createUsers = (email, password) => {
 };
 
 // Crear un usuario con google
-export const createUserswithGoogle = () => {
+export const createUserswithGoogle = (provider) => {
   auth
     .signInWithPopup(provider)
-    .then(() => {
+    .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       window.location.hash = '#/profile';
       console.log('google user');
       // const token = result.credential.accessToken;
       // The signed-in user info.
-      // const user = result.user;
+      const user = result.user;
+      console.log(user)
+
       // ...
     })
     .catch((error) => {
@@ -101,7 +95,6 @@ export const userSignOff = () => {
     .signOut()
     .then(() => {
       console.log('salir');
-      window.location.hash = '';
     })
     .catch((error) => {
       console.log(error.message);

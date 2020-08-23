@@ -59,7 +59,10 @@ export default () => {
   divElement.classList = 'SingUp-Container';
   divElement.innerHTML = view;
 
+  const eye = divElement.querySelector('#eye');
   const boton = divElement.querySelector('.btn');
+
+
   // Funciones
 
   // Funcion registro del usuario
@@ -78,8 +81,6 @@ export default () => {
   });
 
   // Funcion mostrar y ocultar contraseña
-
-  const eye = divElement.querySelector('#eye');
 
   eye.addEventListener('click', () => {
     const x = document.querySelector('.passSingUp');

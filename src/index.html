@@ -8,10 +8,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
     <link rel="stylesheet" href="./style.css">
     <title>SoulMates</title>
+
+  </head>
+
+  <body>
+    <header id="headerNav">
+      <nav>
+        <label for="menu">&#9776</label>
+        <input type="checkbox" id="menu">
+        <ul>
+          <li><a href="">HOME</a></li>
+          <li><a href="#/login">INGRESO</a></li>
+          <li><a href="#/sign-up">REGISTRO</a></li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="root"></section>
+    </main>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
@@ -29,31 +50,11 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      //var storage = firebase.storage();
     </script>
-  </head>
-
-  <body>
-    <header id="headerNav">
-      <nav>
-        <label for="menu">&#9776</label>
-        <input type="checkbox" id="menu">
-        <ul>
-          <li><a href="">HOME</a></li>
-          <li><a href="#/login">LOGIN</a></li>
-          <li><a href="#/sign-up">REGISTRO</a></li>
-
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <section id="root"></section>
-    </main>
-
 
 
     <script type="module" src="main.js"></script>
   </body>
 
   </html>
+  
