@@ -1,6 +1,10 @@
+
+import { addUsersData } from '../components/database.js';
+
 // references
 const auth = firebase.auth();
-// const provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
+
 
 // Estado del usuario
 
@@ -47,22 +51,21 @@ export const createUsers = (email, password) => {
 };
 
 // Crear un usuario con google
-export const createUserswithGoogle = (provider) => {
+export const createUserswithGoogle = () => {
   auth
     .signInWithPopup(provider)
-    .then((result) => {
+    .then(() => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       window.location.hash = '#/profile';
       console.log('google user');
+      addUsersData(User, id);
       // const token = result.credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
-      console.log(user)
-
+      // const user = result.user;
       // ...
     })
     .catch((error) => {
-      console.log(`error google${error}`);
+      console.log(`error google ${error}`);
       // Handle Errors here.
       // var errorCode = error.code;
       // var errorMessage = error.message;
@@ -100,3 +103,18 @@ export const userSignOff = () => {
       console.log(error.message);
     });
 };
+
+
+// Recuperar contraseña usuario
+export const recoverPass = (email) =>{
+  auth
+    .sendPasswordResetEmail(email)
+    .then(() => {
+      const msjEmailSend = document.querySelector('#EmailSend');  
+      msjEmailSend.style.display = 'block';
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+}
+

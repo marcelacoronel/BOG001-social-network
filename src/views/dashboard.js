@@ -1,4 +1,6 @@
-import { userSignOff } from '../components/auth.js';
+import {
+  userSignOff
+} from '../components/auth.js';
 import {
   imageStorage,
   // getUserData,
@@ -237,7 +239,7 @@ export default () => {
     const docRef = firebase.firestore().collection('user').doc(idex);
     docRef
       .get()
-    
+
       .then((doc) => {
         if (doc.exists) {
           const data = doc.data();
@@ -405,17 +407,17 @@ export default () => {
             heartLike.forEach((heart) => {
               heart.addEventListener('click', () => {
                 console.log('heart');
-                heart.style.color = '#ff7851';
-                counter++;
+                heartLike.style.color = '#ff7851';
+                counter += 1;
                 console.log(counter);
               });
             });
             // BOTON DELETE POST
             btnDeletePost.forEach((btnuno) => {
-              btnuno.addEventListener('click', async (e) => {
+              btnuno.addEventListener('click', (e) => {
                 console.log('click');
-                await deletePostUserData(idex, e.target.dataset.id);
-                await deletePostImageData(
+                deletePostUserData(idex, e.target.dataset.id);
+                deletePostImageData(
                   `${pathUserStorage}/post/${postQ.id}/${postQ.id}`,
                 );
               });
