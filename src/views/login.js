@@ -31,7 +31,6 @@ export default () => {
               <button id="btn" class="btnForm">LOG IN</button> 
             </form>
           </div>
-
           <div class="loginGoogle">
             <p>-- O --</p>
             <button class="btnLogGoogle">
@@ -56,7 +55,6 @@ export default () => {
             <span><center>¡Please!</center></span>
           </div>
         </div>
-
         <div class="overlay" id="overlay">
           <div class="popup" id="popup">
             <a href="#/login" id="btn-close-popup" class="btn-close-popup">

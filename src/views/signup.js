@@ -27,7 +27,6 @@ export default () => {
                     <i class="far fa-eye eye"></i>
                     <input type="submit" class="btn" value="SIGN IN">
                 </form>
-
                 <div class="signupGoogle">
                   <p>-- O --</p>
                   <button class="btnGoogle">
@@ -35,19 +34,16 @@ export default () => {
                     <p>Registrarse con Google</p>
                   </button>
                 </div>
-
                 <span>
                   <p>Ya tienes cuenta? <a href="#/login">Log in</a></p>
                 </span>
             </div>
         </div>
-
         <div class=bg-singup>
             <img class="desktop-SU" src="./img/SingUp-desktop.svg" alt="bg_singup">
             <img class="tablet-SU" src="./img/SingUp-tablet.png" alt="bg_singup">
             <img class="mobile-SU" src="./img/SingUp-mobile.png" alt="bg_singup">
         </div>
-
         <div id="landscape">
             <div>
                 <img src="./img/giro@2x.png" alt=""></br>

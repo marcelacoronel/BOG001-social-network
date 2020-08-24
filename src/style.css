@@ -4,21 +4,20 @@ Description: SPA
 Authors: Diana Gutierrez/Marcela Coronel/Laura Lopez
 */
 
-/* || views Style */
-@import url("./css/home.css");
-@import url("./css/login.css");
-@import url("./css/signup.css");
-@import url("./css/404.css");
-
 /* || Typography */
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap");
 
-/* || General styles */
 
-/*
-font-family: 'Fredoka One', cursive;
-font-family: 'Roboto', sans-serif;
-*/
+/* || STYLE VIEWS*/
+@import "css/404.css";
+@import "css/dashboard.css";
+@import "css/home.css";
+@import "css/login.css";
+@import "css/profile.css";
+@import "css/signup.css";
+
+
+/* || General styles */
 
 :root {
   --color-blue: #364c63;
@@ -34,6 +33,9 @@ body {
 button{
   border: none;
   cursor: pointer;
+}
+input{
+  outline:none;
 }
     
 /*VISTA DISPOSITIVO CELULAR EN LANDSCAPE*/
@@ -55,4 +57,6 @@ button{
         color: black;
     } 
 }
+
+
 

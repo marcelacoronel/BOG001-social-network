@@ -1,8 +1,10 @@
+
 import { addUsersData } from '../components/database.js';
 
 // references
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
+
 
 // Estado del usuario
 
@@ -13,14 +15,6 @@ function userState() {
       localStorage.setItem('usuario', JSON.stringify(userId));
       // User is signed in.
       console.log(userId);
-      // const displayName = user.displayName;
-      // const email = user.email;
-      // const emailVerified = user.emailVerified;
-      // console.log(user.emailVerified);
-      // const photoURL = user.photoURL;
-      // const isAnonymous = user.isAnonymous;
-      // const uid = user.uid;
-      // const providerData = user.providerData;
       console.log('usuario activo');
       // ...
     } else {
@@ -104,12 +98,12 @@ export const userSignOff = () => {
     .signOut()
     .then(() => {
       console.log('salir');
-      window.location.hash = '';
     })
     .catch((error) => {
       console.log(error.message);
     });
 };
+
 
 // Recuperar contraseña usuario
 export const recoverPass = (email) =>{
@@ -123,3 +117,4 @@ export const recoverPass = (email) =>{
       console.log(error.message);
     });
 }
+
