@@ -19,7 +19,7 @@ describe('createUsers', () => {
   it('debería ser una función', () => {
     expect(typeof createUsers).toBe('function');
   });
-  it('debería retornar mar@gmail.com , ', () => {
+  it('debería retornar mar@gmail.com , M65%casa9', () => {
     const newUser = createUsers('mar@gmail.com', 'M65%casa9');
     expect(newUser).toBe('mar@gmail.com , M65%casa9');
   });

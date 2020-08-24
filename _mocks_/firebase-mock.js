@@ -14,20 +14,20 @@
 
 const auth = {
   createUserWithEmailAndPassword: (email, password) => {
-    const emailChar = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    const passChar = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    // const emailChar = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    // const passChar = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
     return new Promise ((resolve, reject) => {
       const user = {
         email: email,
         password: password
       };
-      if (emailChar.test(email) && passChar.test(password)) {
+      // if (emailChar.test(email) && passChar.test(password)) {
         user.email;
         user.password;
-      } else {
-         reject('error');
-      };
-      resolve(email, password);
+      // } else {
+      //    reject('error');
+      // };
+      resolve(user.email, user.password);
     })
   },
 
