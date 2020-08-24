@@ -1,4 +1,4 @@
-import { createUsers } from '../components/auth.js';
+import { createUsers, createUserswithGoogle } from '../components/auth.js';
 
 export default () => {
   const view = `
@@ -8,11 +8,8 @@ export default () => {
                 <img src="./img/logo_signup.svg" alt="logo_singup">
             </div>
             <div class="form-Singup" >
-                <h2>Registrate</h2>
+                <h2>Registrate</h2>                
                 <form action="" class="form-SU-Desktop-tablet" id="form">
-                    <label for="nameSignUp">NOMBRE
-                    <input class="nameSignUp" type="text" placeholder="pepito perez" required>
-                    </label>
                     <label for="emailSignUp">EMAIL
                     <input class="emailSignUp"  type="email" placeholder="pepitoperez@hotmail.com" required>
                     </label>
@@ -20,7 +17,7 @@ export default () => {
                     <input class="passSignUp" type="password" placeholder="***********" pattern=".{8,}" required>
                     <i class="far fa-eye eye"></i>
                     </label>
-                    <input class="btn" type="submit" value="SING IN">
+                    <input class="btn" type="submit" value="SIGN IN">
                   </form>
                                   
                 <form action="" class="form-SU-movil" id="form">
@@ -28,8 +25,17 @@ export default () => {
                     <input class="emailSignUp" type="email" placeholder="Email" required>
                     <input class="passSignUp" type="password" placeholder="Contraseña" pattern=".{8,}" required>
                     <i class="far fa-eye eye"></i>
-                    <input type="submit" class="btn" value="SING IN">
+                    <input type="submit" class="btn" value="SIGN IN">
                 </form>
+
+                <div class="signupGoogle">
+                  <p>-- O --</p>
+                  <button class="btnGoogle">
+                    <img src="./img/icons-google-50.png" alt="">
+                    <p>Registrarse con Google</p>
+                  </button>
+                </div>
+
                 <span>
                   <p>Ya tienes cuenta? <a href="#/login">Log in</a></p>
                 </span>
@@ -37,9 +43,9 @@ export default () => {
         </div>
 
         <div class=bg-singup>
-            <img class="desktop-SU" img src="./img/SingUp-desktop.svg" alt="bg_singup">
-            <img class="tablet-SU" img src="./img/SingUp-tablet.png" alt="bg_singup">
-            <img class="mobile-SU" img src="./img/SingUp-mobile.png" alt="bg_singup">
+            <img class="desktop-SU" src="./img/SingUp-desktop.svg" alt="bg_singup">
+            <img class="tablet-SU" src="./img/SingUp-tablet.png" alt="bg_singup">
+            <img class="mobile-SU" src="./img/SingUp-mobile.png" alt="bg_singup">
         </div>
 
         <div id="landscape">
@@ -57,6 +63,7 @@ export default () => {
   divElement.innerHTML = view;
   const boton = divElement.querySelector('.btn');
   const eye = divElement.querySelectorAll('.eye');
+  const btnGoogle = divElement.querySelector('.btnGoogle');
   nav.style.display = 'none';
 
   // Funciones
@@ -86,6 +93,7 @@ export default () => {
     eye[i].addEventListener('click', showHidePassword);
   }
   boton.addEventListener('click', createNewUsers);
+  btnGoogle.addEventListener('click', createUserswithGoogle);
 
   return divElement;
 };

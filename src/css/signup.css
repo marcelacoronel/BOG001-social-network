@@ -23,7 +23,7 @@
   }
   
   .container-form img {
-   margin-top: 2%;
+   margin-top: 1%;
   }
   
   .container-form h2 {
@@ -33,7 +33,7 @@
     font-family: 'Fredoka One', cursive;
     font-style: normal;
     font-weight: normal;
-    font-size: 2.8em;
+    font-size: 2.5em;
     text-align: center;
     color: #FFFFFF;
     text-transform: uppercase;
@@ -50,7 +50,7 @@
   .form-Singup .form-SU-Desktop-tablet {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 70%;
   }
   
   .form-SU-movil {
@@ -61,8 +61,8 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.4em;
-    line-height: 150%;
+    font-size: 1.2em;
+    line-height: 200%;
     color: #000000;
     width: 100%;
     }
@@ -78,23 +78,43 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.5em;
-    line-height: 130%;
+    font-size: 1.2em;
+    line-height: 150%;
   }
   
   .form-Singup input[type="submit"] {
     background: var(--color-blue);
     width: 100%;
     border-radius: 30px;
-    line-height: 200%;
+    line-height: 180%;
     text-align: center;
     margin-top: 5%;
     color: #FFFFFF; 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.5em;
+    font-size: 1.3em;
     cursor: pointer;
+  }
+  
+  .signupGoogle p{
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;   
+  }
+
+  .btnGoogle {
+    width: 100%;
+    display: inline-flex;
+    border-radius: 30px;
+  }
+
+  .btnGoogle p {
+    color: var(--color-blue);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;  
   }
   
   .form-Singup span {
@@ -152,9 +172,9 @@
 
   .eye {
     position: absolute;
-    font-size: 1.8em;
-    margin-left: 73%;
-    margin-top: -5.5vh;
+    font-size: 1.5em;
+    margin-left: 65%;
+    margin-top: -4.6vh;
     color: var(--color-blue);
     z-index: 1;
     cursor: pointer;
@@ -206,7 +226,7 @@
         display: none;
     }
     .eye {
-      margin-top: -4.5vh;
+      margin-top: -3.4vh;
     }
 }
 /* VISTA CELULARES*/
@@ -297,7 +317,7 @@
   }
   .eye {
     margin-top: -18.5%;
-    margin-left: 89%;
+    margin-left: 92%;
   }
 }
 
