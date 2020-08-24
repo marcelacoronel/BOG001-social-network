@@ -29,3 +29,10 @@ export default () => {
 
   return divElement;
 };
+
+  }
+  // Listener
+  buttonStartApp.addEventListener('click', userLoginAccount);
+
+  return divElement;
+};
