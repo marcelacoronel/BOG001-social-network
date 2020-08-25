@@ -17,24 +17,27 @@ const auth = {
     // const emailChar = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     // const passChar = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
     return new Promise ((resolve, reject) => {
-      const user = {
-        email: email,
-        password: password
-      };
-      // if (emailChar.test(email) && passChar.test(password)) {
-        user.email;
-        user.password;
-      // } else {
-      //    reject('error');
+      // const user = {
+      //   email: email,
+      //   password: password
       // };
-      resolve(user.email, user.password);
+      if (emailChar.test(email) && passChar.test(password)) {
+        // user.email;
+        // user.password;
+        // console.log(user.email, user.password);
+        resolve(email, password);
+      } else {
+         reject(error);
+      };
+      // reject('error');
     })
   },
 
       signInWithEmailAndPassword: (email, password) => {
+        console.log(email, password);
         return new Promise ((resolve, reject) => {
           resolve(email, password);
-          reject('error')
+          reject(error)
       })
     }
   }

@@ -36,22 +36,23 @@ export const createUsers = (email, password) => {
   firebase.auth
     .createUserWithEmailAndPassword(email, password)
     .then((cred) => {
+      console.log(email, password);
       console.log(cred.user);
       //   return db.collection('userData').doc(cred.user.uid).set({
       // // return db.collection('userData').doc('usuario').set({
       //     Email: email,
       //     Password: password,
       //   });
-
       // console.log(cred.user);
       // console.log(db.collection('User').doc(cred.user.uid));
 
       // console.log('verificado');
     }).catch((error) => {
       // Handle Errors here.
-      console.log(error.message);
+      console.log(error);
       // ...
     });
+    return (`${email}, ${password}`);
 };
 
 // Crear un usuario con google
@@ -85,9 +86,9 @@ export const signInUsers = (email, password) => {
   firebase.auth
     .signInWithEmailAndPassword(email, password)
     .then((cred) => {
+      console.log(email, password);
       console.log(cred.user);
       window.location.hash = '#/dashboard';
-      // alert('bienvenido');
     })
     .catch((error) => {
       console.log(error);
@@ -96,6 +97,7 @@ export const signInUsers = (email, password) => {
       invalidUser.innerHTML = warningLogin;
       // alert('no estas registrado' + error);
     });
+  return (`${email}, ${password}`);
 };
 
 // Cerrar sesion usuario

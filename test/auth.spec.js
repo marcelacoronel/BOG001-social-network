@@ -3,26 +3,20 @@ import { signInUsers, createUsers } from '../src/components/auth.js';
 
 global.firebase = MockFirebase();
 
-// const createFirebaseMock = () => {
-//   const mock = {
-//     onAuthStateChanged: null,
-//     auth: () => ({
-//       onAuthStateChanged: (cb) => {
-//         mock.onAuthStateChangedCallback = cb;
-//       },
-//     }),
-//   };
-//   return mock;
-// };
-
 describe('createUsers', () => {
   it('debería ser una función', () => {
     expect(typeof createUsers).toBe('function');
   });
   it('debería retornar mar@gmail.com , M65%casa9', () => {
     const newUser = createUsers('mar@gmail.com', 'M65%casa9');
-    expect(newUser).toBe('mar@gmail.com , M65%casa9');
+    console.log(newUser);
+    expect(newUser).toBe('mar@gmail.com, M65%casa9');
   });
+  // it.skip('Debería retornar error con credenciales incorrectas', () => {
+  //   const newUser = createUsers('mar@gmail.com', '12345');
+  //   console.log(newUser);
+  //   expect(newUser).toBe('error');
+  // });
 });
 
 describe('signInUsers', () => {
@@ -30,32 +24,15 @@ describe('signInUsers', () => {
     expect(typeof signInUsers).toBe('function');
   });
 
-  // it('Debería iniciar sesión con las credenciales correctas', () => {
-  //   return signInUsers(email, password).then;
-  //   expect(loginUser).toBe('mar@gmail.com', 'M65%casa9');
-  // });
   it('Debería iniciar sesión con las credenciales correctas', () => {
     const loginUser = signInUsers('mar@gmail.com', 'M65%casa9');
     console.log(loginUser);
     expect(loginUser).toBe('mar@gmail.com, M65%casa9');
   });
 
-
-//   it('Should show SignIn when auth state changes and no user', () => {
-//     const firebase = createFirebaseMock();
-//     expect(firebase.auth.mock.calls.length).tobe(1);
-//   });
+  it('Debería retornar error con credenciales incorrectas', () => {
+    const loginUser = signInUsers('mar@gmail.com', '12345');
+    console.log(loginUser);
+    expect(loginUser).toBe('error');
+  });
 });
-
-// describe("collection('user')", () => {
-//   it('should add data to a collection', () => {
-//     const db = firebase.firestore();
-//     const output = db.collection('user').add({
-//       City: 'bogota',
-//       DateBirth: '2020-07-28',
-//       Name: 'pepo png',
-//       Phone: '626697',
-//     });
-//     return output;
-//   });
-// });
