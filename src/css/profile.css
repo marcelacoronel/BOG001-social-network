@@ -16,9 +16,9 @@
   transform: translateY(10%);
   width: 100vw;
   height: 100vh;
-  background-position: bottom;
   background: url(../img/profile-form.svg) no-repeat;
   background-size: 90%;
+  background-position: bottom;
   float: right;
 }
 .form-image-title {

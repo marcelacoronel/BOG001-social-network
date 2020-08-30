@@ -2,7 +2,7 @@ import Home from '../views/home.js';
 import signup from '../views/signup.js';
 import login from '../views/login.js';
 import profile from '../views/profile.js';
-import dashboard from '../views/dashboard.js';
+import postDashboard from '../views/postDashboard.js';
 import error from '../views/404.js';
 
 const content = document.getElementById('root');
@@ -19,7 +19,7 @@ export const router = (route) => {
     case '#/sign-up':
       return content.appendChild(signup());
     case '#/dashboard':
-      return content.appendChild(dashboard());
+      return content.appendChild(postDashboard());
     case '#/profile':
       return content.appendChild(profile());
     default:
@@ -53,4 +53,3 @@ export const router = (route) => {
 //     })
 
 //     module.exports = route;
-

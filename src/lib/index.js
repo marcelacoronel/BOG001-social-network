@@ -1,4 +1,4 @@
-export const validateEmailAndPass = (email,password) => {
+export const validateEmailAndPass = (email, password) => {
   let warningAuth = '';
   const valEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const authMessage = document.getElementById('messagePass');
@@ -15,10 +15,7 @@ export const validateEmailAndPass = (email,password) => {
     authMessage.innerHTML = warningAuth;
     return enterLogin = false;
   }
-
-  else{
+  else {
     return true
   }
-
 };
-

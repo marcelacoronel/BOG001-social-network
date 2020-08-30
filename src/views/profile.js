@@ -1,4 +1,4 @@
-import { addUsersData, imageStorage} from '../components/database.js';
+import { addUsersData, imageStorage } from '../components/database.js';
 
 export default () => {
   const view = `
@@ -115,6 +115,7 @@ export default () => {
   const petName = divElement.querySelector('#namePet');
   const petBreed = divElement.querySelector('#breedPet');
   const petAge = divElement.querySelector('#agePet');
+  const petType = divElement.querySelector('input[name="pet"]:checked');
   const defaultImage = divElement.querySelector('.default-image');
 
   // FORM VIEW
@@ -155,12 +156,11 @@ export default () => {
   formProfile.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('funciona');
-
     // ID DEL USUARIO
     const user = JSON.parse(localStorage.getItem('usuario'));
     const id = user.uid;
     console.log(id);
-
+    console.log(petType.value);
     // INFORMACION DEL PERFIL PARA SUBIR A FIRESTORE
     const User = {
       Name: userName.value,
@@ -171,23 +171,24 @@ export default () => {
         PetName: petName.value,
         PetBreed: petBreed.value,
         PetAge: petAge.value,
+        PetType: petType.value,
       },
     };
 
     // SUBIR IMAGEN DE PERFIL A STORAGE
-    async function uploadImage() {
+    function uploadImage() {
       const file = inputPhoto.files[0];
       console.log(file);
       const path = `user/${id}/`;
       localStorage.setItem('pathStorage', path);
       console.log(localStorage.getItem('pathStorage'));
-      await imageStorage(`${path}/profile/`, id, file);
+      imageStorage(`${path}/profile/`, id, file);
     }
 
     // SUBIR INFORMACION A FIREBASE
-    async function uploadInfo() {
-      await uploadImage();
-      await addUsersData(User, id).then(() => {
+    function uploadInfo() {
+      uploadImage();
+      addUsersData(User, id).then(() => {
         window.location.hash = '#/dashboard';
       });
     }
@@ -201,77 +202,3 @@ export default () => {
 
   return divElement;
 };
-
-// UPDATE DATA
-
-// updateBtn.addEventListener('click', (e) =>{
-//   e.preventDefault();
-//   const newData = {
-//     Phone: userPhone.value
-//   };
-//   dataRef.update(newData)
-// })
-
-// span class='default-image'><i class='fas fa-paw'></i></span
-
-//   dataRef.child(autoId).set({
-//     User: {
-//       Name: userName.value,
-//       Email: userEmail.value,
-//       Phone: userPhone.value,
-//       DateBirth: userBirth.value,
-//       City: userCity.value,
-//       Pet: {
-//         PetName: petName.value,
-//         PetBreed: petBreed.value,
-//         PetAge: petAge.value,
-//       },
-//     },
-//   })
-
-// Get a reference to the database service
-// const database = firebase.database();
-
-// Get a reference to the db service
-// let db = firebase.firestore();
-// db.settings({ timestampsInSnapshots: true });
-
-//   db.collection('Users').get().then((snapshot)=>{
-// console.log(snapshot.docs)
-// snapshot.docs.forEach(doc =>{
-//   console.log(doc.data())
-// })
-//   })
-// const User = {
-//   Name: userName.value,
-//   Email: userEmail.value,
-//   Phone: userPhone.value,
-//   DateBirth: userBirth.value,
-//   City: userCity.value,
-//   Pet: {
-//     PetName: petName.value,
-//     PetBreed: petBreed.value,
-//     PetAge: petAge.value,
-//   },
-// };
-// db.collection('Users')
-//   .add(User)
-//   .then(function (docRef) {
-//     console.log('Document written with ID: ', docRef.id);
-//   })
-//   .catch(function (error) {
-//     console.error('Error adding document: ', error);
-//   });
-//   Name: userName.value,
-//   Email: userEmail.value,
-//   Phone: userPhone.value,
-//   DateBirth: userBirth.value,
-//   City: userCity.value,
-//   Pet: {
-//     PetName: petName.value,
-//     PetBreed: petBreed.value,
-//     PetAge: petAge.value,
-// },
-
-// const dataRef = database.ref('users');
-// const autoId = dataRef.push().key;

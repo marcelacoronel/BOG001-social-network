@@ -1,18 +1,9 @@
-/* header#userHeader {
-    height:15vh;
-    display: flex;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.404);
-}
-div#infoUser {
-    padding: 20px;
-    display: flex;
-}*/
+/*USER HEADER*/
 #userphoto{
     width: 80px;
     height: 80px;
     border-radius: 50%;
 } 
-
 hr {
     border: solid;
     border-width: 1px;
@@ -30,16 +21,12 @@ hr {
     margin-right: 5px;
     color: #fff;
   }
-  
- 
-  
   #user-header {
     background:white;
     position: fixed;
     width: 100vw;
     height: 15vh;
     margin: auto;
-    padding: 10px;
     padding: 10px;
     color:black;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.171);
@@ -102,17 +89,11 @@ hr {
     float: right;
     margin-top: 9px;
     margin-right: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  
-  
-  #signOff {
-    margin: 10px;
-    background:var(--color-blue);
-    padding: 10px;
-    color: white;
-    border-radius: 20px;
-}
 section.board {
   margin-top: 12%;
   display: flex;
@@ -125,18 +106,15 @@ section.board {
   height: 800px;
   margin: auto;
   border-radius: 10px;
-  height: 400px;
+  /*height: 300px;*/
   border: 3px solid rgb(122, 122, 122);
-  /* display: flex; */
-  margin: 10;
-  margin: 10px;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* padding-bottom: 10px; */
-  width: 50%;
+  display: flex;
+ /* margin: 10px;*/
+  width: 95%;
+  margin-top: 50px;
 }
 aside {
-  font-family:'Roboto';
+  font-family:'Roboto', sans-serif;
   display: flex;
   color: white;
   transform: translateX(750px);
@@ -176,7 +154,6 @@ textarea#description {
   margin-bottom: 10px;
   margin-top: 20px;
   width: 300px;
-  margin: auto;
 }
 button#submit-post {
   width: 200px;
@@ -282,33 +259,58 @@ img.post-header-avatar {
   font-size: 10px;
   color: #707070;
 }
-.soulmates-post-desc div name {
+.post-text{
+  font-size:15px;
+}
+/* .soulmates-post-desc div {
   display: inline-block;
   margin-right: 3px;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   font-weight: bold;
   color: #e1cbcf;
-}
+} */
 .soulmates-post-desc div i {
   color: #e1cbcf;
 }
 .soulmates-post-icons {
   display: flex;
   position: absolute;
-  width: 200px;
+  width: 400px;
   height: 30px;
-  left: 44px;
+  left: 10px;
   margin-top: 10px;
   overflow: hidden;
+  justify-content: space-around;
 }
 .soulmates-post-icons span {
-  display: inline-block;
+  font-family:'Roboto', sans-serif;
+  align-items: center;
+  display: flex;
   margin-right: 8px;
-  font-size: 20px;
+  font-size: 15px;
   color: #cecece;
 }
-
+.option-post-icons{
+  transform: translateX(180px);
+}
+#like,
+#edit,
+#trash{
+  color:#cecece;
+  font-size:20px;
+}
+.soulmates-post-icons button{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #cecece;
+  background: transparent;
+  margin-left: 30px;
+}
+.soulmates-post-icons button:hover{
+color: #949494;
+transition: .4s;
+}
 #postPhoto{
   display:none;
 }
@@ -335,19 +337,18 @@ cursor:pointer;
 
 /* Modal Content */
 .modal-content {
-  transform: translateY(50px);
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-    overflow:auto;
+  border-radius: 20px; 
+    transform: translateY(50px);
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    overflow: auto;
 }
 
 .userContent input {
@@ -370,6 +371,9 @@ cursor:pointer;
 .post-preview-image {
   display: none;
   width: 100%;
+}
+#title ,#description {
+    border: 1px solid gray;
 }
 
 /* Add Animation */
@@ -406,9 +410,101 @@ cursor:pointer;
 }
 
 /* likes*/
-span.heart:hover {
-  color: #ff7851;
+#like,
+#edit,
+#trash{
+  color:#cecece;
+  font-size:20px;
   cursor:pointer;
+}
+#like:hover{
+  color: #ff7851;
+  transition: .4s;
+}
+#edit:hover{
+  color: #949494;
+  transition: .4s;
+}
+#trash:hover{
+  color: #949494;
+  transition: .4s;
+}
+
+.liked-heart {
+  color: #ff7851;
+}
+
+/*Modal mensaje borrar post*/
+
+.modal-delete-container {
+  padding: 10px;
+  background: white;
+  width: 50%;
+  margin: 300px auto;
+  border-radius: 4px;
+  
+}
+.delete-post-title{
+  margin-top: 50px;
+    padding-left: 80px;
+    width: 400px;
+}
+.delete-post-content{
+  font-family: 'Roboto', sans-serif;
+  padding-left: 150px;
+  margin-top: -40px;
+}
+.modal-delete {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.modal-open {
+  z-index: 2;
+  display: block;
+  background-color:rgba(0,0,0,0.5);
+}
+
+.modal-delete-box-button{
+  padding: 10px;
+  text-align: center;
+}
+.modal-delete-box-button button {
+  color: white;
+  width: 100px;
+  padding: 10px;
+  background-color: #364c63;
+  border-radius: 20px;
+}
+
+.btn-delete {
+  padding: 8px 25px;
+  border: none;
+  border-radius: 4px;
+}
+.btn-delete:hover{
+  background-color:var(--color-pink);
+}
+.cancel:hover {
+  background-color: #7e8594;
+}
+
+/*BUTTONS HEADER NAV*/
+
+#addPost, 
+#mainPage,
+#signOff,
+#editUser{
+  color: #364c63bf;
+  font-size: 30px;
+  background: none;
+}
+
+#nav-btn button:hover{
+color:var(--color-blue);
 }
 
 @media screen  and (max-width:768px){

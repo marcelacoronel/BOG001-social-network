@@ -7,4 +7,3 @@ export default () => {
   divElement.innerHTML = view;
   return divElement;
 };
-

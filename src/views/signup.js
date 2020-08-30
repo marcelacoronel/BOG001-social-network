@@ -65,13 +65,14 @@ export default () => {
   // Funciones
   // Funcion registro del usuario
   function createNewUsers() {
-    const name = document.querySelector('.nameSignUp').value;
+    // const name = document.querySelector('.nameSignUp').value;
     const email = document.querySelector('.emailSignUp').value;
     const password = document.querySelector('.passSignUp').value;
 
     // console.log(name + email + password);
     // la llamamos para pasarle los parametros y usarla
     createUsers(email, password);
+    
   }
 
   // Funcion mostrar y ocultar contraseña
@@ -85,7 +86,7 @@ export default () => {
   }
 
   // Listener
-  for (let i = 0; i < eye.length; i++) {
+  for (let i = 0; i < eye.length; i += 1) {
     eye[i].addEventListener('click', showHidePassword);
   }
   boton.addEventListener('click', createNewUsers);

@@ -10,7 +10,7 @@ Authors: Diana Gutierrez/Marcela Coronel/Laura Lopez
 
 /* || STYLE VIEWS*/
 @import "css/404.css";
-@import "css/dashboard.css";
+@import "css/postDashboard.css";
 @import "css/home.css";
 @import "css/login.css";
 @import "css/profile.css";
@@ -33,9 +33,11 @@ body {
 button{
   border: none;
   cursor: pointer;
+  outline:none;
 }
 input{
   outline:none;
+  border:none;
 }
     
 /*VISTA DISPOSITIVO CELULAR EN LANDSCAPE*/

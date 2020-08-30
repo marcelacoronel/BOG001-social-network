@@ -2,7 +2,7 @@
 /* || 404 ERROR PAGE */
 
 #error {
-    background: url(/src/img/404-desktop.jpg) no-repeat;
+    background: url(../img/404-desktop.jpg) no-repeat;
     background-size: 70%;
     background-position: center;
     position: absolute;
@@ -16,7 +16,7 @@
   @media only screen and (max-width:420px){
    /* || 404 error */
    #error-movil {
-    background: url(/src/img/404-mobile.jpg) no-repeat;
+    background: url(../img/404-mobile.jpg) no-repeat;
     background-size: 120%;
     background-position: center;
     width: 100vw;
