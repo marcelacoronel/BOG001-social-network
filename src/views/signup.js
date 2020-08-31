@@ -72,7 +72,6 @@ export default () => {
     // console.log(name + email + password);
     // la llamamos para pasarle los parametros y usarla
     createUsers(email, password);
-    
   }
 
   // Funcion mostrar y ocultar contraseña

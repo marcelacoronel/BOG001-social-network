@@ -43,21 +43,25 @@ export default () => {
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
-      <div class="post-form">
-        <div class="post-header"></div>
-
+        
+     
+        <div class="post-header">
+        <span class="close"><i class="fas fa-times-circle"></i></span>
+        <h2>Crear post</h2>
+        </div>
+       <div class="post-form">
         <form name="post-user-form" id="post-user" >
         <div>
-        <input type="file" name="postPreview" id="postPreview" >
         <div class="post-preview" id="postPreviewImage">
           <img src="" alt="postpreview" class="post-preview-image" />
           <span class="post-preview-text">Image preview</span>
         </div>
+         <input type="file" name="postPreview" id="postPreview" >
       </div>
 
           <div class="infoPostUser">
             <textarea type="text" id="description" rows="2" cols="100" maxlength="120" required></textarea>
+            </br>
             <input type="submit" id="submit-post" value="submit" >
           </div>
         </form>
@@ -333,8 +337,11 @@ export default () => {
       .onSnapshot(callback);
   };
 
-
-  firebase.firestore().collection('user').doc(uidUser).collection('post')
+  firebase
+    .firestore()
+    .collection('user')
+    .doc(uidUser)
+    .collection('post')
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -343,40 +350,13 @@ export default () => {
       });
     });
 
- 
-
-
-  // BORRAR LOS POST DEL USUARIO
-  // const deletePost = (id) => {
-  //   console.log('Delete post ', id);
-  //     firebase
-  //       .firestore()
-  //       .collection('user')
-  //       .doc(uidUser)
-  //       .collection('post')
-  //       .doc(id)
-  //       .delete()
-  // };
-
-  // EDITAR LOS POST DEL USUARIO
-  // const editPost = (id) =>
-  //   firebase
-  //     .firestore()
-  //     .collection('user')
-  //     .doc(uidUser)
-  //     .collection('post')
-  //     .doc(id)
-  //     .get();
-
-  // CONST UPDATE POST
-
   // eslint-disable-next-line no-shadow
   function createElementHTML(typeElement, object, father) {
     const element = document.createElement(typeElement);
-    Object.keys(object).map(function(a){ 
-      element.setAttribute(a, object[a])
-      console.log("key with value: "+a +" = "+object[a])   
-      })
+    Object.keys(object).map(function (a) {
+      element.setAttribute(a, object[a]);
+      console.log('key with value: ' + a + ' = ' + object[a]);
+    });
     father.appendChild(element);
     return element;
   }
@@ -386,19 +366,29 @@ export default () => {
     let text;
     console.log(postQ.id, ' => ', postQ.data());
     // Create main div
-    const post = createElementHTML('div', { class: 'soulmates-post', id: postQ.id }, postContainer);
+    const post = createElementHTML(
+      'div',
+      { class: 'soulmates-post', id: postQ.id }, postContainer);
     // Modal confirmacion borrar post
-    const deleteModalPost = createElementHTML('div', { class: 'modal-delete', id: "modal" }, postContainer);
-    
+    const deleteModalPost = createElementHTML(
+      'div',
+      { class: 'modal-delete', id: 'modal' }, postContainer);
+
     // Div contenedor top
-    const topPostDiv = document.createElement('div', { class: 'soulmates-post-top' }, post);
-    
+    const topPostDiv = document.createElement(
+      'div',
+      { class: 'soulmates-post-top' },post);
+
     // Div user info
-    const UserImageProfileDiv = document.createElement('div', { class: 'soulmates-post-avatar' }, topPostDiv);
-    console.log(UserImageProfileDiv)
+    const UserImageProfileDiv = document.createElement(
+      'div',
+      { class: 'soulmates-post-avatar' },topPostDiv);
+    console.log(UserImageProfileDiv);
     // Imagen de perfil
-    const imgUserProfile = createElementHTML('img', { class: 'post-header-avatar', src: urlProfileUser }, UserImageProfileDiv);
-    
+    const imgUserProfile = createElementHTML(
+      'img',
+      { class: 'post-header-avatar', src: urlProfileUser }, UserImageProfileDiv );
+
     // Nombre Perfil
     const nameUserDiv = document.createElement('div');
     nameUserDiv.classList.add('soulmates-post-name');
@@ -422,7 +412,6 @@ export default () => {
     imgPost.classList.add('post-image-avatar');
     imgPost.setAttribute('src', url);
     postImageDiv.appendChild(imgPost);
-
 
     // Bottom post
     const bottomPostDiv = document.createElement('div');
@@ -468,6 +457,7 @@ export default () => {
     // Edit button
     const editButton = document.createElement('button');
     editButton.classList.add('edit-post');
+    editButton.setAttribute('data-id', postQ.id)
     editButton.textContent = 'Editar';
     IconPost.appendChild(editButton);
     // editButton.addEventListener("click", function () {
@@ -483,6 +473,7 @@ export default () => {
     // Delete post
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete-post');
+   deleteButton.setAttribute('data-id', postQ.id)
     deleteButton.textContent = 'Borrar';
     IconPost.appendChild(deleteButton);
     // editButton.addEventListener("click", function () {
@@ -496,100 +487,105 @@ export default () => {
     // })
   }
   // eslint-disable-next-line no-shadow
-  const updatePost = (id, updatePost) => firebase
-    .firestore()
-    .collection('user')
-    .doc(uidUser)
-    .collection('post')
-    .doc(id)
-    .update(updatePost);
+  const updatePost = (id, updatePost) =>
+    firebase
+      .firestore()
+      .collection('user')
+      .doc(uidUser)
+      .collection('post')
+      .doc(id)
+      .update(updatePost);
 
   // FUNCION PARA MOSTRAR Y EDITAR POST
   // function getPost() {
   window.addEventListener('DOMContentLoaded', (e) => {
-    firebase.firestore().collection('user').doc(uidUser).collection('post')
-    .get()
-    .then((querySnapshot) => {
-      postContainer.innerHTML = '';
-      querySnapshot.forEach((postQ) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, ' => ', doc.data());
-     // });
-    //});
-    // downloadUrl();
-    //onGetPost((querySnapshot) => {
-      
-     // querySnapshot.forEach((postQ) => {
-        // const postId = doc.data();
-        // postId.id = doc.id;
-        // console.log(postId)
-        // doc.data() is never undefined for query doc snapshots
+    firebase
+      .firestore()
+      .collection('user')
+      .doc(uidUser)
+      .collection('post')
+      .get()
+      .then((querySnapshot) => {
+        postContainer.innerHTML = '';
+        querySnapshot.forEach((postQ) => {
+          // doc.data() is never undefined for query doc snapshots
+          // console.log(doc.id, ' => ', doc.data());
+          // });
+          //});
+          // downloadUrl();
+          //onGetPost((querySnapshot) => {
 
-        console.log(postQ.id, ' => ', postQ.data());
+          // querySnapshot.forEach((postQ) => {
+          // const postId = doc.data();
+          // postId.id = doc.id;
+          // console.log(postId)
+          // doc.data() is never undefined for query doc snapshots
 
-        firebase
-          .storage()
-          .ref(
-            // `${pathUserStorage}
-            // eslint-disable-next-line comma-dangle
-            `user/${uidUser}/post/${postQ.id}/${postQ.id}`
-          )
-          .getDownloadURL()
-          .then((url) => {
-            //             //postContainer.innerHTML +=
-            //             `
+          console.log(postQ.id, ' => ', postQ.data());
 
-            //             <div id="${postQ.id}" class="soulmates-post">
-            //             <div class="soulmates-post-top">
-            //               <div class="soulmates-post-avatar">
-            //                 <img class="post-header-avatar" src="${urlProfileUser}">
-            //               </div>
-            //               <div class="soulmates-post-name">${nameUser}
-            //               </div>
-            //               <div class="soulmates-post-title">${cityUser}
-            //               </div>
-            //             </div>
-            //             <div class="soulmates-post-image">
-            //               <img id="${
-            //   postQ.id
-            // }-image" class="post-image-avatar" src="${url}">
-            //             </div>
-            //             <div class="soulmates-post-bottom">
-            //               <div class="soulmates-post-desc">
-            //                 <div class"description-post">
-            //                   <p class="post-text">${postQ.data().description}</p>
-            //                 </div>
-            //               </div>
-            //               <div class="soulmates-post-icons">
-            //                 <span class="heart-counter">4</span><button class="heart"><i id="like"
-            //                     class="fas fa-heart"></i></button><span>Me encanta</span>
-            //                 <button class="edit-post" data-id="${postQ.id}">Editar
-            //                 </button>
-            //                 <button class="delete-post" data-id="${
-            //   postQ.id
-            // }">Borrar</button>
-            //               </div>
-            //             </div>
-            //           </div>
-            //            Contenedor modal confirmacion borrar post
-            //           <div class="modal-delete" id="modal">
-            //           </div>
-            //         `;
-            createPost(postQ, url);
-            // VARIABLES
-            const modalDelete = divElement.querySelector('.modal-delete');
-            const btnDeletePost = divElement.querySelectorAll('.delete-post');
-            const btnEditPost = divElement.querySelectorAll('.edit-post');
-            // FUNCIONES
+          firebase
+            .storage()
+            .ref(
+              // `${pathUserStorage}
+              // eslint-disable-next-line comma-dangle
+              `user/${uidUser}/post/${postQ.id}/${postQ.id}`
+            )
+            .getDownloadURL()
+            .then((url) => {
+              //             //postContainer.innerHTML +=
+              //             `
 
-            // MODAL CONFIRMACION BORRAR POST
-            // MOSTRAR EL MODAL
-            function openModal() {
-              modalDelete.classList.add('modal-open');
-            }
-            // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
-            function createModal(id) {
-              modalDelete.innerHTML = `
+              //             <div id="${postQ.id}" class="soulmates-post">
+              //             <div class="soulmates-post-top">
+              //               <div class="soulmates-post-avatar">
+              //                 <img class="post-header-avatar" src="${urlProfileUser}">
+              //               </div>
+              //               <div class="soulmates-post-name">${nameUser}
+              //               </div>
+              //               <div class="soulmates-post-title">${cityUser}
+              //               </div>
+              //             </div>
+              //             <div class="soulmates-post-image">
+              //               <img id="${
+              //   postQ.id
+              // }-image" class="post-image-avatar" src="${url}">
+              //             </div>
+              //             <div class="soulmates-post-bottom">
+              //               <div class="soulmates-post-desc">
+              //                 <div class"description-post">
+              //                   <p class="post-text">${postQ.data().description}</p>
+              //                 </div>
+              //               </div>
+              //               <div class="soulmates-post-icons">
+              //                 <span class="heart-counter">4</span><button class="heart"><i id="like"
+              //                     class="fas fa-heart"></i></button><span>Me encanta</span>
+              //                 <button class="edit-post" data-id="${postQ.id}">Editar
+              //                 </button>
+              //                 <button class="delete-post" data-id="${
+              //   postQ.id
+              // }">Borrar</button>
+              //               </div>
+              //             </div>
+              //           </div>
+              //            Contenedor modal confirmacion borrar post
+              //           <div class="modal-delete" id="modal">
+              //           </div>
+              //         `;
+              createPost(postQ, url);
+              // VARIABLES
+              const modalDelete = divElement.querySelector('.modal-delete');
+              const btnDeletePost = divElement.querySelectorAll('.delete-post');
+              const btnEditPost = divElement.querySelectorAll('.edit-post');
+              // FUNCIONES
+
+              // MODAL CONFIRMACION BORRAR POST
+              // MOSTRAR EL MODAL
+              function openModal() {
+                modalDelete.classList.add('modal-open');
+              }
+              // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
+              function createModal(id) {
+                modalDelete.innerHTML = `
               <div class="modal-delete-container">
               <div class="modal-delete-content">
                 <header class="delete-post-title">
@@ -606,259 +602,55 @@ export default () => {
             </div>
   
   `;
-              const cancelDeletePost = divElement.querySelector('.cancel');
-              const deletePostBtnModal = divElement.querySelector(
-                '#deletePost',
-              );
-              // LISTENER DE BOTONES
-              cancelDeletePost.addEventListener('click', () => {
-                modalDelete.classList.remove('modal-open');
-              });
-              deletePostBtnModal.addEventListener('click', () => {
-                console.log('otro intento');
-                console.log(id);
-                deletePostUserData(uidUser, id);
-                deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
-                modalDelete.classList.remove('modal-open');
-              });
-            }
+                const cancelDeletePost = divElement.querySelector('.cancel');
+                const deletePostBtnModal = divElement.querySelector(
+                  '#deletePost'
+                );
+                // LISTENER DE BOTONES
+                cancelDeletePost.addEventListener('click', () => {
+                  modalDelete.classList.remove('modal-open');
+                });
+                deletePostBtnModal.addEventListener('click', () => {
+                  console.log('otro intento');
+                  console.log(id);
+                  deletePostUserData(uidUser, id);
+                  deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
+                  modalDelete.classList.remove('modal-open');
+                });
+              }
 
-            // BOTON DELETE POST
+              // BOTON DELETE POST
 
-            btnDeletePost.forEach((btnuno) => {
-              btnuno.addEventListener('click', (e) => {
-                console.log(e.target.dataset.id);
-                const buttonId = e.target.dataset.id;
-                console.log(buttonId);
-                // console.log(`click${e.target.dataset.id}`);
-                openModal(createModal(buttonId));
-                // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
+              btnDeletePost.forEach((btnuno) => {
+                btnuno.addEventListener('click', (e) => {
+                  console.log(e.target.dataset.id);
+                  const buttonId = e.target.dataset.id;
+                  console.log(buttonId);
+                  // console.log(`click${e.target.dataset.id}`);
+                  openModal(createModal(buttonId));
+                  // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
+                });
+              });
+
+              // BOTON EDIT POST
+              btnEditPost.forEach((btndos) => {
+                btndos.addEventListener('click', (e) => {
+                  console.log(e.target.dataset.id);
+                  // const postUser = await editPost(e.target.dataset.id);
+                  editPostUserData(uidUser, e.target.dataset.id);
+                  // console.log(postUser.data());
+                  const data = postQ.data();
+                  editStatus = true;
+                  idUser = e.target.dataset.id;
+                  postForm.description.value = data.description;
+                  modal.style.display = 'block';
+                  postSubmit.value = 'Actualizar';
+                });
               });
             });
-
-            // BOTON EDIT POST
-            btnEditPost.forEach((btndos) => {
-              btndos.addEventListener('click', (e) => {
-                console.log(e.target.dataset.id);
-                // const postUser = await editPost(e.target.dataset.id);
-                editPostUserData(uidUser, e.target.dataset.id);
-                // console.log(postUser.data());
-                const data = postQ.data();
-                editStatus = true;
-                idUser = e.target.dataset.id;
-                postForm.description.value = data.description;
-                modal.style.display = 'block';
-                postSubmit.value = 'Actualizar';
-              });
-            });
-          });
+        });
       });
-    });
   });
-
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  // function loadPost() {
-  //   getPost();
-  // }
-  // getPost();
 
   // ENVIAR INFORMACION DEL POST
   postForm.addEventListener('submit', async (e) => {

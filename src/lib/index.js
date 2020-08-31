@@ -13,9 +13,7 @@ export const validateEmailAndPass = (email, password) => {
   if (!valPass.test(password)) {
     warningAuth += '  Contraseña es incorrecta';
     authMessage.innerHTML = warningAuth;
-    return enterLogin = false;
+    // return (enterLogin = false);
   }
-  else {
-    return true
-  }
+  return true;
 };

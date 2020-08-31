@@ -33,8 +33,7 @@ export const createUsers = (email, password) => {
       window.location.hash = '#/profile';
     })
     .catch((error) => {
-      // Handle Errors here.
-      alert('no se ha registrado')
+      console.log('no se ha registrado');
       console.log(error.message);
       // ...
     });
