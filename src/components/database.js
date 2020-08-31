@@ -50,8 +50,8 @@ export async function addPostUserData(uid, dataPost) {
 
 // Editar los datos del post
 
-export async function editPostUserData(uid, idPost) {
-  await db
+export function editPostUserData(uid, idPost) {
+  db
     .collection('user')
     .doc(uid)
     .collection('post')
@@ -99,15 +99,9 @@ export function deletePostUserData(uid, idPost) {
 
 // Crear folder y guardar las imagenes
 export function imageStorage(folder, id, file) {
-  storage
+ return storage
     .ref(folder + id)
-    .put(file)
-    .then(() => {
-      console.log('File successfully upload!');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    .put(file);
 }
 
 // Borrar las imagenes del storage

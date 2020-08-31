@@ -1,19 +1,23 @@
-import { userSignOff } from '../components/auth.js';
+import {
+  userSignOff,
+} from '../components/auth.js';
+import {
+  createElementHTML,
+  createModalTemplate,
+} from '../lib/createElementPost.js';
 import {
   imageStorage, // getUserData,// addPostUserData,
   deletePostUserData,
   deletePostImageData,
-  editPostUserData,
+  // editPostUserData,
 } from '../components/database.js';
 
 export default () => {
   const view = `
   <!--HEADER INFORMACION DEL USUARIO-->
-
   <div class="dashboard">
     <div id="user-header">
       <div id="user">
-
         <div id="user-picture">
           <div id="picture-box">
             <img src="" id="userphoto" alt="user-Avatar">
@@ -37,43 +41,37 @@ export default () => {
       </div>
     </div>
     <section class="board">
-
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        
-     
+       <span class="close"><i class="fas fa-times-circle"></i></span> 
+      <div class="post-form">
         <div class="post-header">
-        <span class="close"><i class="fas fa-times-circle"></i></span>
-        <h2>Crear post</h2>
+        <h2 id="post-header-title">Crear post</h2>
+        
         </div>
-       <div class="post-form">
         <form name="post-user-form" id="post-user" >
         <div>
         <div class="post-preview" id="postPreviewImage">
           <img src="" alt="postpreview" class="post-preview-image" />
           <span class="post-preview-text">Image preview</span>
         </div>
-         <input type="file" name="postPreview" id="postPreview" >
+        <br>
+        <label class="upload-img-post">Sube tu imagen
+                <input type="file" name="postPreview" id="postPreview" >
+        </label>
       </div>
-
           <div class="infoPostUser">
             <textarea type="text" id="description" rows="2" cols="100" maxlength="120" required></textarea>
-            </br>
             <input type="submit" id="submit-post" value="submit" >
           </div>
         </form>
       </div>
       </div>
       </div>
-
-
       <!--Donde se muestran todos los post-->
       <div id="post-container"></div>
-
-
     </section>
     <aside>
       <div id="post-aside-info">
@@ -84,50 +82,10 @@ export default () => {
             caracteres, una imagen vale mas que mil palabras</li>
           <li><span class="aside-icon"><i class="fas fa-heart"></i></span>Dale like a tus post favoritos</li>
           <li><span class="aside-icon"><i class="fas fa-users"></i></span>Invita a amigos y haz crecer la comunidad</li>
-
         </ul>
       </div>
     </aside>
   </div>
-     <!-- <div class="soulmates-post">
-  <div class="soulmates-post-top">
-    <div class="soulmates-post-avatar">
-      <img src="">
-    </div>
-    <div class="soulmates-post-name">
-      soulmatesname
-    </div>
-    <div class="soulmates-post-title">
-      Small Title For Photo
-    </div>
-    <div class="soulmates-post-date">
-      Sept 1
-    </div>
-    <div class="soulmates-post-bookmark">
-      <span class="th th-bookmark-1-o"></span>
-    </div>
-  </div>
-  <div class="soulmates-post-image">
-    <img class="post-image-avatar" src="">
-  </div>
-  <div class="soulmates-post-bottom">
-    <div class="soulmates-post-desc">
-      <div><name>instaname</name> Small description here! Keep it simple because you wanna add the <i>#hashtags #forflare</i></div>
-    </div>
-    <div class="soulmates-post-icons">
-      <span class="th th-heart-1-o"></span>
-      <span class="th th-chat-bubble-o"></span>
-      <span class="th th-share-o"></span>
-    </div>
-    <div class="soulmates-post-likes">
-      2300 <span>likes</span>
-    </div>
-    <div class="soulmates-post-comment">
-      <div>Add a comment <span>∙∙∙</span></div>
-    </div>
-  </div>
-</div>-->
-     
 `;
 
   // VARIABLES
@@ -145,6 +103,7 @@ export default () => {
   // CAMPOS FORMULARIO
   const postForm = divElement.querySelector('#post-user');
   const postContainer = divElement.querySelector('#post-container');
+  const postFormHeaderTitle = divElement.querySelector('#post-header-title');
   // const descriptionPostText = divElement.querySelector('#description');
 
   // INPUT SUBIR FOTO DE POST
@@ -260,7 +219,7 @@ export default () => {
   let nameUser = '';
   let cityUser = '';
 
-  function loadInfo() {
+  function loadInfoUser() {
     email.innerHTML = getUserUid.email;
     // await getUserData(uidUser)
     // Data usurio de firestore
@@ -291,9 +250,7 @@ export default () => {
       });
   }
   storage();
-  loadInfo();
-
-  // FUNCION MOSTRAR MENSAJE INPUT POST
+  loadInfoUser();
 
   // CREAR POST USUARIO
   // REF DEL DOC Y SUBCOLECCION DEL USUARIO/POST
@@ -311,21 +268,74 @@ export default () => {
       // await addPostUserData(uidUser, { description })
       .then((postDoc) => {
         console.log('GUARDAR POST ');
-        console.log(postDoc.id);
-        const postIdUser = postDoc.id;
-        console.log('JAJAJA');
-        console.log(postIdUser);
+        console.log(postDoc);
         const file = filePost.files[0];
         // localStorage.setItem('idUserPost', postIdUser);
-        imageStorage(
-          // `${pathUserStorage}
+        const uploadImage = imageStorage(
           `user/${uidUser}/post/${postDoc.id}/`,
           postDoc.id,
-          // eslint-disable-next-line comma-dangle
-          file
+          file,
+        );
+        // `${pathUserStorage}
+        // eslint-disable-next-line comma-dangle
+        uploadImage.on(
+          'state_changed',
+          (snapshot) => {
+            // Get task progress,
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log(`Upload is ${progress}% done`);
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                console.log('Upload is paused');
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                console.log('Upload is running');
+                break;
+              default:
+                console.log('default');
+            }
+          },
+          (error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+              case 'storage/unauthorized':
+                console.log('storage/unauthorized');
+                break;
+
+              case 'storage/canceled':
+                console.log('storage/canceled');
+                break;
+              case 'storage/unknown':
+                console.log('storage/unknown');
+                break;
+              default:
+                console.log('default');
+            }
+          },
+          () => {
+            // Upload completed successfully, now we can get the download URL
+            console.log('succesful');
+            uploadImage.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              firebase
+                .firestore()
+                .collection('user')
+                .doc(uidUser)
+                .collection('post')
+                .doc(postDoc.id)
+                .get()
+                .then((querySnapshot) => {
+                  // eslint-disable-next-line no-use-before-define
+                  createPost(querySnapshot, downloadURL);
+                });
+            });
+          },
         );
       });
   }
+
+  // FIREBASE FUNCTIONS
+
   // OBTENER LA SUBCOLECCION DE POST USUARIO
   const onGetPost = (callback) => {
     firebase
@@ -337,319 +347,273 @@ export default () => {
       .onSnapshot(callback);
   };
 
-  firebase
+  // EDITAR LOS POST DEL USUARIO
+  const editPost = id => firebase
     .firestore()
     .collection('user')
     .doc(uidUser)
     .collection('post')
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, ' => ', doc.data());
-      });
-    });
+    .doc(id)
+    .get();
 
-  // eslint-disable-next-line no-shadow
-  function createElementHTML(typeElement, object, father) {
-    const element = document.createElement(typeElement);
-    Object.keys(object).map(function (a) {
-      element.setAttribute(a, object[a]);
-      console.log('key with value: ' + a + ' = ' + object[a]);
-    });
-    father.appendChild(element);
-    return element;
-  }
+  // CONST UPDATE POST
+  const updatePost = (id, updatePost) => firebase
+    .firestore()
+    .collection('user')
+    .doc(uidUser)
+    .collection('post')
+    .doc(id)
+    .update(updatePost);
 
   function createPost(postQ, url) {
-    // console.log(dataPoke.length)
     let text;
+    console.log('empieza');
     console.log(postQ.id, ' => ', postQ.data());
     // Create main div
     const post = createElementHTML(
-      'div',
-      { class: 'soulmates-post', id: postQ.id }, postContainer);
+      'div', {
+        class: 'soulmates-post',
+        id: postQ.id,
+      },
+      postContainer,
+      '',
+      true,
+    );
     // Modal confirmacion borrar post
     const deleteModalPost = createElementHTML(
-      'div',
-      { class: 'modal-delete', id: 'modal' }, postContainer);
+      'div', {
+        class: 'modal-delete',
+        id: 'modal',
+      },
+      postContainer,
+    );
 
     // Div contenedor top
-    const topPostDiv = document.createElement(
-      'div',
-      { class: 'soulmates-post-top' },post);
-
+    const topPostDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-top',
+      },
+      post,
+    );
     // Div user info
-    const UserImageProfileDiv = document.createElement(
-      'div',
-      { class: 'soulmates-post-avatar' },topPostDiv);
-    console.log(UserImageProfileDiv);
+    const UserImageProfileDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-avatar',
+      },
+      topPostDiv,
+    );
     // Imagen de perfil
     const imgUserProfile = createElementHTML(
-      'img',
-      { class: 'post-header-avatar', src: urlProfileUser }, UserImageProfileDiv );
-
+      'img', {
+        class: 'post-header-avatar',
+        src: urlProfileUser,
+      },
+      UserImageProfileDiv,
+    );
     // Nombre Perfil
-    const nameUserDiv = document.createElement('div');
-    nameUserDiv.classList.add('soulmates-post-name');
-    text = document.createTextNode(nameUser);
-    nameUserDiv.appendChild(text);
-    topPostDiv.appendChild(nameUserDiv);
-    const cityUserDiv = document.createElement('div');
-    cityUserDiv.classList.add('soulmates-post-title');
-    text = document.createTextNode(cityUser);
-    cityUserDiv.appendChild(text);
-    topPostDiv.appendChild(cityUserDiv);
+    const nameUserDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-name',
+      },
+      topPostDiv,
+      nameUser,
+    );
+    // Ciudad
+    const cityUserDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-title',
+      },
+      topPostDiv,
+      cityUser,
+    );
 
     // Body post
     // Div user info
-    const postImageDiv = document.createElement('div');
-    postImageDiv.classList.add('soulmates-post-image');
-    post.appendChild(postImageDiv);
-
-    // Imagen de perfil
-    const imgPost = document.createElement('img');
-    imgPost.classList.add('post-image-avatar');
-    imgPost.setAttribute('src', url);
-    postImageDiv.appendChild(imgPost);
+    const postImageDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-image',
+      },
+      post,
+    );
+    // Imagen post
+    const imgPost = createElementHTML(
+      'img', {
+        class: 'post-image-avatar',
+        src: url,
+      },
+      postImageDiv,
+    );
 
     // Bottom post
-    const bottomPostDiv = document.createElement('div');
-    bottomPostDiv.classList.add('soulmates-post-bottom');
-    post.appendChild(bottomPostDiv);
-
+    const bottomPostDiv = createElementHTML(
+      'div', {
+        class: 'soulmates-post-bottom',
+      },
+      post,
+    );
     // Descr post Div
-    const descrPost = document.createElement('div');
-    descrPost.classList.add('soulmates-post-desc');
+    const descrPost = createElementHTML(
+      'div', {
+        class: 'soulmates-post-desc',
+      },
+      bottomPostDiv,
+    );
     // P element Descr
-    const pDesc = document.createElement('p');
-    pDesc.classList.add('post-text');
-    text = document.createTextNode(postQ.data().description);
-    pDesc.appendChild(text);
-    descrPost.appendChild(pDesc);
-    bottomPostDiv.appendChild(descrPost);
-
+    const pDesc = createElementHTML(
+      'p', {
+        class: 'post-text',
+      },
+      descrPost,
+      postQ.data().description,
+    );
     // Icons post Div
-    const IconPost = document.createElement('div');
-    IconPost.classList.add('soulmates-post-icons');
-    bottomPostDiv.appendChild(IconPost);
+    const IconPost = createElementHTML(
+      'div', {
+        class: 'soulmates-post-icons',
+      },
+      bottomPostDiv,
+    );
     // Span icons
-    const iconSpan = document.createElement('span');
-    IconPost.classList.add('heart-counter');
-    text = document.createTextNode('4');
-    iconSpan.appendChild(text);
-    IconPost.appendChild(iconSpan);
+    const iconSpan = createElementHTML(
+      'span', {
+        class: 'heart-counter',
+      },
+      IconPost,
+      '4',
+    );
     // Button like incon
-    const buttonLike = document.createElement('button');
-    buttonLike.classList.add('heart');
-    IconPost.appendChild(buttonLike);
-    // i element likes
-    const iButtonLike = document.createElement('i');
-    iButtonLike.name = 'like';
-    iButtonLike.classList.add('fas', 'fa-heart');
-    buttonLike.appendChild(iButtonLike);
-    // Span Me encanta
-    const mencantaSpan = document.createElement('span');
-    // mencantaSpan.classList.add("heart-counter");
-    text = document.createTextNode('Me encanta');
-    mencantaSpan.appendChild(text);
-    IconPost.appendChild(mencantaSpan);
-    // Edit button
-    const editButton = document.createElement('button');
-    editButton.classList.add('edit-post');
-    editButton.setAttribute('data-id', postQ.id)
-    editButton.textContent = 'Editar';
-    IconPost.appendChild(editButton);
-    // editButton.addEventListener("click", function () {
-    //     editPostUserData(uidUser, postQ.id);
-    //     editStatus = true;
-    //     const data = postQ.data();
-    //     idUser = postQ.id;
-    //     post.description.value = data.description;
-    //     modal.style.display = 'block';
-    //     postSubmit.value = 'Actualizar';
-    // })
+    const buttonLike = createElementHTML('span', {
+      id: 'like',
+    }, IconPost);
 
-    // Delete post
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-post');
-   deleteButton.setAttribute('data-id', postQ.id)
-    deleteButton.textContent = 'Borrar';
-    IconPost.appendChild(deleteButton);
-    // editButton.addEventListener("click", function () {
-    //     editPostUserData(uidUser, postQ.id);
-    //     editStatus = true;
-    //     const data = postQ.data();
-    //     idUser = postQ.id;
-    //     post.description.value = data.description;
-    //     modal.style.display = 'block';
-    //     postSubmit.value = 'Actualizar';
-    // })
+    // i element likes
+    const iButtonLike = createElementHTML(
+      'i', {
+        class: 'fas fa-heart',
+      },
+      buttonLike,
+    );
+    // Span Me encanta
+    const mencantaSpan = createElementHTML('span', {}, IconPost, 'Me encanta');
+    // Edit button
+    const editButton = createElementHTML(
+      'button', {
+        class: 'edit-post',
+        'data-id': postQ.id,
+      },
+      IconPost,
+      'Editar',
+    );
+    // Delete button
+    const deleteButton = createElementHTML(
+      'button', {
+        class: 'delete-post',
+        'data-id': postQ.id,
+      },
+      IconPost,
+      'Borrar',
+    );
+    console.log('Termina');
   }
-  // eslint-disable-next-line no-shadow
-  const updatePost = (id, updatePost) =>
-    firebase
-      .firestore()
-      .collection('user')
-      .doc(uidUser)
-      .collection('post')
-      .doc(id)
-      .update(updatePost);
+
 
   // FUNCION PARA MOSTRAR Y EDITAR POST
   // function getPost() {
-  window.addEventListener('DOMContentLoaded', (e) => {
-    firebase
-      .firestore()
-      .collection('user')
-      .doc(uidUser)
-      .collection('post')
-      .get()
-      .then((querySnapshot) => {
-        postContainer.innerHTML = '';
-        querySnapshot.forEach((postQ) => {
-          // doc.data() is never undefined for query doc snapshots
-          // console.log(doc.id, ' => ', doc.data());
-          // });
-          //});
-          // downloadUrl();
-          //onGetPost((querySnapshot) => {
+  window.addEventListener('DOMContentLoaded', () => {
+    // firebase.firestore().collection('user').doc(uidUser).collection('post')
+    // .get()
+    // .then((querySnapshot) => {
+    //   postContainer.innerHTML = '';
+    //   querySnapshot.forEach((postQ) => {
+    //     console.log(postQ)
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, ' => ', doc.data());
+    // });
+    // });
+    // downloadUrl();
+    onGetPost((querySnapshot) => {
+      postContainer.innerHTML = ' ';
+      querySnapshot.forEach((postQ) => {
+        // const postId = doc.data();
+        // postId.id = doc.id;
+        // console.log(postId)
+        // doc.data() is never undefined for query doc snapshots
 
-          // querySnapshot.forEach((postQ) => {
-          // const postId = doc.data();
-          // postId.id = doc.id;
-          // console.log(postId)
-          // doc.data() is never undefined for query doc snapshots
+        console.log(postQ.id, ' => ', postQ.data());
 
-          console.log(postQ.id, ' => ', postQ.data());
+        firebase
+          .storage()
+          .ref(
+            // `${pathUserStorage}
+            // eslint-disable-next-line comma-dangle
+            `user/${uidUser}/post/${postQ.id}/${postQ.id}`
+          )
+          .getDownloadURL()
+          .then((url) => {
+            createPost(postQ, url);
+            // VARIABLES
+            const modalDelete = divElement.querySelector('.modal-delete');
+            const btnDeletePost = divElement.querySelectorAll('.delete-post');
+            const btnEditPost = divElement.querySelectorAll('.edit-post');
+            // FUNCIONES
 
-          firebase
-            .storage()
-            .ref(
-              // `${pathUserStorage}
-              // eslint-disable-next-line comma-dangle
-              `user/${uidUser}/post/${postQ.id}/${postQ.id}`
-            )
-            .getDownloadURL()
-            .then((url) => {
-              //             //postContainer.innerHTML +=
-              //             `
-
-              //             <div id="${postQ.id}" class="soulmates-post">
-              //             <div class="soulmates-post-top">
-              //               <div class="soulmates-post-avatar">
-              //                 <img class="post-header-avatar" src="${urlProfileUser}">
-              //               </div>
-              //               <div class="soulmates-post-name">${nameUser}
-              //               </div>
-              //               <div class="soulmates-post-title">${cityUser}
-              //               </div>
-              //             </div>
-              //             <div class="soulmates-post-image">
-              //               <img id="${
-              //   postQ.id
-              // }-image" class="post-image-avatar" src="${url}">
-              //             </div>
-              //             <div class="soulmates-post-bottom">
-              //               <div class="soulmates-post-desc">
-              //                 <div class"description-post">
-              //                   <p class="post-text">${postQ.data().description}</p>
-              //                 </div>
-              //               </div>
-              //               <div class="soulmates-post-icons">
-              //                 <span class="heart-counter">4</span><button class="heart"><i id="like"
-              //                     class="fas fa-heart"></i></button><span>Me encanta</span>
-              //                 <button class="edit-post" data-id="${postQ.id}">Editar
-              //                 </button>
-              //                 <button class="delete-post" data-id="${
-              //   postQ.id
-              // }">Borrar</button>
-              //               </div>
-              //             </div>
-              //           </div>
-              //            Contenedor modal confirmacion borrar post
-              //           <div class="modal-delete" id="modal">
-              //           </div>
-              //         `;
-              createPost(postQ, url);
-              // VARIABLES
-              const modalDelete = divElement.querySelector('.modal-delete');
-              const btnDeletePost = divElement.querySelectorAll('.delete-post');
-              const btnEditPost = divElement.querySelectorAll('.edit-post');
-              // FUNCIONES
-
-              // MODAL CONFIRMACION BORRAR POST
-              // MOSTRAR EL MODAL
-              function openModal() {
-                modalDelete.classList.add('modal-open');
-              }
-              // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
-              function createModal(id) {
-                modalDelete.innerHTML = `
-              <div class="modal-delete-container">
-              <div class="modal-delete-content">
-                <header class="delete-post-title">
-                  <p> ¿Esta seguro de querer borrar la publicación? </p>
-                </header>
-                <div class="delete-post-content">
-                  <p>Esta acción no se puede deshacer </p>
-                </div>
-              </div>
-              <div class="modal-delete-box-button">
-                <button class="cancel" id="cancel" class="btn-delete">Cancelar</button>
-                <button id="deletePost" data-id="${id}" class="btn-delete delete-modal">Borrar</button>
-              </div>
-            </div>
-  
-  `;
-                const cancelDeletePost = divElement.querySelector('.cancel');
-                const deletePostBtnModal = divElement.querySelector(
-                  '#deletePost'
-                );
-                // LISTENER DE BOTONES
-                cancelDeletePost.addEventListener('click', () => {
-                  modalDelete.classList.remove('modal-open');
-                });
-                deletePostBtnModal.addEventListener('click', () => {
-                  console.log('otro intento');
-                  console.log(id);
-                  deletePostUserData(uidUser, id);
-                  deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
-                  modalDelete.classList.remove('modal-open');
-                });
-              }
-
-              // BOTON DELETE POST
-
-              btnDeletePost.forEach((btnuno) => {
-                btnuno.addEventListener('click', (e) => {
-                  console.log(e.target.dataset.id);
-                  const buttonId = e.target.dataset.id;
-                  console.log(buttonId);
-                  // console.log(`click${e.target.dataset.id}`);
-                  openModal(createModal(buttonId));
-                  // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
-                });
+            // MODAL CONFIRMACION BORRAR POST
+            // MOSTRAR EL MODAL
+            function openModal() {
+              modalDelete.classList.add('modal-open');
+            }
+            // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
+            function createModal(id) {
+              createModalTemplate(id, modalDelete);
+              const cancelDeletePost = divElement.querySelector('.cancel');
+              const deletePostBtnModal = divElement.querySelector('#deletePost');
+              // LISTENER DE BOTONES
+              cancelDeletePost.addEventListener('click', () => {
+                modalDelete.classList.remove('modal-open');
               });
+              deletePostBtnModal.addEventListener('click', () => {
+                console.log('otro intento');
+                console.log(id);
+                deletePostUserData(uidUser, id);
+                deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
+                modalDelete.classList.remove('modal-open');
+              });
+            }
 
-              // BOTON EDIT POST
-              btnEditPost.forEach((btndos) => {
-                btndos.addEventListener('click', (e) => {
-                  console.log(e.target.dataset.id);
-                  // const postUser = await editPost(e.target.dataset.id);
-                  editPostUserData(uidUser, e.target.dataset.id);
-                  // console.log(postUser.data());
-                  const data = postQ.data();
-                  editStatus = true;
-                  idUser = e.target.dataset.id;
-                  postForm.description.value = data.description;
-                  modal.style.display = 'block';
-                  postSubmit.value = 'Actualizar';
-                });
+            // BOTON DELETE POST
+
+            btnDeletePost.forEach((btnuno) => {
+              btnuno.addEventListener('click', (e) => {
+                console.log(e.target.dataset.id);
+                const buttonId = e.target.dataset.id;
+                console.log(buttonId);
+                // console.log(`click${e.target.dataset.id}`);
+                openModal(createModal(buttonId));
+                // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
               });
             });
-        });
+
+            // BOTON EDIT POST
+            btnEditPost.forEach((btndos) => {
+              btndos.addEventListener('click', async (e) => {
+                console.log(`soy el id${e.target.dataset.id}`);
+                const doc = await editPost(e.target.dataset.id);
+                const data = doc.data();
+                // editPostUserData(uidUser, e.target.dataset.id);
+                // console.log(postUser.data());
+                // const data = postQ.data();
+                console.log(postQ.data().description);
+                editStatus = true;
+                idUser = e.target.dataset.id;
+                postForm.description.value = data.description;
+                modal.style.display = 'block';
+                postFormHeaderTitle.innerHTML = 'Editar post';
+                postSubmit.value = 'Actualizar';
+              });
+            });
+          });
       });
+    });
   });
 
   // ENVIAR INFORMACION DEL POST
@@ -668,10 +632,7 @@ export default () => {
       idUser = '';
       postSubmit.value = 'Guardar';
     }
-    // inputPhoto.value ='';
-
     previewImage.style.display = 'none';
-
     postForm.reset();
     // getPost();
   });

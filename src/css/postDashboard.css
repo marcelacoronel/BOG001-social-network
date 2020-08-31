@@ -107,7 +107,7 @@ section.board {
   height: 50vh;
   margin: auto;
   border-radius: 10px;
-  display: flex;
+  /* display: flex; */
   width: 95%;
   align-items: center;
 }
@@ -252,10 +252,9 @@ img.post-header-avatar {
   border-bottom: 1px solid #dedede;
   overflow: hidden;
 }
-.soulmates-post-desc div {
+.soulmates-post-desc p {
   position: relative;
   font-family:'Roboto', sans-serif;
-  font-size: 10px;
   color: #707070;
 }
 .post-text{
@@ -357,6 +356,7 @@ cursor:pointer;
   width: 100%;
   border: 1px solid rgba(128, 128, 128, 0.664);
 }
+
 .post-header h2 {
   font-family: 'Fredoka One', cursive;
 }
@@ -371,7 +371,6 @@ cursor:pointer;
   font-weight: 300;
   font-family: 'Fredoka One', cursive;
   color:  rgba(128, 128, 128, 0.664);
-  margin-top: 10%;
 }
 
 
@@ -381,6 +380,15 @@ cursor:pointer;
 }
 #title ,#description {
     border: 1px solid gray;
+}
+.upload-img-post{
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  background:var(--color-blue); 
+  color: #fff;
+   }
+input[type="file"] {
+  display: none;
 }
 
 /* Add Animation */
@@ -435,6 +443,7 @@ cursor:pointer;
 #like:hover{
   color: #ff7851;
   transition: .4s;
+  cursor:pointer;
 }
 #edit:hover{
   color: #949494;
