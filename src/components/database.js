@@ -4,20 +4,12 @@ const storage = firebase.storage();
 
 // FIRESTORE
 
-// Añadir los datos del perfil de usuario
-// export function addUsersData(dataUser, uid) {
-//   db.collection('user')
-//     .doc(uid)
-//     .set({
-//       dataUser,
-//     })
-//     .then((docRef) => {
-//       console.log('Document written with ID: ', docRef.id);
-//     })
-//     .catch((error) => {
-//       console.log('Error adding document: ', error);
-//     });
-// }
+export function loadInfoUser(collection, uid) {
+  db
+    .collection(collection)
+    .doc(uid)
+    .get();
+}
 export async function addUsersData(dataUser, uid) {
   await db
     .collection('user')
@@ -80,6 +72,7 @@ export function getUserData(id) {
     });
 }
 
+
 // Borrar los datos de la coleccion
 export function deletePostUserData(uid, idPost) {
   db.collection('user')
@@ -99,7 +92,7 @@ export function deletePostUserData(uid, idPost) {
 
 // Crear folder y guardar las imagenes
 export function imageStorage(folder, id, file) {
- return storage
+  return storage
     .ref(folder + id)
     .put(file);
 }

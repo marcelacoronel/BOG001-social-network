@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable array-callback-return */
 export const createElementHTML = (typeElement, object, father, text, flagPost) => {
   const element = document.createElement(typeElement);
   if (object != null) {
@@ -5,7 +7,7 @@ export const createElementHTML = (typeElement, object, father, text, flagPost) =
       element.setAttribute(a, object[a]);
     });
   }
-  if (text != null && text != '') {
+  if (text != null && text !== '') {
     const elementText = document.createTextNode(text);
     element.appendChild(elementText);
   }
@@ -17,8 +19,9 @@ export const createElementHTML = (typeElement, object, father, text, flagPost) =
 
   return element;
 };
-export const createModalTemplate = (id, father) => {
-  father.innerHTML = `
+
+export const createModalTemplate = (id, container) => {
+  container.innerHTML = `
     <div class="modal-delete-container">
     <div class="modal-delete-content">
       <header class="delete-post-title">
@@ -33,5 +36,5 @@ export const createModalTemplate = (id, father) => {
       <button id="deletePost" data-id="${id}" class="btn-delete delete-modal">Borrar</button>
     </div>
   </div>
-`
-}
+`;
+};

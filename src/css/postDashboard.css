@@ -244,6 +244,11 @@ img.post-header-avatar {
 .soulmates-post-bottom {
   position: relative;
 }
+.soulmates-post-desc p {
+  position: relative;
+  font-family:'Roboto', sans-serif;
+  color: #707070;
+}
 .soulmates-post-desc {
   position: relative;
   width: 350px;
@@ -252,11 +257,7 @@ img.post-header-avatar {
   border-bottom: 1px solid #dedede;
   overflow: hidden;
 }
-.soulmates-post-desc p {
-  position: relative;
-  font-family:'Roboto', sans-serif;
-  color: #707070;
-}
+
 .post-text{
   font-size:15px;
 }
@@ -429,17 +430,10 @@ input[type="file"] {
   height: 25px;
   background:var(--color-blue);
   border-radius: 25px;
-  border-radius: 25pxx;
+  border-radius: 25px;
 }
 
 /* likes*/
-#like,
-#edit,
-#trash{
-  color:#cecece;
-  font-size:20px;
-  cursor:pointer;
-}
 #like:hover{
   color: #ff7851;
   transition: .4s;
@@ -491,11 +485,6 @@ input[type="file"] {
   display: block;
   background-color:rgba(0,0,0,0.5);
 }
-
-.modal-delete-box-button{
-  padding: 10px;
-  text-align: center;
-}
 .modal-delete-box-button button {
   color: white;
   width: 100px;
@@ -503,6 +492,11 @@ input[type="file"] {
   background-color: #364c63;
   border-radius: 20px;
 }
+.modal-delete-box-button{
+  padding: 10px;
+  text-align: center;
+}
+
 
 .btn-delete {
   padding: 8px 25px;

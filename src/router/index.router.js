@@ -4,6 +4,7 @@ import login from '../views/login.js';
 import profile from '../views/profile.js';
 import postDashboard from '../views/postDashboard.js';
 import error from '../views/404.js';
+import mainPage from '../views/mainPage.js';
 
 const content = document.getElementById('root');
 
@@ -22,6 +23,8 @@ export const router = (route) => {
       return content.appendChild(postDashboard());
     case '#/profile':
       return content.appendChild(profile());
+    case '#/mainPage':
+      return content.appendChild(mainPage());
     default:
       return content.appendChild(error());
   }
