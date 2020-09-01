@@ -1,9 +1,9 @@
 import {
-  userSignOff
+  userSignOff,
 } from '../components/auth.js';
 import {
   createElementHTML,
-  createModalTemplate
+  createModalTemplate,
 } from '../lib/createElementPost.js';
 import {
   imageStorage,
@@ -141,9 +141,9 @@ export default () => {
   const modal = divElement.querySelector('#myModal');
   const span = divElement.getElementsByClassName('close')[0];
   // MODAL BORRAR POST
-  // const modalDelete = divElement.querySelector('.modal-delete');
-  // const cancelDeletePost = divElement.querySelector('.cancel');
-  // const deletePostBtnModal = divElement.querySelector('#deletePost');
+  const modalDelete = divElement.querySelector('.modal-delete');
+  const cancelDeletePost = divElement.querySelector('.cancel');
+  const deletePostBtnModal = divElement.querySelector('#deletePost');
 
   // USER UID
   const getUserUid = JSON.parse(localStorage.getItem('usuario'));
@@ -160,7 +160,10 @@ export default () => {
   // VARIABLE EDITAR
   let editStatus = false;
   let idUser = '';
-
+ // FUNCION MODAL
+ cancelDeletePost.addEventListener('click', () => {
+      modalDelete.classList.remove('modal-open');
+    });
   // MODAL  CREAR POST
   btnAddpost.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -524,13 +527,13 @@ export default () => {
       IconPost,
       'Editar'
     );
-    // editButton.addEventListener(
-    //   'click',
-    //   function () {
-    //     editContentPost(postQ.id);
-    //   },
-    //   false
-    // );
+    editButton.addEventListener(
+      'click',
+      function () {
+        editContentPost(postQ.id);
+      },
+      false
+    );
     // Delete button
     const deleteButton = createElementHTML(
       'button', {
@@ -540,32 +543,35 @@ export default () => {
       IconPost,
       'Borrar'
     );
-    // deleteButton.addEventListener(
-    //   'click',
-    //   function () {
-    //     deleteContentPost(postQ.id);
-    //   },
-    //   false
-    // );
+    deleteButton.addEventListener(
+      'click',
+      () => {
+        deleteContentPost(postQ.id);
+      },
+      false
+    );
     console.log('Termina');
   }
-  // function editContentPost(id) {
-  //   console.log(id + 'nueva funcion boton modal');
-  // }
 
-  // function deleteContentPost(id) {
-  //   const postDiv = divElement.querySelector('#'+`${id}`);
-  //   console.log(postDiv)
-  //   modalDelete.classList.add('modal-open');
-  //   console.log(id + 'eliminar boton modal');
-  //   deletePostBtnModal.addEventListener('click', (e) => {
-  //   console.log(id+'funcion delte')
-  //   postContainer.removeChild(postDiv)
-  //           })
-  // }
+  //BORRAR Y EDITAR POST
+
+  function editContentPost(id) {
+    console.log(id + 'nueva funcion boton modal');
+  }
+
+  function deleteContentPost(id) {
+    const postDiv = divElement.querySelector('#'+`${id}`);
+    console.log(postDiv)
+    modalDelete.classList.add('modal-open');
+    console.log(id + 'eliminar boton modal');
+    deletePostBtnModal.addEventListener('click', (e) => {
+      console.log(id+'funcion delete')
+      
+      postContainer.removeChild(postDiv);
+    });
+  }
+
   // FUNCION PARA MOSTRAR Y EDITAR POST
-  // function getPost() {
-  // window.addEventListener('DOMContentLoaded', () => {
 
   function loadPost() {
     window.addEventListener('DOMContentLoaded', () => {
@@ -591,71 +597,74 @@ export default () => {
               .getDownloadURL()
               .then((url) => {
                 createPost(postQ, url);
+
+
+
                 // VARIABLES
 
-                const modalDelete = divElement.querySelector('.modal-delete');
-                const btnDeletePost = divElement.querySelectorAll('.delete-post');
-                const btnEditPost = divElement.querySelectorAll('.edit-post');
-                // const descriptionPost = divElement.querySelector('#' + `${postQ.id}-desc`);
-                const postDiv = divElement.querySelector('#' + `${postQ.id}`);
+                // const modalDelete = divElement.querySelector('.modal-delete');
+                // const btnDeletePost = divElement.querySelectorAll('.delete-post');
+                // const btnEditPost = divElement.querySelectorAll('.edit-post');
+                // // const descriptionPost = divElement.querySelector('#' + `${postQ.id}-desc`);
+                // const postDiv = divElement.querySelector('#' + `${postQ.id}`);
                 // FUNCIONES
 
                 // MODAL CONFIRMACION BORRAR POST
                 // MOSTRAR EL MODAL
-                function openModal() {
-                  modalDelete.classList.add('modal-open');
-                }
-                // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
-                function createModal(id) {
-                  createModalTemplate(id, modalDelete);
-                  const cancelDeletePost = divElement.querySelector('.cancel');
-                  const deletePostBtnModal = divElement.querySelector('#deletePost');
-                  // LISTENER DE BOTONES
-                  cancelDeletePost.addEventListener('click', () => {
-                    modalDelete.classList.remove('modal-open');
-                  });
-                  deletePostBtnModal.addEventListener('click', () => {
-                    console.log('otro intento');
-                    console.log(id);
-                    deletePostUserData(uidUser, id);
-                    deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
-                    postContainer.removeChild(postDiv);
-                    modalDelete.classList.remove('modal-open');
-                  });
-                }
+                // function openModal() {
+                //   modalDelete.classList.add('modal-open');
+                // }
+                // // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
+                // function createModal(id) {
+                //   createModalTemplate(id, modalDelete);
+                //   const cancelDeletePost = divElement.querySelector('.cancel');
+                //   const deletePostBtnModal = divElement.querySelector('#deletePost');
+                //   // LISTENER DE BOTONES
+                //   cancelDeletePost.addEventListener('click', () => {
+                //     modalDelete.classList.remove('modal-open');
+                //   });
+                //   deletePostBtnModal.addEventListener('click', () => {
+                //     console.log('otro intento');
+                //     console.log(id);
+                //     deletePostUserData(uidUser, id);
+                //     deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
+                //     postContainer.removeChild(postDiv);
+                //     modalDelete.classList.remove('modal-open');
+                //   });
+                // }
 
                 // BOTON DELETE POST
 
-                btnDeletePost.forEach((btnuno) => {
-                  btnuno.addEventListener('click', (e) => {
-                    console.log(e.target.dataset.id);
-                    const buttonId = e.target.dataset.id;
-                    console.log(buttonId);
-                    // console.log(`click${e.target.dataset.id}`);
-                    openModal(createModal(buttonId));
-                    // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
-                  });
-                });
+                // btnDeletePost.forEach((btnuno) => {
+                //   btnuno.addEventListener('click', (e) => {
+                //     console.log(e.target.dataset.id);
+                //     const buttonId = e.target.dataset.id;
+                //     console.log(buttonId);
+                //     // console.log(`click${e.target.dataset.id}`);
+                //     openModal(createModal(buttonId));
+                //     // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
+                //   });
+                // });
 
-                // BOTON EDIT POST
-                btnEditPost.forEach((btndos) => {
-                  btndos.addEventListener('click', async (e) => {
-                    console.log(`soy el id${e.target.dataset.id}`);
-                    const doc = await editPost(e.target.dataset.id);
-                    const data = doc.data();
-                    // editPostUserData(uidUser, e.target.dataset.id);
-                    // console.log(postUser.data());
-                    // const data = postQ.data();
-                    console.log(postQ.data().description);
-                    editStatus = true;
-                    idUser = e.target.dataset.id;
-                    postForm.description.value = data.description;
-                    // descriptionPost.innerHTML = postForm.description.value;
-                    modal.style.display = 'block';
-                    //postFormHeaderTitle.innerHTML = 'Editar post';
-                    postSubmit.value = 'Actualizar';
-                  });
-                });
+                // // BOTON EDIT POST
+                // btnEditPost.forEach((btndos) => {
+                //   btndos.addEventListener('click', async (e) => {
+                //     console.log(`soy el id${e.target.dataset.id}`);
+                //     const doc = await editPost(e.target.dataset.id);
+                //     const data = doc.data();
+                //     // editPostUserData(uidUser, e.target.dataset.id);
+                //     // console.log(postUser.data());
+                //     // const data = postQ.data();
+                //     console.log(postQ.data().description);
+                //     editStatus = true;
+                //     idUser = e.target.dataset.id;
+                //     postForm.description.value = data.description;
+                //     // descriptionPost.innerHTML = postForm.description.value;
+                //     modal.style.display = 'block';
+                //     //postFormHeaderTitle.innerHTML = 'Editar post';
+                //     postSubmit.value = 'Actualizar';
+                //   });
+                // });
               });
           });
         });

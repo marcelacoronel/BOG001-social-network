@@ -2,7 +2,6 @@ import { createUsers, createUserswithGoogle } from '../components/auth.js';
 
 export default () => {
   const view = `
-        
         <div class="container-form">
             <div class=logo_singup>
                 <img src="./img/logo_signup.svg" alt="logo_singup">
@@ -95,7 +94,7 @@ export default () => {
   function createNewUsers() {
     let warningAuth = '';
     let warningAuthPass = '';
-    const signUpForm = document.querySelector('#form')
+    const signUpForm = document.querySelector('#form');
     const email = document.querySelector('.emailSignUp').value;
     const password = document.querySelector('.passSignUp').value;
     const valEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -111,7 +110,7 @@ export default () => {
     // VALIDAR CONSTRASEÑA
     const valPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
     if (!valPass.test(password)) {
-      warningAuthPass += 'Contraseña no cumple con los criterios minimos' ;
+      warningAuthPass += 'Contraseña no cumple con los criterios minimos';
       messagePass.innerHTML = warningAuthPass;
       enterLogin = false;
     }
@@ -121,7 +120,7 @@ export default () => {
       signUpForm.reset();
       messageEmail.innerHTML = '';
       messagePass.innerHTML = '';
-    }   
+    }
   }
   // Funcion mostrar y ocultar contraseña
   function showHidePassword() {
