@@ -565,21 +565,20 @@ export default () => {
   }
 // BORRAR POST 
   function deleteContentPost(id) {
-    const postDiv = document.getElementById("rNDtPUT6pdmhn1twAkkb");
+    const postDiv = document.getElementById(id);
     console.log(postDiv);
     console.log( id + " "+ "="  +" " + "rNDtPUT6pdmhn1twAkkb")
     console.log(typeof id)
     modalDelete.classList.add('modal-open');
     console.log(id + 'eliminar boton modal');
-    deletePostBtnModal.setAttribute('data-id', id)
 
     deletePostBtnModal.addEventListener('click', (e) => {
       console.log(e.target.dataset.id);
       e.preventDefault();
-      //console.log(id + 'funcion delete');
       deletePostUserData(uidUser, id);
       deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
       modalDelete.classList.remove('modal-open');
+      console.log(postContainer)
       postContainer.removeChild(postDiv);
     });
   }
