@@ -33,9 +33,16 @@ export default () => {
   const nav = document.getElementById('headerNav');
   nav.style.display = 'none';
 
+
+  firebase.firestore().collectionGroup('user').onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
   firebase.firestore().collectionGroup('post').onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       console.log(doc.data());
+    });
+  });
+
     });
   });
   return divElement;

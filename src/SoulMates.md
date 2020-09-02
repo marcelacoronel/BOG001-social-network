@@ -1,4 +1,4 @@
- # SoulMates
+
 <p align="center">
   <img src="https://github.com/lalopez13/BOG001-social-network/blob/Pruebafirebase/src/img/logo-BluePink.png" width="500" title="logo">
 </p>

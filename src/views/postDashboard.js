@@ -1,9 +1,7 @@
-import {
-  userSignOff,
-} from '../components/auth.js';
+import { userSignOff } from '../components/auth.js';
 import {
   createElementHTML,
-  createModalTemplate,
+  // createModalTemplate,
 } from '../lib/createElementPost.js';
 import {
   imageStorage,
@@ -151,19 +149,13 @@ export default () => {
   console.log(uidUser);
   console.log(getUserUid.email);
 
-  // RUTA STORAGE
-  // const pathUserStorage = localStorage.getItem('pathStorage');
-  const idUserStorage = localStorage.getItem('idUserPost');
-  console.log('PATH STORAGGE');
-  console.log(`hola ${idUserStorage}`);
-
   // VARIABLE EDITAR
   let editStatus = false;
   let idUser = '';
- // FUNCION MODAL
- cancelDeletePost.addEventListener('click', () => {
-      modalDelete.classList.remove('modal-open');
-    });
+  // FUNCION MODAL
+  cancelDeletePost.addEventListener('click', () => {
+    modalDelete.classList.remove('modal-open');
+  });
   // MODAL  CREAR POST
   btnAddpost.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -173,7 +165,6 @@ export default () => {
     modal.style.display = 'none';
     postForm.reset();
   };
-
   // CERRAR EL MODAL HACIENDO CLICK EN CUALQUIER PARTE DE LA VENTANA
   window.onclick = (event) => {
     if (event.target === modal) {
@@ -206,11 +197,9 @@ export default () => {
   let urlProfileUser = '';
 
   function storage() {
-    const storageRef = firebase.storage().ref(
-      // `${pathUserStorage}/
-      // eslint-disable-next-line comma-dangle
-      `user/${uidUser}/profile/${uidUser}`
-    );
+    const storageRef = firebase
+      .storage()
+      .ref(`user/${uidUser}/profile/${uidUser}`);
     storageRef
       .getDownloadURL()
       .then((url) => {
@@ -267,8 +256,6 @@ export default () => {
 
   // CREAR POST USUARIO
   // REF DEL DOC Y SUBCOLECCION DEL USUARIO/POST
-  let urlPost;
-
   async function savePostInfo(description) {
     await firebase
       .firestore()
@@ -331,8 +318,7 @@ export default () => {
             // Upload completed successfully, now we can get the download URL
             console.log('succesful');
             uploadImage.snapshot.ref.getDownloadURL().then((url) => {
-              console.log('BANANOS');
-              urlPost = url;
+              console.log('BANANOS')
               console.log(url);
               firebase
                 .firestore()
@@ -367,22 +353,22 @@ export default () => {
   // EDITAR LOS POST DEL USUARIO
   const editPost = (id) =>
     firebase
-    .firestore()
-    .collection('user')
-    .doc(uidUser)
-    .collection('post')
-    .doc(id)
-    .get();
+      .firestore()
+      .collection('user')
+      .doc(uidUser)
+      .collection('post')
+      .doc(id)
+      .get();
 
   // CONST UPDATE POST
   const updatePost = (id, updatePost) =>
     firebase
-    .firestore()
-    .collection('user')
-    .doc(uidUser)
-    .collection('post')
-    .doc(id)
-    .update(updatePost);
+      .firestore()
+      .collection('user')
+      .doc(uidUser)
+      .collection('post')
+      .doc(id)
+      .update(updatePost);
 
   function createPost(postQ, url) {
     let text;
@@ -390,7 +376,8 @@ export default () => {
     console.log(postQ.id, ' => ', postQ.data());
     // Create main div
     const post = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post',
         id: postQ.id,
       },
@@ -400,7 +387,8 @@ export default () => {
     );
     // Modal confirmacion borrar post
     const deleteModalPost = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'modal-delete',
         id: 'modal',
       },
@@ -409,21 +397,24 @@ export default () => {
 
     // Div contenedor top
     const topPostDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-top',
       },
       post
     );
     // Div user info
     const UserImageProfileDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-avatar',
       },
       topPostDiv
     );
     // Imagen de perfil
     const imgUserProfile = createElementHTML(
-      'img', {
+      'img',
+      {
         class: 'post-header-avatar',
         src: urlProfileUser,
       },
@@ -431,7 +422,8 @@ export default () => {
     );
     // Nombre Perfil
     const nameUserDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-name',
       },
       topPostDiv,
@@ -439,7 +431,8 @@ export default () => {
     );
     // Ciudad
     const cityUserDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-title',
       },
       topPostDiv,
@@ -449,14 +442,16 @@ export default () => {
     // Body post
     // Div user info
     const postImageDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-image',
       },
       post
     );
     // Imagen post
     const imgPost = createElementHTML(
-      'img', {
+      'img',
+      {
         class: 'post-image-avatar',
         src: url,
       },
@@ -465,37 +460,42 @@ export default () => {
 
     // Bottom post
     const bottomPostDiv = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-bottom',
       },
       post
     );
     // Descr post Div
     const descrPost = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-desc',
       },
       bottomPostDiv
     );
     // P element Descr
     const pDesc = createElementHTML(
-      'p', {
+      'p',
+      {
         class: 'post-text',
-        id: `${postQ.id}-desc`
+        id: `${postQ.id}-desc`,
       },
       descrPost,
       postQ.data().description
     );
     // Icons post Div
     const IconPost = createElementHTML(
-      'div', {
+      'div',
+      {
         class: 'soulmates-post-icons',
       },
       bottomPostDiv
     );
     // Span icons
     const iconSpan = createElementHTML(
-      'span', {
+      'span',
+      {
         class: 'heart-counter',
       },
       IconPost,
@@ -503,7 +503,8 @@ export default () => {
     );
     // Button like incon
     const buttonLike = createElementHTML(
-      'span', {
+      'span',
+      {
         id: 'like',
       },
       IconPost
@@ -511,7 +512,8 @@ export default () => {
 
     // i element likes
     const iButtonLike = createElementHTML(
-      'i', {
+      'i',
+      {
         class: 'fas fa-heart',
       },
       buttonLike
@@ -520,9 +522,10 @@ export default () => {
     const mencantaSpan = createElementHTML('span', {}, IconPost, 'Me encanta');
     // Edit button
     const editButton = createElementHTML(
-      'button', {
+      'button',
+      {
         class: 'edit-post',
-        'data-id': postQ.id
+        'data-id': postQ.id,
       },
       IconPost,
       'Editar'
@@ -536,9 +539,10 @@ export default () => {
     );
     // Delete button
     const deleteButton = createElementHTML(
-      'button', {
+      'button',
+      {
         class: 'delete-post',
-        'data-id': postQ.id
+        'data-id': postQ.id,
       },
       IconPost,
       'Borrar'
@@ -557,118 +561,54 @@ export default () => {
 
   function editContentPost(id) {
     console.log(id + 'nueva funcion boton modal');
+    modal.style.display = 'block';
   }
-
+// BORRAR POST 
   function deleteContentPost(id) {
-    const postDiv = divElement.querySelector('#'+`${id}`);
-    console.log(postDiv)
+    const postDiv = document.getElementById("rNDtPUT6pdmhn1twAkkb");
+    console.log(postDiv);
+    console.log( id + " "+ "="  +" " + "rNDtPUT6pdmhn1twAkkb")
+    console.log(typeof id)
     modalDelete.classList.add('modal-open');
     console.log(id + 'eliminar boton modal');
+    deletePostBtnModal.setAttribute('data-id', id)
+
     deletePostBtnModal.addEventListener('click', (e) => {
-      console.log(id+'funcion delete')
-      
+      console.log(e.target.dataset.id);
+      e.preventDefault();
+      //console.log(id + 'funcion delete');
+      deletePostUserData(uidUser, id);
+      deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
+      modalDelete.classList.remove('modal-open');
       postContainer.removeChild(postDiv);
     });
   }
 
-  // FUNCION PARA MOSTRAR Y EDITAR POST
-
+  // FUNCION PARA MOSTRAR POST EN EL MURO DE PUBLICACION
   function loadPost() {
-    window.addEventListener('DOMContentLoaded', () => {
-      firebase
-        .firestore()
-        .collection('user')
-        .doc(uidUser)
-        .collection('post')
-        .orderBy('date', 'desc')
-        .get()
-        .then((querySnapshot) => {
-          //   postContainer.innerHTML = '';
-          querySnapshot.forEach((postQ) => {
-            console.log(postQ.id, ' => ', postQ.data());
-
-            firebase
-              .storage()
-              .ref(
-                // `${pathUserStorage}
-                // eslint-disable-next-line comma-dangle
-                `user/${uidUser}/post/${postQ.id}/${postQ.id}`
-              )
-              .getDownloadURL()
-              .then((url) => {
-                createPost(postQ, url);
-
-
-
-                // VARIABLES
-
-                // const modalDelete = divElement.querySelector('.modal-delete');
-                // const btnDeletePost = divElement.querySelectorAll('.delete-post');
-                // const btnEditPost = divElement.querySelectorAll('.edit-post');
-                // // const descriptionPost = divElement.querySelector('#' + `${postQ.id}-desc`);
-                // const postDiv = divElement.querySelector('#' + `${postQ.id}`);
-                // FUNCIONES
-
-                // MODAL CONFIRMACION BORRAR POST
-                // MOSTRAR EL MODAL
-                // function openModal() {
-                //   modalDelete.classList.add('modal-open');
-                // }
-                // // CREAR MODAL Y FUNCIONALIDAD DE LOS BOTONES
-                // function createModal(id) {
-                //   createModalTemplate(id, modalDelete);
-                //   const cancelDeletePost = divElement.querySelector('.cancel');
-                //   const deletePostBtnModal = divElement.querySelector('#deletePost');
-                //   // LISTENER DE BOTONES
-                //   cancelDeletePost.addEventListener('click', () => {
-                //     modalDelete.classList.remove('modal-open');
-                //   });
-                //   deletePostBtnModal.addEventListener('click', () => {
-                //     console.log('otro intento');
-                //     console.log(id);
-                //     deletePostUserData(uidUser, id);
-                //     deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
-                //     postContainer.removeChild(postDiv);
-                //     modalDelete.classList.remove('modal-open');
-                //   });
-                // }
-
-                // BOTON DELETE POST
-
-                // btnDeletePost.forEach((btnuno) => {
-                //   btnuno.addEventListener('click', (e) => {
-                //     console.log(e.target.dataset.id);
-                //     const buttonId = e.target.dataset.id;
-                //     console.log(buttonId);
-                //     // console.log(`click${e.target.dataset.id}`);
-                //     openModal(createModal(buttonId));
-                //     // deletePostImageData(`user/${uidUser}/post/${postQ.id}/${postQ.id}`);
-                //   });
-                // });
-
-                // // BOTON EDIT POST
-                // btnEditPost.forEach((btndos) => {
-                //   btndos.addEventListener('click', async (e) => {
-                //     console.log(`soy el id${e.target.dataset.id}`);
-                //     const doc = await editPost(e.target.dataset.id);
-                //     const data = doc.data();
-                //     // editPostUserData(uidUser, e.target.dataset.id);
-                //     // console.log(postUser.data());
-                //     // const data = postQ.data();
-                //     console.log(postQ.data().description);
-                //     editStatus = true;
-                //     idUser = e.target.dataset.id;
-                //     postForm.description.value = data.description;
-                //     // descriptionPost.innerHTML = postForm.description.value;
-                //     modal.style.display = 'block';
-                //     //postFormHeaderTitle.innerHTML = 'Editar post';
-                //     postSubmit.value = 'Actualizar';
-                //   });
-                // });
-              });
-          });
+    firebase
+      .firestore()
+      .collection('user')
+      .doc(uidUser)
+      .collection('post')
+      .orderBy('date', 'desc')
+      .get()
+      .then((querySnapshot) => {
+        //   postContainer.innerHTML = '';
+        querySnapshot.forEach((postQ) => {
+          console.log(postQ.id, ' => ', postQ.data());
+          firebase
+            .storage()
+            .ref(
+              `user/${uidUser}/post/${postQ.id}/${postQ.id}`
+            )
+            .getDownloadURL()
+            .then((url) => {
+              createPost(postQ, url);
+            });
         });
-    });
+      });
+    //});
   }
 
   loadPost();
@@ -689,7 +629,6 @@ export default () => {
     }
     previewImage.style.display = 'none';
     postForm.reset();
-    // getPost();
   });
 
   postSubmit.addEventListener('click', () => {

@@ -110,3 +110,4 @@ export function deletePostImageData(folder) {
       console.log(`Uh-oh, an error occurred!${error}`);
     });
 }
+

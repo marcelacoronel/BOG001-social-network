@@ -11,9 +11,6 @@
 
 /* Contenedor imagen*/
 .form-image {
-  margin-top: 3%;
-  /* transform: translateX(480px); */
-  transform: translateY(10%);
   width: 100vw;
   height: 100vh;
   background: url(../img/profile-form.svg) no-repeat;
@@ -22,13 +19,13 @@
   float: right;
 }
 .form-image-title {
-  transform: translateY(-50px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  font-family: 'Fredoka One', cursive;
-  color: rgb(82, 81, 81);
+transform: translateY(50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-family: 'Fredoka One', cursive;
+    color: rgb(82, 81, 81);
 }
 
 /* Contenedor formulario*/
@@ -161,7 +158,7 @@ label#terminos {
 
   .form-user {
     background:url(../img/S1_Breakfast.jpg);
-    transform: translateX(0px);
+    transform: translateX(10px);
     display: block;
     justify-content: center;
   }
@@ -196,6 +193,9 @@ label#terminos {
 
 @media screen and (max-width:425px) {
 
+  .form-user {
+    background-size: 230%;
+}
   .pet-form label,
   h2 {
     font-size: 0.8em;

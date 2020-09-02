@@ -10,7 +10,7 @@ export default () => {
   </section>
 
   <section class="form-user">
-
+<div class="background-image"> 
       <header class="profile-header">
       <h1>Crea tu perfil</h1>
       <div class="logo"></div>
@@ -84,7 +84,7 @@ export default () => {
   </form>
 </div>
 
-
+</div>
   </section>
 
   </div>
