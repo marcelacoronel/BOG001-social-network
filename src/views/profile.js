@@ -1,4 +1,5 @@
 import { addUsersData, imageStorage } from '../components/database.js';
+import { previewFiles } from '../lib/previewFiles.js';
 
 export default () => {
   const view = `
@@ -17,7 +18,6 @@ export default () => {
       </header>
       <form action="#" class="profileForm" id="profileForm">
       <div class="pet-form">
-     
               <div class="pet-content">
                   <div class="image-preview" id="containerPreview">
                     <img src="" alt="image-preview" class="imagePreview">
@@ -45,6 +45,8 @@ export default () => {
                       <input id="city" class="petForm" type="text" placeholder="ciudad" required>
                       </br>
                   </div>
+                  <br>
+                  <small class="message-alert"></small>
                   <br>
                 <button id="next" class="btn-profile">siguiente</button>
               </div>
@@ -116,6 +118,7 @@ export default () => {
   const petBreed = divElement.querySelector('#breedPet');
   const petAge = divElement.querySelector('#agePet');
   const petType = divElement.querySelector('input[name="pet"]:checked');
+  const messageEmptyInput = divElement.querySelector('.message-alert');
   const defaultImage = divElement.querySelector('.default-image');
 
   // FORM VIEW
@@ -125,31 +128,24 @@ export default () => {
 
   // FUNCIONES
 
-  // FUNCION MOSTRAR VISTAS PERFIL
-  nextButtonForm.addEventListener('click', () => {
+  // FUNCION MOSTRAR VISTAS PERFIL Y VALIDAR INPUTS VACIOS PET FORM
+  nextButtonForm.addEventListener('click', (e) => {
+    console.log('click');
+    e.preventDefault();
+    // eslint-disable-next-line eqeqeq
+    if ((petName.value == '') || (petBreed.value == '') || (petAge.value == '') || (userCity.value == '') || (inputPhoto.value == ' ')) { // COMPRUEBA CAMPOS VACIOS
+      messageEmptyInput.innerHTML = '*Los campos no pueden quedar vacios';
+      return false;
+    }
     petform.style.display = 'none';
     userForm.style.display = 'block';
+    return true;
   });
 
+
   // FUNCION PREVIEW IMAGEN DE PERFIL
-  inputPhoto.addEventListener('change', () => {
-    const file = inputPhoto.files[0];
-    console.log(file);
-    if (file) {
-      const reader = new FileReader();
-      defaultImage.style.display = 'none';
-      imagePreview.style.display = 'block';
-      reader.addEventListener('load', () => {
-        // console.log(this) ;
-        imagePreview.setAttribute('src', reader.result);
-      });
-      reader.readAsDataURL(file);
-    } else {
-      defaultImage.style.display = null;
-      imagePreview.style.display = null;
-      imagePreview.setAttribute('src', '');
-    }
-  });
+
+  previewFiles(inputPhoto, defaultImage, imagePreview);
 
   // FUNCION PARA ENVIAR LOS DATOS DEL FORMULARIO Y SUBIRLOS A FIRESTORE Y STORAGE
 

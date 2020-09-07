@@ -1,8 +1,9 @@
+/* eslint-disable max-len */
 import { signInUsers, createUserswithGoogle, recoverPass } from '../components/auth.js';
 
 export default () => {
   const view = `
-             
+
         <div class="containerImgTitle">
           <div class="titleSite">
             <img src="img/logo-BluePink.png" alt="">
@@ -14,10 +15,9 @@ export default () => {
             <img src="img/LogIn-mobile.jpg" alt="">
           </div>
         </div>
-          
         <div class="containerForms">
           <h2>Bienvenido</h2>
-          <div class="form">       
+          <div class="form">
             <form action="#" class="inputsForm" id="logInForm">
               <Label>EMAIL</br>
                 <input id="email" class="inputForm" type="email" placeholder="pepitoperez@gmail.com" required>
@@ -28,7 +28,7 @@ export default () => {
                 <i id ="eye" class="far fa-eye"></i>
                 <span id="messagePass" class="messagePass"></span>
               </Label></br>
-              <button id="btn" class="btnForm">LOG IN</button> 
+              <button id="btn" class="btnForm">LOG IN</button>
             </form>
           </div>
           <div class="loginGoogle">
@@ -38,16 +38,16 @@ export default () => {
               <p>Accede con Google</p>
             </button>
           </div>
-          
+
           <div class="reset">
             <a href="#/login" id="resetPass">Olvide mi contraseña?</a>
           </div>
           <div class="toggle">
-            <label for="cuenta">No tienes cuenta?</label> 
+            <label for="cuenta">No tienes cuenta?</label>
             <a class="cuenta" href="#/sign-up">Sign Up</a>
           </div>
         </div>
-        
+
         <div id="landscape">
           <div>
             <img src="./img/giro@2x.png" alt=""></br>
@@ -60,15 +60,15 @@ export default () => {
             <a href="#/login" id="btn-close-popup" class="btn-close-popup">
               <i class="fas fa-times-circle"></i>
             </a>
-            <img src="./img/popup.png" alt="">            
+            <img src="./img/popup.png" alt="">
             <h4 id="msjPopUp" >Por favor, confirma tu correo electrónico</h4>
             <form action="" class="formResetPass">
                 <input class="emailReset" id="emailReset" type="email" placeholder="EMAIL" required>
-                <button class="btn-submit" id="btnReset">ENVIAR</button> 
+                <button class="btn-submit" id="btnReset">ENVIAR</button>
             </form>
-            <span class="EmailSend" id="EmailSend">Hemos enviado un mensaje a tu correo, por favor, sigue los pasos indicados</span>   
+            <span class="EmailSend" id="EmailSend">Hemos enviado un mensaje a tu correo, por favor, sigue los pasos indicados</span>
          </div>
-        </div>       
+        </div>
   `;
   // Variables
   const nav = document.getElementById('headerNav');
@@ -104,24 +104,24 @@ export default () => {
     }
   }
   // Reset de contraseña
-  function recoveryPassword () {
+  function recoveryPassword() {
     const email = document.getElementById('emailReset').value;
-    recoverPass (email);
+    recoverPass(email);
   }
   // Abre ventana popup para recuperar contraseña
-  function openPopup(){
+  function openPopup() {
     overlay.classList.add('active');
     popup.classList.add('active');
     msjEmailSend.style.display = 'none';
     btnresetPass.addEventListener('click', recoveryPassword);
   }
   // cierra ventana popup para recuperar contraseña
-  function closePopup(){
+  function closePopup() {
     overlay.classList.remove('active');
     popup.classList.remove('active');
   }
-  //Listeners
-  logInGoogle.addEventListener('click', createUserswithGoogle )
+  // Listeners
+  logInGoogle.addEventListener('click', createUserswithGoogle);
   eye.addEventListener('click', showHidePassword);
   resetPopUp.addEventListener('click', openPopup);
   btnClosePopup.addEventListener('click', closePopup);

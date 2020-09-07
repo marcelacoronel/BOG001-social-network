@@ -226,10 +226,10 @@
   color: var(--color-blue);
 }
 
-.infoEmail p {
+/* .infoEmail p {
   padding-left: 5px ;
   margin: 0;
-}
+} */
 
 
 /* || End SingUp Page */
@@ -292,11 +292,11 @@
       display: none;
   }
 
-  .bg-singup {
+  /* .bg-singup {
     width: 50vh;
     left: 38%;
     margin-top:0;
-  }
+  } */
   
   .bg-singup img {
     width: 50vh;
@@ -384,9 +384,9 @@
   font-size: 1.4em;
 }
 
-.signupGoogle p{
+/* .signupGoogle p{
   color: var(--color-blue);
-}
+} */
 .infoPopUp{
   width: 50%;
   z-index: 100;

@@ -5,9 +5,7 @@
     border-radius: 50%;
 } 
 hr {
-    border: solid;
-    border-width: 1px;
-    border-color:var(--color-blue);
+    border: 1px solid var(--color-blue);
   }
   
   .info_icon {
@@ -65,7 +63,7 @@ hr {
   #user-info ul {
     padding: 0;
     list-style-type: none;
-    margin: 0;
+    margin-top: 5px;
   }
   
   #user_list {
@@ -244,11 +242,6 @@ img.post-header-avatar {
 .soulmates-post-bottom {
   position: relative;
 }
-.soulmates-post-desc p {
-  position: relative;
-  font-family:'Roboto', sans-serif;
-  color: #707070;
-}
 .soulmates-post-desc {
   position: relative;
   width: 350px;
@@ -257,18 +250,22 @@ img.post-header-avatar {
   border-bottom: 1px solid #dedede;
   overflow: hidden;
 }
-
+/* .soulmates-post-desc p {
+  position: relative;
+  font-family:'Roboto', sans-serif;
+  color: #707070;
+} */
 .post-text{
   font-size:15px;
 }
-/* .soulmates-post-desc div {
+.soulmates-post-desc div {
   display: inline-block;
   margin-right: 3px;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   font-weight: bold;
   color: #e1cbcf;
-} */
+}
 .soulmates-post-desc div i {
   color: #e1cbcf;
 }
@@ -430,7 +427,6 @@ input[type="file"] {
   height: 25px;
   background:var(--color-blue);
   border-radius: 25px;
-  border-radius: 25px;
 }
 
 /* likes*/
@@ -485,19 +481,17 @@ input[type="file"] {
   display: block;
   background-color:rgba(0,0,0,0.5);
 }
-.modal-delete-box-button button {
+/* .modal-delete-box-button{
+  padding: 10px;
+  text-align: center;
+} */
+/* .modal-delete-box-button button {
   color: white;
   width: 100px;
   padding: 10px;
   background-color: #364c63;
   border-radius: 20px;
-}
-.modal-delete-box-button{
-  padding: 10px;
-  text-align: center;
-}
-
-
+} */
 .btn-delete {
   padding: 8px 25px;
   border: none;

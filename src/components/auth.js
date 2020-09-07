@@ -1,114 +1,35 @@
-import { addUsersData } from './database.js';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
+// /* eslint-disable no-undef */
+// /* eslint-disable no-use-before-define */
+// /* eslint-disable no-unused-vars */
+// import { addUsersData } from './database.js';
 // references
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+// const auth = firebase.auth();
+// const provider = new firebase.auth.GoogleAuthProvider();
 // Estado del usuario
-function userState() {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const userId = user;
-      localStorage.setItem('usuario', JSON.stringify(userId));
-      // User is signed in.
-      console.log('usuario activo');
-      // ...
-    } else {
-      console.log('no existe usuario activo');
-      // User is signed out.
-      // ...
-    }
-  });
-}
-userState();
-// Crear un usuario nuevo
-export const createUsers = (email, password) => {
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((cred) => {
-      console.log(cred.user);
-      sendEmail();
-      //   return db.collection('userData').doc(cred.user.uid).set({
-      // // return db.collection('userData').doc('usuario').set({
-      //     Email: email,
-      //     Password: password,
-      //   });
-      // console.log(cred.user);
-      // console.log(db.collection('User').doc(cred.user.uid));
-      // console.log('verificado');
-    }).catch((error) => {
-      // Handle Errors here.
-      console.log(error.message);
-      const emailMessage = document.querySelector('#messageEmailSU');
-      emailMessage.innerHTML = error.message;
-      // ...
-    });
-};
-// Crear un usuario con google
-export const createUserswithGoogle = () => {
-  auth
-    .signInWithPopup(provider)
-    .then(() => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      window.location.hash = '#/profile';
-      console.log('google user');
-      addUsersData(User, id);
-      // const token = result.credential.accessToken;
-      // The signed-in user info.
-      // const user = result.user;
-      // ...
-    })
-    .catch((error) => {
-      console.log(`error google ${error}`);
-      // Handle Errors here.
-      // var errorCode = error.code;
-      // var errorMessage = error.message;
-      // // The email of the user's account used.
-      // var email = error.email;
-      // // The firebase.auth.AuthCredential type that was used.
-      // var credential = error.credential;
-      // // ...
-    });
-};
-// Log in usuario
-export const signInUsers = (email, password) => {
-  auth
-    .signInWithEmailAndPassword(email, password)
-    .then((cred) => {
-      console.log(cred.user);
-      window.location.hash = '#/dashboard';
-    })
-    .catch((error) => {
-      console.log(error);
-      const emailMessage = document.querySelector('#messageEmailLog');
-      emailMessage.innerHTML = 'Este usuario no esta Registrado';
-    });
-};
-// Cerrar sesion usuario
-export const userSignOff = () => {
-  auth
-    .signOut()
-    .then(() => {
-      console.log('salir');
-      window.location.hash = '';
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-};
-// Recuperar contraseña usuario
-export const recoverPass = (email) =>{
-  auth
-    .sendPasswordResetEmail(email)
-    .then(() => {
-      const msjEmailSend = document.querySelector('#EmailSend');  
-      msjEmailSend.style.display = 'block';
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-}
+
+
+// function userState() {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       const userId = user;
+//       localStorage.setItem('usuario', JSON.stringify(userId));
+//       // User is signed in.FIRE
+//       console.log('usuario activo');
+//       // ...
+//     } else {
+//       console.log('no existe usuario activo');
+//       // User is signed out.
+//       // ...
+//     }
+//   });
+// }
+// userState();
 // Enviar Email de Confirmación
 const sendEmail = () => {
-  let user = firebase.auth().currentUser;
+  const user = firebase.auth().currentUser;
   user.sendEmailVerification()
     .then(() => {
       console.log('El correo se envio');
@@ -119,5 +40,187 @@ const sendEmail = () => {
     })
     .catch((error) => {
       console.log(error.message);
-    })
+    });
 };
+// Crear un usuario nuevo
+export const createUsers = (email, password) => firebase.auth()
+  .createUserWithEmailAndPassword(email, password);
+// .then((cred) => {
+//   console.log(cred.user);
+//   sendEmail();
+//   //   return db.collection('userData').doc(cred.user.uid).set({
+//   // // return db.collection('userData').doc('usuario').set({
+//   //     Email: email,
+//   //     Password: password,
+//   //   });
+//   // console.log(cred.user);
+//   // console.log(db.collection('User').doc(cred.user.uid));
+//   // console.log('verificado');
+// }).catch((error) => {
+//   // Handle Errors here.
+//   console.log(error.message);
+//   const emailMessage = document.querySelector('#messageEmailSU');
+//   emailMessage.innerHTML = error.message;
+//   // ...
+// });
+
+// Crear un usuario con google
+export const createUserswithGoogle = () => firebase.auth()
+  .signInWithPopup(new firebase.auth.GoogleAuthProvider());
+//     .then(() => {
+//       // This gives you a Google Access Token. You can use it to access the Google API.
+//       window.location.hash = '#/profile';
+//       console.log('google user');
+//       // addUsersData(User, id);
+//       // const token = result.credential.accessToken;
+//       // The signed-in user info.
+//       // const user = result.user;
+//       // ...
+//     })
+//     .catch((error) => {
+//       console.log(`error google ${error}`);
+//       // Handle Errors here.
+//       // var errorCode = error.code;
+//       // var errorMessage = error.message;
+//       // // The email of the user's account used.
+//       // var email = error.email;
+//       // // The firebase.auth.AuthCredential type that was used.
+//       // var credential = error.credential;
+//       // // ...
+//     });
+
+// Log in usuario
+export const signInUsers = (email, password) => firebase.auth()
+  .signInWithEmailAndPassword(email, password);
+// .then((cred) => {
+//   console.log(cred.user);
+//   window.location.hash = '#/dashboard';
+// })
+// .catch((error) => {
+//   console.log(error);
+//   const emailMessage = document.querySelector('#messageEmailLog');
+//   emailMessage.innerHTML = 'Este usuario no esta Registrado';
+// });
+
+// Cerrar sesion usuario
+export const userSignOff = () => firebase.auth()
+  .signOut();
+// .then(() => {
+//   console.log('salir');
+//   window.location.hash = '';
+// })
+// .catch((error) => {
+//   console.log(error.message);
+// });
+
+// Recuperar contraseña usuario
+export const recoverPass = (email) => {
+  firebase.auth()
+    .sendPasswordResetEmail(email)
+    .then(() => {
+      const msjEmailSend = document.querySelector('#EmailSend');
+      msjEmailSend.style.display = 'block';
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+// import { addUsersData } from './database.js';
+// // references
+// const auth = firebase.auth();
+// const provider = new firebase.auth.GoogleAuthProvider();
+
+// // Estado del usuario
+// function userState() {
+//   auth.onAuthStateChanged((user) => {
+//     if (user) {
+//       const userId = user;
+//       localStorage.setItem('usuario', JSON.stringify(userId));
+//       // User is signed in.
+//       console.log('usuario activo');
+//     } else {
+//       console.log('no existe usuario activo');
+//     }
+//   });
+// }
+// userState();
+// // Crear un usuario nuevo
+// export const createUsers = (email, password) => {
+//   auth
+//     .createUserWithEmailAndPassword(email, password)
+//     .then((cred) => {
+//       console.log(cred.user);
+//       sendEmail();
+//     }).catch((error) => {
+//       console.log(error.message);
+//       const emailMessage = document.querySelector('#messageEmailSU');
+//       emailMessage.innerHTML = error.message;
+//     });
+// };
+// // Crear un usuario con google
+// export const createUserswithGoogle = () => {
+//   auth
+//     .signInWithPopup(provider)
+//     .then(() => {
+//       window.location.hash = '#/profile';
+//       console.log('google user');
+//       addUsersData(User, id);
+//     })
+//     .catch((error) => {
+//       console.log(`error google ${error}`);
+//     });
+// };
+// // Log in usuario
+// export const signInUsers = (email, password) => {
+//   auth
+//     .signInWithEmailAndPassword(email, password)
+//     .then((cred) => {
+//       console.log(cred.user);
+//       window.location.hash = '#/dashboard';
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       const emailMessage = document.querySelector('#messageEmailLog');
+//       emailMessage.innerHTML = 'Este usuario no esta Registrado';
+//     });
+// };
+// // Cerrar sesion usuario
+// export const userSignOff = () => {
+//   auth
+//     .signOut()
+//     .then(() => {
+//       console.log('salir');
+//       window.location.hash = '';
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// };
+// // Recuperar contraseña usuario
+// export const recoverPass = (email) => {
+//   auth
+//     .sendPasswordResetEmail(email)
+//     .then(() => {
+//       const msjEmailSend = document.querySelector('#EmailSend');
+//       msjEmailSend.style.display = 'block';
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// };
+// // Enviar Email de Confirmación
+// const sendEmail = () => {
+//   const user = firebase.auth().currentUser;
+//   user.sendEmailVerification()
+//     .then(() => {
+//       console.log('El correo se envio');
+//       const overlay = document.querySelector('#overlay');
+//       const popup = document.querySelector('#popup');
+//       overlay.classList.add('active');
+//       popup.classList.add('active');
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// };

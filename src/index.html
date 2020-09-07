@@ -8,8 +8,19 @@
     <link rel="icon" href="./img/Sm-icon.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
     <link rel="stylesheet" href="./style.css">
-    <title>SoulMates</title>
-
+    <title>SoulMates</title> 
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+ <!-- Initialize Firebase -->
+ <!-- <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase/init.js"></script>    -->
   </head>
 
   <body>
@@ -29,15 +40,7 @@
     <main>
       <section id="root"></section>
     </main>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
+    
     <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -52,8 +55,6 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
-
-
     <script type="module" src="main.js"></script>
   </body>
 

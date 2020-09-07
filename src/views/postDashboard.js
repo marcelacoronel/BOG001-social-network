@@ -1,10 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { userSignOff } from '../components/auth.js';
-import {
-  createElementHTML,
-  // createModalTemplate,
-} from '../lib/createElementPost.js';
+import { previewFiles } from '../lib/previewFiles.js';
+import { createElementHTML } from '../lib/createElementPost.js';
 import {
   imageStorage,
+  // storage,
   // getUserData,
   // addPostUserData,
   deletePostUserData,
@@ -121,7 +121,7 @@ export default () => {
   // CAMPOS FORMULARIO
   const postForm = divElement.querySelector('#post-user');
   const postContainer = divElement.querySelector('#post-container');
-  const postFormHeaderTitle = divElement.querySelector('#post-header-title');
+  // const postFormHeaderTitle = divElement.querySelector('#post-header-title');
   // const descriptionPostText = divElement.querySelector('#description');
 
   // INPUT SUBIR FOTO DE POST
@@ -174,28 +174,10 @@ export default () => {
   };
 
   // FUNCION PREVIEW IMAGEN POST
-  filePost.addEventListener('change', () => {
-    const file = filePost.files[0];
-    console.log(file);
-    if (file) {
-      const reader = new FileReader();
-      defaultText.style.display = 'none';
-      previewImage.style.display = 'block';
-      reader.addEventListener('load', () => {
-        // console.log(this) ;
-        previewImage.setAttribute('src', reader.result);
-      });
-      reader.readAsDataURL(file);
-    } else {
-      defaultText.style.display = null;
-      previewImage.style.display = null;
-      previewImage.setAttribute('src', '');
-    }
-  });
-
+  previewFiles(filePost, defaultText, previewImage);
   // MOSTRAR LA FOTO DE PERFIL DEL USUARIO
   let urlProfileUser = '';
-
+  // storage(uidUser, urlProfileUser, img);
   function storage() {
     const storageRef = firebase
       .storage()
@@ -253,7 +235,6 @@ export default () => {
   }
   storage();
   loadInfoUserHeader();
-
   // CREAR POST USUARIO
   // REF DEL DOC Y SUBCOLECCION DEL USUARIO/POST
   async function savePostInfo(description) {
@@ -275,7 +256,7 @@ export default () => {
         const uploadImage = imageStorage(
           `user/${uidUser}/post/${postDoc.id}/`,
           postDoc.id,
-          file
+          file,
         );
         // `${pathUserStorage}
         // eslint-disable-next-line comma-dangle
@@ -283,8 +264,7 @@ export default () => {
           'state_changed',
           (snapshot) => {
             // Get task progress,
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(`Upload is ${progress}% done`);
             switch (snapshot.state) {
               case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -318,7 +298,7 @@ export default () => {
             // Upload completed successfully, now we can get the download URL
             console.log('succesful');
             uploadImage.snapshot.ref.getDownloadURL().then((url) => {
-              console.log('BANANOS')
+              console.log('BANANOS');
               console.log(url);
               firebase
                 .firestore()
@@ -332,11 +312,10 @@ export default () => {
                   createPost(querySnapshot, url);
                 });
             });
-          }
+          },
         );
       });
   }
-
   // FIREBASE FUNCTIONS
 
   // OBTENER LA SUBCOLECCION DE POST USUARIO
@@ -351,25 +330,48 @@ export default () => {
   // };
 
   // EDITAR LOS POST DEL USUARIO
-  const editPost = (id) =>
-    firebase
-      .firestore()
-      .collection('user')
-      .doc(uidUser)
-      .collection('post')
-      .doc(id)
-      .get();
+  const editPost = id => firebase
+    .firestore()
+    .collection('user')
+    .doc(uidUser)
+    .collection('post')
+    .doc(id)
+    .get();
 
   // CONST UPDATE POST
-  const updatePost = (id, updatePost) =>
-    firebase
-      .firestore()
-      .collection('user')
-      .doc(uidUser)
-      .collection('post')
-      .doc(id)
-      .update(updatePost);
+  // eslint-disable-next-line no-shadow
+  const updatePost = (id, updatePost) => firebase
+    .firestore()
+    .collection('user')
+    .doc(uidUser)
+    .collection('post')
+    .doc(id)
+    .update(updatePost);
+  // BORRAR Y EDITAR POST
 
+  function editContentPost(id) {
+    console.log(`${id}nueva funcion boton modal`);
+    modal.style.display = 'block';
+  }
+  // BORRAR POST
+  function deleteContentPost(id) {
+    const postDiv = document.getElementById(id);
+    console.log(postDiv);
+    console.log(typeof id);
+    modalDelete.classList.add('modal-open');
+    console.log(`${id}eliminar boton modal`);
+
+    deletePostBtnModal.addEventListener('click', (e) => {
+      console.log(e.target.dataset.id);
+      e.preventDefault();
+      deletePostUserData(uidUser, id);
+      deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
+      modalDelete.classList.remove('modal-open');
+      console.log(postContainer);
+      postContainer.removeChild(postDiv);
+    });
+  }
+  // CREAR POST
   function createPost(postQ, url) {
     let text;
     console.log('empieza');
@@ -383,7 +385,7 @@ export default () => {
       },
       postContainer,
       '',
-      true
+      true,
     );
     // Modal confirmacion borrar post
     const deleteModalPost = createElementHTML(
@@ -392,7 +394,7 @@ export default () => {
         class: 'modal-delete',
         id: 'modal',
       },
-      postContainer
+      postContainer,
     );
 
     // Div contenedor top
@@ -401,7 +403,7 @@ export default () => {
       {
         class: 'soulmates-post-top',
       },
-      post
+      post,
     );
     // Div user info
     const UserImageProfileDiv = createElementHTML(
@@ -409,7 +411,7 @@ export default () => {
       {
         class: 'soulmates-post-avatar',
       },
-      topPostDiv
+      topPostDiv,
     );
     // Imagen de perfil
     const imgUserProfile = createElementHTML(
@@ -418,7 +420,7 @@ export default () => {
         class: 'post-header-avatar',
         src: urlProfileUser,
       },
-      UserImageProfileDiv
+      UserImageProfileDiv,
     );
     // Nombre Perfil
     const nameUserDiv = createElementHTML(
@@ -427,7 +429,7 @@ export default () => {
         class: 'soulmates-post-name',
       },
       topPostDiv,
-      nameUser
+      nameUser,
     );
     // Ciudad
     const cityUserDiv = createElementHTML(
@@ -436,7 +438,7 @@ export default () => {
         class: 'soulmates-post-title',
       },
       topPostDiv,
-      cityUser
+      cityUser,
     );
 
     // Body post
@@ -446,7 +448,7 @@ export default () => {
       {
         class: 'soulmates-post-image',
       },
-      post
+      post,
     );
     // Imagen post
     const imgPost = createElementHTML(
@@ -455,7 +457,7 @@ export default () => {
         class: 'post-image-avatar',
         src: url,
       },
-      postImageDiv
+      postImageDiv,
     );
 
     // Bottom post
@@ -464,7 +466,7 @@ export default () => {
       {
         class: 'soulmates-post-bottom',
       },
-      post
+      post,
     );
     // Descr post Div
     const descrPost = createElementHTML(
@@ -472,7 +474,7 @@ export default () => {
       {
         class: 'soulmates-post-desc',
       },
-      bottomPostDiv
+      bottomPostDiv,
     );
     // P element Descr
     const pDesc = createElementHTML(
@@ -482,7 +484,7 @@ export default () => {
         id: `${postQ.id}-desc`,
       },
       descrPost,
-      postQ.data().description
+      postQ.data().description,
     );
     // Icons post Div
     const IconPost = createElementHTML(
@@ -490,7 +492,7 @@ export default () => {
       {
         class: 'soulmates-post-icons',
       },
-      bottomPostDiv
+      bottomPostDiv,
     );
     // Span icons
     const iconSpan = createElementHTML(
@@ -499,7 +501,7 @@ export default () => {
         class: 'heart-counter',
       },
       IconPost,
-      '4'
+      '4',
     );
     // Button like incon
     const buttonLike = createElementHTML(
@@ -507,7 +509,7 @@ export default () => {
       {
         id: 'like',
       },
-      IconPost
+      IconPost,
     );
 
     // i element likes
@@ -516,7 +518,7 @@ export default () => {
       {
         class: 'fas fa-heart',
       },
-      buttonLike
+      buttonLike,
     );
     // Span Me encanta
     const mencantaSpan = createElementHTML('span', {}, IconPost, 'Me encanta');
@@ -528,14 +530,14 @@ export default () => {
         'data-id': postQ.id,
       },
       IconPost,
-      'Editar'
+      'Editar',
     );
     editButton.addEventListener(
       'click',
-      function () {
+      () => {
         editContentPost(postQ.id);
       },
-      false
+      false,
     );
     // Delete button
     const deleteButton = createElementHTML(
@@ -545,42 +547,16 @@ export default () => {
         'data-id': postQ.id,
       },
       IconPost,
-      'Borrar'
+      'Borrar',
     );
     deleteButton.addEventListener(
       'click',
       () => {
         deleteContentPost(postQ.id);
       },
-      false
+      false,
     );
     console.log('Termina');
-  }
-
-  //BORRAR Y EDITAR POST
-
-  function editContentPost(id) {
-    console.log(id + 'nueva funcion boton modal');
-    modal.style.display = 'block';
-  }
-// BORRAR POST 
-  function deleteContentPost(id) {
-    const postDiv = document.getElementById(id);
-    console.log(postDiv);
-    console.log( id + " "+ "="  +" " + "rNDtPUT6pdmhn1twAkkb")
-    console.log(typeof id)
-    modalDelete.classList.add('modal-open');
-    console.log(id + 'eliminar boton modal');
-
-    deletePostBtnModal.addEventListener('click', (e) => {
-      console.log(e.target.dataset.id);
-      e.preventDefault();
-      deletePostUserData(uidUser, id);
-      deletePostImageData(`user/${uidUser}/post/${id}/${id}`);
-      modalDelete.classList.remove('modal-open');
-      console.log(postContainer)
-      postContainer.removeChild(postDiv);
-    });
   }
 
   // FUNCION PARA MOSTRAR POST EN EL MURO DE PUBLICACION
@@ -599,7 +575,7 @@ export default () => {
           firebase
             .storage()
             .ref(
-              `user/${uidUser}/post/${postQ.id}/${postQ.id}`
+              `user/${uidUser}/post/${postQ.id}/${postQ.id}`,
             )
             .getDownloadURL()
             .then((url) => {
@@ -607,7 +583,7 @@ export default () => {
             });
         });
       });
-    //});
+    // });
   }
 
   loadPost();

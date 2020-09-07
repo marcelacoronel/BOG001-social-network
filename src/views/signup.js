@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-undef */
 import { createUsers, createUserswithGoogle } from '../components/auth.js';
 
 export default () => {
@@ -7,7 +9,7 @@ export default () => {
                 <img src="./img/logo_signup.svg" alt="logo_singup">
             </div>
             <div class="form-Singup" >
-                <h2>Registrate</h2>                
+                <h2>Registrate</h2>
                 <form action="" class="form-SU-Desktop-tablet" id="form">
                     <label for="emailSignUp">EMAIL
                     <input class="emailSignUp" id="emailSignUp" type="email" placeholder="pepitoperez@hotmail.com" required>
@@ -15,8 +17,8 @@ export default () => {
                     </label>
                     <label for="passSignUp">CONTRASEÑA
                     <i class='fas fa-info-circle'>
-                      <div class="infoPopUp"> 
-                        <div class="infoEmail" id="infoEmail"> 
+                      <div class="infoPopUp">
+                        <div class="infoEmail" id="infoEmail">
                           <div>
                             <i class='fas fa-paw'></i>
                             <p>Debe contener minimo 8 caracteres.</p>
@@ -42,7 +44,7 @@ export default () => {
                     </label>
                     <input class="btn" type="submit" value="SIGN IN">
                   </form>
-                                  
+
                 <div class="signupGoogle">
                   <p>-- O --</p>
                   <button class="btnGoogle">
@@ -72,11 +74,11 @@ export default () => {
             <a href="#/sign-up" id="btn-close-popup" class="btn-close-popup">
               <i class="fas fa-times-circle"></i>
             </a>
-            <img src="./img/popup.png" alt="">            
+            <img src="./img/popup.png" alt="">
             <h4 id="msjPopUp">Hemos enviado un correo de confirmación a tu cuenta, por favor, sigue los pasos para poder continuar.</h4>
            </div>
-        </div>  
-        
+        </div>
+
       </div>
 `;
   // Variables
@@ -137,6 +139,7 @@ export default () => {
     popup.classList.remove('active');
   }
   // Listener
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < eye.length; i++) {
     eye[i].addEventListener('click', showHidePassword);
   }

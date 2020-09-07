@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 export default () => {
   const view = `
     <!--HEADER INFORMACION DEL USUARIO-->
@@ -37,12 +38,11 @@ export default () => {
   firebase.firestore().collectionGroup('user').onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       console.log(doc.data());
-  firebase.firestore().collectionGroup('post').onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
-  });
-
+      firebase.firestore().collectionGroup('post').onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data());
+        });
+      });
     });
   });
   return divElement;

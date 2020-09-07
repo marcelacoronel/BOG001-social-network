@@ -1,17 +1,19 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 // referencia de los servicios de firebase
-const db = firebase.firestore();
-const storage = firebase.storage();
+// const db = firebase.firestore();
+// const storage = firebase.storage();
 
 // FIRESTORE
 
 export function loadInfoUser(collection, uid) {
-  db
+  firebase.firestore()
     .collection(collection)
     .doc(uid)
     .get();
 }
 export async function addUsersData(dataUser, uid) {
-  await db
+  await firebase.firestore()
     .collection('user')
     .doc(uid)
     .set(dataUser)
@@ -26,7 +28,7 @@ export async function addUsersData(dataUser, uid) {
 
 // Añadir los datos de cada post a la coleccion del usuario
 export async function addPostUserData(uid, dataPost) {
-  await db
+  await firebase.firestore()
     .collection('user')
     .doc(uid)
     .collection('post')
@@ -43,7 +45,7 @@ export async function addPostUserData(uid, dataPost) {
 // Editar los datos del post
 
 export function editPostUserData(uid, idPost) {
-  db
+  firebase.firestore()
     .collection('user')
     .doc(uid)
     .collection('post')
@@ -60,7 +62,7 @@ export function editPostUserData(uid, idPost) {
 
 // Obtener los datos de la coleccion
 export function getUserData(id) {
-  db.collection('user')
+  firebase.firestore().collection('user')
     .doc(id)
     .get()
     .then((doc) => {
@@ -75,7 +77,7 @@ export function getUserData(id) {
 
 // Borrar los datos de la coleccion
 export function deletePostUserData(uid, idPost) {
-  db.collection('user')
+  firebase.firestore().collection('user')
     .doc(uid)
     .collection('post')
     .doc(idPost)
@@ -92,7 +94,7 @@ export function deletePostUserData(uid, idPost) {
 
 // Crear folder y guardar las imagenes
 export function imageStorage(folder, id, file) {
-  return storage
+  return firebase.storage()
     .ref(folder + id)
     .put(file);
 }
@@ -100,7 +102,7 @@ export function imageStorage(folder, id, file) {
 // Borrar las imagenes del storage
 
 export function deletePostImageData(folder) {
-  storage
+  firebase.storage()
     .ref(folder)
     .delete()
     .then(() => {
@@ -110,4 +112,23 @@ export function deletePostImageData(folder) {
       console.log(`Uh-oh, an error occurred!${error}`);
     });
 }
+// Obtener la foto del perfil del usuario
 
+export function storage(uid, profileUser, avatar) {
+  const storageRef = firebase
+    .storage()
+    .ref(`user/${uid}/profile/${uid}`);
+  storageRef
+    .getDownloadURL()
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+      console.log(url);
+      // Or inserted into an <img> element
+      profileUser = url;
+      avatar.src = url;
+      // imgAvatarPost.src = url;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
