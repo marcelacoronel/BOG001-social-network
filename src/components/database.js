@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 // referencia de los servicios de firebase
-// const db = firebase.firestore();
-// const storage = firebase.storage();
 
 // FIRESTORE
 

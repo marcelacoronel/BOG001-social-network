@@ -1,15 +1,13 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 import { userSignOff } from '../components/auth.js';
 import { previewFiles } from '../lib/previewFiles.js';
 import { createElementHTML } from '../lib/createElementPost.js';
 import {
   imageStorage,
-  // storage,
-  // getUserData,
-  // addPostUserData,
   deletePostUserData,
   deletePostImageData,
-  // editPostUserData,
 } from '../components/database.js';
 
 export default () => {
@@ -143,15 +141,24 @@ export default () => {
   const cancelDeletePost = divElement.querySelector('.cancel');
   const deletePostBtnModal = divElement.querySelector('#deletePost');
 
-  // USER UID
+  // USER UID GUARDADO EN EL LOCAL STORAGE
   const getUserUid = JSON.parse(localStorage.getItem('usuario'));
   const uidUser = getUserUid.uid;
-  console.log(uidUser);
-  console.log(getUserUid.email);
 
   // VARIABLE EDITAR
   let editStatus = false;
+
+  // DECLARAR VARIABLES
+
+  // Mostrar la foto de perfil del usuario en el post
+  let urlProfileUser = '';
+  // Variables para almacenar la informacion del usuario y mostrarlo en cada post
+  let nameUser = '';
+  let cityUser = '';
+  // Variable para almacenar el id del post del usuario y poder actualizar ese post
   let idUser = '';
+
+
   // FUNCION MODAL
   cancelDeletePost.addEventListener('click', () => {
     modalDelete.classList.remove('modal-open');
@@ -175,9 +182,9 @@ export default () => {
 
   // FUNCION PREVIEW IMAGEN POST
   previewFiles(filePost, defaultText, previewImage);
-  // MOSTRAR LA FOTO DE PERFIL DEL USUARIO
-  let urlProfileUser = '';
-  // storage(uidUser, urlProfileUser, img);
+
+  // MOSTRAR EN EL HEAD LA INFORMACION DEL USUARIO
+
   function storage() {
     const storageRef = firebase
       .storage()
@@ -196,12 +203,6 @@ export default () => {
         console.log(error);
       });
   }
-
-  // MOSTRAR EN EL HEAD LA INFORMACION DEL USUARIO
-
-  // Variables para almacenar la informacion del usuario y mostrarlo en cada post
-  let nameUser = '';
-  let cityUser = '';
 
   function loadInfoUserHeader() {
     email.innerHTML = getUserUid.email;
@@ -233,8 +234,10 @@ export default () => {
         console.log('Error getting document:', error);
       });
   }
+  // LLAMAR LAS FUNCIONES
   storage();
   loadInfoUserHeader();
+
   // CREAR POST USUARIO
   // REF DEL DOC Y SUBCOLECCION DEL USUARIO/POST
   async function savePostInfo(description) {
@@ -247,7 +250,6 @@ export default () => {
         description,
         date: firebase.firestore.Timestamp.fromDate(new Date()),
       })
-      // await addPostUserData(uidUser, { description })
       .then((postDoc) => {
         console.log('GUARDAR POST ');
         console.log(postDoc);
@@ -258,8 +260,6 @@ export default () => {
           postDoc.id,
           file,
         );
-        // `${pathUserStorage}
-        // eslint-disable-next-line comma-dangle
         uploadImage.on(
           'state_changed',
           (snapshot) => {
@@ -316,28 +316,7 @@ export default () => {
         );
       });
   }
-  // FIREBASE FUNCTIONS
-
-  // OBTENER LA SUBCOLECCION DE POST USUARIO
-  // const onGetPost = (callback) => {
-  //   firebase
-  //     .firestore()
-  //     .collection('user')
-  //     .doc(uidUser)
-  //     .collection('post')
-  //     .orderBy('date', 'desc')
-  //     .onSnapshot(callback);
-  // };
-
-  // EDITAR LOS POST DEL USUARIO
-  const editPost = id => firebase
-    .firestore()
-    .collection('user')
-    .doc(uidUser)
-    .collection('post')
-    .doc(id)
-    .get();
-
+  // POST FUNCTIONS
   // CONST UPDATE POST
   // eslint-disable-next-line no-shadow
   const updatePost = (id, updatePost) => firebase
@@ -349,17 +328,23 @@ export default () => {
     .update(updatePost);
   // BORRAR Y EDITAR POST
 
-  function editContentPost(id) {
-    console.log(`${id}nueva funcion boton modal`);
+  // Editar el contendio del post
+  function editContentPost(id, desc) {
+    editStatus = true;
+    idUser = id;
+    const update = postForm.description;
     modal.style.display = 'block';
+    postSubmit.value = 'Actualizar';
+    editPostUs(desc, update);
+  }
+
+  function editPostUs(div, update) {
+    div.innerHTML = update.value;
   }
   // BORRAR POST
   function deleteContentPost(id) {
     const postDiv = document.getElementById(id);
-    console.log(postDiv);
-    console.log(typeof id);
     modalDelete.classList.add('modal-open');
-    console.log(`${id}eliminar boton modal`);
 
     deletePostBtnModal.addEventListener('click', (e) => {
       console.log(e.target.dataset.id);
@@ -511,7 +496,13 @@ export default () => {
       },
       IconPost,
     );
-
+    buttonLike.addEventListener(
+      'click',
+      () => {
+        likePost(postQ.id, iconSpan);
+      },
+      false,
+    );
     // i element likes
     const iButtonLike = createElementHTML(
       'i',
@@ -535,7 +526,7 @@ export default () => {
     editButton.addEventListener(
       'click',
       () => {
-        editContentPost(postQ.id);
+        editContentPost(postQ.id, pDesc);
       },
       false,
     );
@@ -557,6 +548,11 @@ export default () => {
       false,
     );
     console.log('Termina');
+  }
+
+  function likePost(id, counter) {
+    console.log(`${id}like`);
+    console.log(counter);
   }
 
   // FUNCION PARA MOSTRAR POST EN EL MURO DE PUBLICACION
@@ -591,6 +587,8 @@ export default () => {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const description = postForm.description;
+    const quema = document.getElementById(`${idUser}-desc`);
+    console.log(quema);
 
     if (!editStatus) {
       await savePostInfo(description.value);
@@ -598,6 +596,7 @@ export default () => {
       updatePost(idUser, {
         description: description.value,
       });
+      editPostUs(quema, description);
       editStatus = false;
       idUser = '';
       postSubmit.value = 'Guardar';

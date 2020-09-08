@@ -3,31 +3,31 @@
   <img src="https://github.com/lalopez13/BOG001-social-network/blob/Pruebafirebase/src/img/logo-BluePink.png" width="500" title="logo">
 </p>
 
-SoulMates es una red social que tiene como objetivo conectar y crear una comunidad para personas que tienen mascotas y quieren compartir los momentos que viven cada dia con ellas.
+SoulMates es una red social que tiene como objetivo conectar y crear una comunidad para personas que tienen mascotas y quieren compartir los momentos que viven cada dÍa con ellas.
 
-En los ultimos años se ve la tendencia y la popularidad que tienen las fotos y videos de mascotas que se comparten en redes sociales hasta tienen perfiles propios, Soulmates tiene como objetivo crear un espacio  para este tipo de contenido donde personas que tienen el mismo amor y quieren compartir el dia a dia con su mascota lo puedan hacer en un espacio exclusivo para eso y tambien para generar una red de apoyo para adopcion y busqueda de mascotas.
+En los ultimos años surgió la tendencia y aumentó la popularidad que tienen las fotos y videos de mascotas que se comparten en redes sociales, hasta tienen perfiles propios. Soulmates tiene como fin proponer un espacio  para este tipo de contenido donde personas que disfrutan y aman a los animales, buscan compartir el día a día con su mascota, ya que es un espacio diseñado exclusivamente para nuestras almas gemelas y también para generar una red de apoyo para adopción y búsqueda de mascotas.
 
-Nuestro logotipo es una ficha de un rompecabezas porque como su nombre lo indica una mascota es nuestra alma gemela y es esa pieza que complementa nuestra vida.
+Nuestro logotipo esta compuesto por una ficha de un rompecabezas, de manera que en conjunto con el nombre de la red social, indica la compatibilidad, conexión, complemento y la corelación que existe entre un dueño y su mascota cuando descubren su alma gemela.
 
 ### LOGOTIPO
 <img src="https://github.com/lalopez13/BOG001-social-network/blob/postUser/src/img/Sm-icon.png" width="200" title="logotipo" >
 
 ### Test de usabilidad 
 Se hicieron test en tres personas,de acuerdo a su feedback las opiniones fueron:
-1. La pagina era facil de usar, las opciones del menu eran claras e indicaban que se iban a encontrar en cada vista.
-2. Los formularios eran sencillos y la opcion de mostrar la contraseña les parecio adecuada ya que muchas veces ocurren errores a la hora de digitar, el tamaño de los inputs era muy grande.
+1. La página era fácil de usar, las opciones del menu eran claras e indicaban que se iban a encontrar en cada vista.
+2. Los formularios eran sencillos y la opción de mostrar la contraseña les pareció adecuada ya que muchas veces ocurren errores a la hora de digitar, el tamaño de los inputs era muy grande.
 
 ### Feedback de diseño de la aplicacion en usuarios
 
-De acuerdo con la interaccion que tuvieron algunos usuarios con nuestra aplicaciónn estas fueron algunas de las observaciones mas importantes:
+De acuerdo con la interaccion que tuvieron algunos usuarios con nuestra aplicaciónn estas fueron algunas de las observaciones más importantes:
 
-1. Dejar la barra de navegacion del home con nombres en español.
+1. Dejar la barra de navegación del home con nombres en español.
 2. El tamaño de los inputs y labels de los formularios.
 3. Tener unidad entre las tipografias y tamaños de los labels de los formularios.
 
 
 ## Diseño de la aplicación
-El diseño de SoulMates esta basado en la simplicidad y ofrecer al usuario una interfaz amigable y que exprese por medio de las ilustraciones y los colores, calidez y generar un interes a nuestro publico objetivo para que se registren en la aplicacion.
+El diseño de SoulMates esta basado en la simplicidad y ofrecer al usuario una interfaz amigable y que exprese por medio de las ilustraciones y los colores, calidez y generar un interés a nuestro público objetivo para que se registren en la aplicación.
 
 ### Prototipos de baja fidelidad
 
@@ -39,7 +39,7 @@ El prototipo de alta fidelidad se desarrollo en FIGMA.
 LINK: <a>https://www.figma.com/file/W0kaayI4LwgkSGhGawMgom/SOULMATES?node-id=0%3A1</a>
 
 ### Historias de usuario
-Las historias de usuario las elegimos de acuerdo a los requerimientos del proyecto y a las funcionalidades que en nuestra investigación consideramos que son más relevantes en una red social y asi poder elaborar un producto que satisfaga las necesidades de nuestros usuarios.
+Las historias de usuario las elegimos de acuerdo a los requerimientos del proyecto y a las funcionalidades que en nuestra investigación consideramos que son más relevantes en una red social y así poder elaborar un producto que satisfaga las necesidades de nuestros usuarios.
 
 ### Planeación
 Para la planificación del proyecto usamos como herramienta trello.

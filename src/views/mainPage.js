@@ -27,8 +27,6 @@ export default () => {
           <button id="signOff"><i class="fas fa-times-circle"></i></button>
         </div>
       </div>`;
-
-
   const divElement = document.createElement('div');
   divElement.innerHTML = view;
   const nav = document.getElementById('headerNav');

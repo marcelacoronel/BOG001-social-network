@@ -481,10 +481,10 @@ input[type="file"] {
   display: block;
   background-color:rgba(0,0,0,0.5);
 }
-/* .modal-delete-box-button{
+.modal-delete-box-button{
   padding: 10px;
   text-align: center;
-} */
+} 
 /* .modal-delete-box-button button {
   color: white;
   width: 100px;
