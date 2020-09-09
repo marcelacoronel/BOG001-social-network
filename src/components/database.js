@@ -4,12 +4,6 @@
 
 // FIRESTORE
 
-export function loadInfoUser(collection, uid) {
-  firebase.firestore()
-    .collection(collection)
-    .doc(uid)
-    .get();
-}
 export async function addUsersData(dataUser, uid) {
   await firebase.firestore()
     .collection('user')
@@ -40,23 +34,6 @@ export async function addPostUserData(uid, dataPost) {
     });
 }
 
-// Editar los datos del post
-
-export function editPostUserData(uid, idPost) {
-  firebase.firestore()
-    .collection('user')
-    .doc(uid)
-    .collection('post')
-    .doc(idPost)
-    .get()
-    .then((doc) => {
-      console.log(doc.data());
-      console.log('Document successfully edit!');
-    })
-    .catch((error) => {
-      console.log('Error editing document: ', error);
-    });
-}
 
 // Obtener los datos de la coleccion
 export function getUserData(id) {
@@ -108,25 +85,5 @@ export function deletePostImageData(folder) {
     })
     .catch((error) => {
       console.log(`Uh-oh, an error occurred!${error}`);
-    });
-}
-// Obtener la foto del perfil del usuario
-
-export function storage(uid, profileUser, avatar) {
-  const storageRef = firebase
-    .storage()
-    .ref(`user/${uid}/profile/${uid}`);
-  storageRef
-    .getDownloadURL()
-    .then((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
-      console.log(url);
-      // Or inserted into an <img> element
-      profileUser = url;
-      avatar.src = url;
-      // imgAvatarPost.src = url;
-    })
-    .catch((error) => {
-      console.log(error);
     });
 }
