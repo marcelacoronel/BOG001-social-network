@@ -56,11 +56,11 @@ export default () => {
         </div>
         <br>
         <label class="upload-img-post">Sube tu imagen
-                <input type="file" name="postPreview" id="postPreview" >
+                <input type="file" name="postPreview" id="postPreview">
         </label>
       </div>
           <div class="infoPostUser">
-            <textarea type="text" id="description" rows="2" cols="100" maxlength="120" required></textarea>
+            <textarea type="text" id="description" rows="2" cols="100" maxlength="120"></textarea>
             <input type="submit" id="submit-post" value="submit" >
           </div>
         </form>
@@ -119,14 +119,15 @@ export default () => {
   // CAMPOS FORMULARIO
   const postForm = divElement.querySelector('#post-user');
   const postContainer = divElement.querySelector('#post-container');
-  // const postFormHeaderTitle = divElement.querySelector('#post-header-title');
+  const postFormHeaderTitle = divElement.querySelector('#post-header-title');
   // const descriptionPostText = divElement.querySelector('#description');
 
   // INPUT SUBIR FOTO DE POST
   const filePost = divElement.querySelector('#postPreview');
-  // const imagePostPreview = divElement.querySelector('#postPreviewImage');
+  const imagePostPreview = divElement.querySelector('#postPreviewImage');
   const previewImage = divElement.querySelector('.post-preview-image');
   const defaultText = divElement.querySelector('.post-preview-text');
+  const labelFile = divElement.querySelector('.upload-img-post');
 
   // BOTONES
   const btnAddpost = divElement.querySelector('#addPost');
@@ -329,13 +330,14 @@ export default () => {
   // BORRAR Y EDITAR POST
 
   // Editar el contendio del post
-  function editContentPost(id, desc) {
+  function editContentPost(id) {
     editStatus = true;
     idUser = id;
-    const update = postForm.description;
     modal.style.display = 'block';
+    postFormHeaderTitle.innerHTML = 'Editar post';
+    imagePostPreview.style.display = 'none';
+    labelFile.style.display = 'none';
     postSubmit.value = 'Actualizar';
-    editPostUs(desc, update);
   }
 
   function editPostUs(div, update) {
@@ -587,8 +589,8 @@ export default () => {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const description = postForm.description;
-    const quema = document.getElementById(`${idUser}-desc`);
-    console.log(quema);
+    const paragraphBox = document.getElementById(`${idUser}-desc`);
+    console.log(paragraphBox);
 
     if (!editStatus) {
       await savePostInfo(description.value);
@@ -596,12 +598,15 @@ export default () => {
       updatePost(idUser, {
         description: description.value,
       });
-      editPostUs(quema, description);
+      editPostUs(paragraphBox, description);
       editStatus = false;
       idUser = '';
       postSubmit.value = 'Guardar';
     }
+    postFormHeaderTitle.innerHTML = 'Crear post';
+    labelFile.style.display = 'block';
     previewImage.style.display = 'none';
+    imagePostPreview.style.display = 'block';
     postForm.reset();
   });
 

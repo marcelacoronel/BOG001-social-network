@@ -10,6 +10,9 @@ export default () => {
               <img src="../img/Sm-icon.png" id="userphoto" alt="user-Avatar">
             </div>
           </div>
+          <div>
+          <img src="../img/logo-BluePink.png" width="300px">
+          </div>
           <!--<div id="user-info">
             <h2 class="user_name" id="name"></h2>
             <hr>

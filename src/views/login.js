@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { signInUsers, createUserswithGoogle, recoverPass } from '../components/auth.js';
+import { signInUsers, loginUserswithGoogle, recoverPass } from '../components/auth.js';
 
 export default () => {
   const view = `
@@ -121,7 +121,7 @@ export default () => {
     popup.classList.remove('active');
   }
   // Listeners
-  logInGoogle.addEventListener('click', createUserswithGoogle);
+  logInGoogle.addEventListener('click', loginUserswithGoogle);
   eye.addEventListener('click', showHidePassword);
   resetPopUp.addEventListener('click', openPopup);
   btnClosePopup.addEventListener('click', closePopup);

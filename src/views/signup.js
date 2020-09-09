@@ -44,7 +44,6 @@ export default () => {
                     </label>
                     <input class="btn" type="submit" value="SIGN IN">
                   </form>
-
                 <div class="signupGoogle">
                   <p>-- O --</p>
                   <button class="btnGoogle">

@@ -91,22 +91,35 @@ export const createUserswithGoogle = () => {
       console.log(`error google ${error}`);
     });
 };
+// login un usuario con google
+export const loginUserswithGoogle = () => {
+  auth
+    .signInWithPopup(provider)
+    .then(() => {
+      window.location.hash = '#/dashboard';
+      console.log('google user');
+      addUsersData(User, id);
+    })
+    .catch((error) => {
+      console.log(`error google ${error}`);
+    });
+};
 // Log in usuario
 export const signInUsers = (email, password) => {
   auth
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       console.log(user);
-      const uidUser = user.user.uid;
-      if (user.user.emailVerified) {
-        console.log(user.user);
-        window.location.hash = '#/dashboard';
-      }
-      else {
-        window.location.hash = '#/login';
-        const emailMessage = document.querySelector('#messageEmailLog');
-        emailMessage.innerHTML = 'Revisa en tu email correo de verificación';
-      }
+      window.location.hash = '#/dashboard';
+      // const uidUser = user.user.uid;
+      // if (user.user.emailVerified) {
+      //   console.log(user.user);
+      //   window.location.hash = '#/dashboard';
+      // } else {
+      //   window.location.hash = '#/login';
+      //   const emailMessage = document.querySelector('#messageEmailLog');
+      //   emailMessage.innerHTML = 'Revisa en tu email correo de verificación';
+      // }
     })
     .catch((error) => {
       console.log(error);
