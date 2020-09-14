@@ -133,6 +133,7 @@ export default () => {
   const btnAddpost = divElement.querySelector('#addPost');
   const btnSingOff = divElement.querySelector('#signOff');
   const postSubmit = divElement.querySelector('#submit-post');
+  
 
   // MODAL
   const modal = divElement.querySelector('#myModal');
